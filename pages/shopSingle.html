@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./../output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./../styles/shopSingle.css">
+    <script  type="module" src="./../scripts/shopSingle.js"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ["./index.html", "./script.js", "./modules/news.js"],
+          theme: {
+            fontFamily: {
+                'sans': ['Roboto', 'Arial', 'sans-serif'],
+            },
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+    </script> -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+<body class="w-full h-[100vh]">
+    <header class="bg-white flex justify-between py-4 pl-1 pr-5 w-full sticky z-20">
+        <!-- The logo for the project -->
+        <div class="logo">
+        <img src="./../images/logo/logo1.svg" alt="Logo for Organick Farm" class="w-36 h-8">
+        </div>
+
+        <!-- The nav links for desktop -->
+        <nav class="hidden lg:flex justify-between items-center gap-4 text-base text-[#274C5B]">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Pages</a>
+            <a href="">Shop</a>
+            <a href="">Projects</a>
+            <a href="">News</a>
+        </nav>
+        <!-- The shopping cart and the search menu -->
+        <div class="meta flex justify-between gap-5 items-center">
+            <!-- The search div container -->
+            <div tabindex="0" class="search focus:border-[#7EB693] focus:border-solid focus:border-[1px] sm:w-36 h-7 bg-[#E0E0E0] relative rounded-full">
+                <input type="text" class="hidden sm:block w-full h-full bg-transparent py-1.5 text-base pl-2 pr-8 border-none outline-none" name="" id="">
+                <!-- The search button -->
+                <button class="absolute right-0 top-0 inline-block w-7 h-7 bg-[#7EB693] rounded-full text-white"><i class="fa-sharp fa-light fa-magnifying-glass text-base"></i></button>
+            </div>
+
+            <!-- The cart div container -->
+            <div class="cart flex justify-between items-center h-7 rounded-full border-[1px] border-[#274C5B] border-solid">
+                <div class="cartBtn flex items-center justify-center w-7 h-7 rounded-full bg-[#274C5B] text-white text-[14px]"><i class="fa-light fa-cart-shopping"></i></div>
+                <div class="cartItems hidden px-2 sm:flex justify-center items-center text-base">
+                    <span>Cart</span>
+                    <!-- The dynamic cart no -->
+                    <span>(0)</span>
+                </div>
+            </div>
+
+            <!-- The nav links for mobile devices -->
+            <div class="mobileNav lg:hidden">
+                <!-- This is where the hamburger icon will be -->
+                <span class="hamburger text-3xl"><i class="fa-regular fa-bars"></i></span>
+
+                <!-- This is where the drop down menu will be -->
+                <div class="dropDown hidden">
+                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Pages</a>
+                    <a href="">Shop</a>
+                    <a href="">Projects</a>
+                    <a href="">News</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- This is the hero section of the shopSingle page of the organickFarm -->
+    <div class="w-full h-[200px] sm:aspect-[426/100] bg-[url(' ')] bg-cover bg-center flex justify-center items-center">
+        <img class="h-full object-cover object-center w-full" src="./../images/hero/shopSingleBanner.png" alt="">    
+    </div>
+
+
+    <!-- This is the place where you will be taken to when you are prompted to add to cart -->
+    <div class="cartSingle px-5 py-10 sm:py-14 sm:px-10">
+        <div class="cartItem grid grid-cols-1 sm:grid-cols-2 sm:gap-x-5 md:gap-x-10 lg:gap-x-12">
+            <!-- image of the item -->
+            <div class="w-full flex justify-end">
+                <div class="h-full sm:w-full md:w-7/8 lg:w-4/6 sm:col-start-1 sm:col-span-1 p-1 bg-[url('./../images/products/calabreseBroccoli.jpg')] bg-contain bg-center bg-no-repeat text-[#fff] text-sm rounded-[10px] shadow-lg shadow-black relative overflow-hidden">
+                    
+                    <!-- The tag -->
+                    <h6 class="p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px] m-5">Vegetables</h6>
+                </div>
+            </div>
+
+            <!-- About the item -->
+            <div class="aboutItem sm:w-4/5 sm:col-start-2 sm:col-span-1">
+                <!-- Name of the item -->
+                <h2 class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4">Calabrese Broccoli</h2>
+
+                 <!-- The ratings -->
+                 <div class="text-[#FFA858] text-[11px]">
+                    <i class="fa-sharp fa-solid fa-star"></i>
+                    <i class="fa-sharp fa-solid fa-star"></i>
+                    <i class="fa-sharp fa-solid fa-star"></i>
+                    <i class="fa-sharp fa-solid fa-star"></i>
+                    <i class="fa-sharp fa-solid fa-star"></i>
+                </div>
+
+                <!-- The price tags -->
+                <div class="flex flex-row items-start gap-2">
+                    <h6 class="text-[13px] leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]">$<span>${product.fPrice}</span></h6>
+                    <h5 class="text-[15px] leading-none">$<span>${product.rPrice}</span></h5>
+                </div>
+
+                <!-- A little story about the item -->
+                <p class="text-lg mb-3 font-['Open Sans']">Welcome to the world of natural and organic. Here you can discover the bounty of nature. We have grow on the principles of health, and care. We aim to give our customers a healthy chemical-free meal for perfect nutrition.</p>
+
+                <!-- The kuantity of  -->
+                <div class=" ">
+                    <!-- The kuantitylabel and kuantity input -->
+                    <div class=" ">
+                        <label class=" "></label>
+                        
+                    </div>
+                    <!-- The add to cart button -->
+                    <div class=" ">
+                        <button class=" "></button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="infomatics">
+            <!-- Product description and additional info button -->
+            <div class=" "></div>
+            <div class=" "></div>
+
+            <!-- The section where the toggles content will be shown -->
+            <div class=" "></div>
+        </div>
+    </div>
+
+
+    <!-- The related products section -->
+    <div class="categories w-full flex flex-col items-center justify-center py-10 sm:px-10 sm:py-14">
+        <!-- The title of the categories section -->
+        <div class="flex flex-col items-center justify-center">
+            <h2 class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4">RELATED PRODUCTS</h2>
+        </div>
+
+        <!-- The product items container -->
+        <div class="productItemContainer w-full grid grid-cols-1 px-5 sm:px-0 sm:grid-cols-3 lg:grid-cols-4 gap-5 justify-between">
+            <!-- THIS IS THE TEMPLATE FOR CREATING THE PRODUCTS -->
+
+            <!-- The brocolli item -->
+            <!-- <div class="brocolli shadow-lg shadow-[#f9f8f8] rounded-2xl p-5"> -->
+                <!-- the tag -->
+                <!-- <div class="p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px]">
+                    <h6>Vegetables</h6>
+                </div> -->
+
+                <!-- The image container -->
+                <!-- <div class="image">
+                    <img src="./images/products/calabreseBroccoli.jpg" alt="">
+                </div> -->
+
+                <!-- The text info about the product item -->
+                <!-- <div class="text-[#336B5B]">
+                    <h5 class="text-lg font-bold">Calabrese Broccoli</h5>
+                    <hr class="bg-[#B8B8B8] mt-1 mb-1">
+                    <div class="flex flex-row justify-between"> -->
+                        <!-- The price tags -->
+                        <!-- <div class="flex flex-row justify-between items-end gap-2">
+                            <h6 class="text-[13px] leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]">$20.00</h6>
+                            <h5 class="text-[15px] leading-none">$13.00</h5>
+                        </div> -->
+
+                        <!-- The ratings -->
+                        <!-- <div class="text-[#FFA858] text-[11px]">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+             
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!-- The newsletter section -->
+    <div class="bg-[url('./images/newsLetterSubscribe/background.jpg')] bg-cover bg-center rounded-[18px] flex flex-col md:flex-row justify-between items-center mx-5 my-10 sm:my-14 sm:mx-10 px-5 py-10 md:py-14">
+        <div class="mb-3 md:mb-0">
+            <h2 class="text-3xl font-['Roboto'] font-black text-[#FFFFFF] leading-[1.25] text-center md:text-left">
+                Subscribe to<br class="hidden md:block">
+                our Newsletter
+            </h2>
+        </div>
+
+        <div class="w-full md:w-1/2 flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-1">
+            <input class="h-[40px] w-full block md:w-[350px] px-3 py-3 rounded-md border border-solid focus:border-green-500 focus:ring focus:ring-[#7EB693]" type="text" name="" id="" placeholder="Enter your Email Address">
+            <button class="px-5 py-3 leading-none bg-[#274C5B] text-[#fff] rounded-md" type="submit">Subscribe</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="pt-5 md:pt-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14">
+            <!-- Contact us -->
+            <div class="rtl sm:col-start-1 sm:col-span-1 sm:row-start-1 sm:row-span-1 lg:col-start-1 lg:col-end-2 lg:pr-5 flex flex-col justify-center items-center">
+                <h5 class="text-lg font-bold mb-4">Contact Us</h5>
+
+                <div class="text-center mb-4">
+                    <h6 class="text-base font-semibold">Email</h6>
+                    <p>needhelp@organick.com</p>
+                </div>
+
+                <div class="text-center mb-4">
+                    <h6 class="text-base font-semibold">Phone</h6>
+                    <p>123 (1254) 1452</p>
+                </div>
+
+                <div class="text-center mb-4">
+                    <h6 class="text-base font-semibold">Address</h6>
+                    <p>88 Road, Brooklyn Street, USA</p>
+                </div>
+            </div>
+
+            <!-- Footer info -->
+            <div class="sm:col-start-1 sm:col-span-full sm:row-start-2 sm:row-span-1 lg:col-start-2 lg:col-span-1 lg:row-start-1 lg:row-span-1 lg:px-5 lg:border-x-[0.5px] lg:border-solid lg:border-[#D4D4D4] flex flex-col justify-start items-center">
+                <div class="sm:w-4/5 lg:w-full flex flex-col justify-start items-center">
+                    <div class="infoTitle mb-4">
+                        <a href=""> <img src="./../images/logo/logo1.svg" alt="" class="w-36 h-8"> </a>
+                    </div>
+                    <div class="text-center leading-[1.8]">
+                        We are an organized organization whose aim is to break agricultural and organic barriers and we are focused on shaping lives positively. Training hands, more organic, more energy, better lives.
+                    </div>
+                    <!-- Social media links -->
+                    <div class="">
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links to Utility Pages -->
+            <div class="sm:col-start-2 sm:col-span-1 sm:row-start-1 sm:row-end-2 lg:col-start-3 lg:col-end-4 lg:pl-5 flex flex-col justify-center items-center">
+                <div class="mb-4">
+                    <h5 class="text-lg text-[#274C5B] font-bold text-center">Utility Pages</h5>
+                </div>
+                <ul class="w-full">
+                    <li class="mb-4 text-center">Style Guide</li>
+                    <li class="mb-4 text-center">4O4 Not Found</li>
+                    <li class="mb-4 text-center">Password Protected</li>
+                    <li class="mb-4 text-center">Licences</li>
+                    <li class="mb-4 text-center">Changelog</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Designer and Developer info -->
+        <div class="text-[#274C5B] border-t-[1px] border-[#D4D4D4] border-solid flex flex-col sm:flex-row items-center justify-center py-5 gap-y-4 sm:gap-x-2">
+            <p>Copyright &copy; <b class="font-bold">Organick</b></p><span class="hidden sm:block">|</span>
+            <p>Designed by <b>VictorFlow</b></p><span class="hidden sm:block">|</span>
+            <p>Developed by <b> Ojo Tolulope</b></p>
+        </div>
+    </footer>
+</body>
+</html>

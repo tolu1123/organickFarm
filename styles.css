@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    overflow-x: hidden;
+}
+
+@media (max-width: 639px) {
+    .transTop {
+        transform: translateY(-120%);
+        opacity: 0;
+    }
+    .transTopNormal {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@media (min-width: 640px) {
+    /* Applying transitions to the dropDown */
+    .transRight {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+    .transNormal {
+        opacity: 1;
+        transform: translateX(0);
+        right: 0;
+    }
+}
+
+/* Styling the hero section */
+.hero {
+    min-height: max(450px, 68%);
+}
+
+.swiper {
+    --swiper-navigation-color: #7EB693;
+}
+.swiper-pagination-bullet-active {
+    background-color: #7EB693 !important;
+}
+@media (max-width: 450px) {
+    .swiper-button-next,.swiper-button-prev  {
+        display: none !important;
+    } 
+}
+
+@media (min-width: 640px) {
+    .hero {
+        min-height: min(492px, 75%);
+    }
+}
+
+/* Adding box-shadows to the productItemContainer */
+.productItemContainer > div {
+    box-shadow: 1px 1px 4px #d4d4d4;
+}
+
+
+/* The transitions applied to the extraHero Div */
+/* .extraHeroOne {
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.extraHeroTwo {
+    opacity: 0;
+    transform: translateX(50%);
+} */
+
+.transitions {
+    transition: all 300ms linear 100ms;
+}
+.extraHeroVisible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* The fruit image transition styles */
+.fruitImage {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+.infoAboutUs {
+    opacity: 0;
+    transform: translateY(10%);
+}
+.aboutVisible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* The productItemContainer children */
+.productItemContainer > div:nth-child(4n + 1),
+.productItemContainer > div:nth-child(4n + 2),
+.productItemContainer > div:nth-child(4n + 3),
+.productItemContainer > div:nth-child(4n + 4) {
+    opacity: 0;
+    transform: translateX(-20%); 
+}
+
+.productItemContainer > div.visibleProduct {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* The offer menu children transitions */
+.offerMenu > div {
+    opacity: 0;
+    transform: translateX(-20%); 
+}
+
+.offerMenu > div.visibleProduct {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* The gallery children transitions */
+.gallery > div {
+    opacity: 0;
+    transform: translateX(-20%); 
+}
+
+.gallery > div.visibleProduct {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* The news items transitions */
+.newsText {
+    opacity: 0;
+    transform: translateY(10%);
+}
+
+
+

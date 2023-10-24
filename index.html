@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <!-- <script defer src="script.js"></script> -->
+    <script  type="module" src="./script.js"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ["./index.html", "./script.js", "./modules/news.js"],
+          theme: {
+            fontFamily: {
+                'sans': ['Roboto', 'Arial', 'sans-serif'],
+            },
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+    </script> -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+<body class="w-full h-[100vh]">
+    <header class="bg-white flex justify-between py-4 pl-1 pr-5 w-full sticky top-0 z-20">
+        <!-- The logo for the project -->
+        <div class="logo">
+        <img src="https://assets.website-files.com/6205f7ee3b8a768a85fce0fc/6206040cdc48b7064a0ec50b_organick-logo.svg" alt="Logo for Organick Farm" class="w-36 h-8">
+        </div>
+
+        <!-- The nav links for desktop -->
+        <nav class="hidden lg:flex justify-between items-center gap-4 text-base text-[#274C5B]">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Pages</a>
+            <a href="./pages/shopSingle.html">Shop</a>
+            <a href="">Projects</a>
+            <a href="">News</a>
+        </nav>
+        <!-- The shopping cart and the search menu -->
+        <div class="meta flex justify-between gap-5 items-center">
+            <!-- The search div container -->
+            <div tabindex="0" class="search focus:border-[#7EB693] focus:border-solid focus:border-[1px] sm:w-36 h-7 bg-[#E0E0E0] relative rounded-full">
+                <input type="text" class="hidden sm:block w-full h-full bg-transparent py-1.5 text-base pl-2 pr-8 border-none outline-none" name="" id="">
+                <!-- The search button -->
+                <button class="absolute right-0 top-0 inline-block w-7 h-7 bg-[#7EB693] rounded-full text-white"><i class="fa-sharp fa-light fa-magnifying-glass text-base"></i></button>
+            </div>
+
+            <!-- The cart div container -->
+            <div class="cart flex justify-between items-center h-7 rounded-full border-[1px] border-[#274C5B] border-solid">
+                <div class="cartBtn flex items-center justify-center w-7 h-7 rounded-full bg-[#274C5B] text-white text-[14px]"><i class="fa-light fa-cart-shopping"></i></div>
+                <div class="cartItems hidden px-2 sm:flex justify-center items-center text-base">
+                    <span>Cart</span>
+                    <!-- The dynamic cart no -->
+                    <span>(0)</span>
+                </div>
+            </div>
+
+            <!-- The nav links for mobile devices -->
+            <div class="mobileNav lg:hidden">
+                <!-- This is where the hamburger icon will be -->
+                <span class="hamburger text-3xl"><i class="fa-regular fa-bars"></i></span>
+
+                <!-- This is where the drop down menu will be -->
+                <div class="dropDown absolute transTop transRight transitions w-full sm:w-[400px] bg-white  text-[#274C5B] text-center divide-y divide-[#274C5B] divide-solid sm:divide-y-0 text-base z-[15]">
+                    <a class="block pt-1.5 pb-1.5 sm:pt-3 sm:pb-3" href="">Home</a>
+                    <a class="block pb-1.5 sm:pb-3" href="">About</a>
+                    <a class="block pb-1.5 sm:pb-3" href="">Pages</a>
+                    <a class="block pb-1.5 sm:pb-3" href="">Shop</a>
+                    <a class="block pb-1.5 sm:pb-3" href="">Projects</a>
+                    <a class="block" href="">News</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- This is the hero section of the home page of the organickFarm -->
+    <div class="hero w-full bg-[url('./images/hero/homeHero.jpg')] bg-cover bg-[right_57%_bottom] sm:bg-center flex justify-start items-center  p-5 sm:px-10">
+
+        <div class="heroTitle flex justify-start items-start flex-col">
+            
+            <span class="font-['Yellowtail'] text-2xl text-[#68A47F]">100% Natural Food</span>
+            <h1 class="text-5xl leading-[1.25] text-[#274C5B] font-['Roboto'] font-black">
+                Choose the best<br>
+                healthier way<br>
+                of life
+            </h1>
+            <button class="p-3 bg-[#EFD372] text-[#274C5B] rounded-md">
+                <span>Explore now</span>
+                <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] bg-[#274C5B] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- This is the extra hero info -->
+    <div class="extraHero grid grid-cols-1 sm:grid-cols-2 gap-5 justify-between px-5 py-10 sm:px-10 sm:py-12">
+
+        <div class="extraHeroOne transitions h-48 bg-[url('./images/extraHero/extraHero1.jpg')] bg-cover text-white rounded-2xl">
+            <div class="pt-10 pl-5">
+                <span class="font-['Yellowtail'] text-2xl">Natural!!</span> <br>
+                <h3 class="text-3xl font-['Roboto'] font-black">
+                    Get Garden<br>
+                    Fresh Fruits
+                </h3>
+            </div>
+        </div>
+
+        <div class="extraHeroTwo transitions h-48 bg-[url('./images/extraHero/extraHero2.jpg')] bg-cover text-white rounded-2xl">
+            <div class="pt-10 pl-5">
+                <span class="font-['Yellowtail'] text-2xl text-[#7EB693]">Offer!!</span>
+                <h3 class="text-3xl font-['Roboto'] font-black text-[#274C5B]">
+                    Get 10% off<br>
+                    on Vegetables
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about flex flex-col sm:flex-row flex-nowrap bg-[#F9F8F8] px-5 py-10 sm:px-10 sm:py-14">
+
+        <!-- The fruit image -->
+        <div class="fruitImage transitions min-h-[300px] sm:min-h-full sm:w-1/2 py-5">
+            <img src="./images/aboutHomePic.png" alt="" class="object-scale-down">
+        </div>
+
+        <!-- The information Section of the about section -->
+        <div class="infoAboutUs transitions sm:w-1/2 bg-[#F9F8F8]">
+            <span class="font-['Yellowtail'] text-2xl text-[#7EB693] leading-2">About Us</span>
+            <h2 class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4">
+                We Believe in Working <br>
+                Accredited Farmers
+            </h2>
+            <p class="text-lg mb-3 font-['Open Sans']">Welcome to the world of natural and organic. Here you can discover the bounty of nature. We have grow on the principles of health, and care. We aim to give our customers a healthy chemical-free meal for perfect nutrition.</p>
+
+            <!-- flex flex-row flex-nowrap justify-between -->
+            <div class="w-full flex flex-col sm:grid grid-cols-7 gap-5 mt-8 mb-6">
+                <!-- The icon div -->
+                <div class="w-[60px] aspect-square sm:col-start-1 sm:col-end-2 bg-[#fff] rounded-lg px-[10px] py-[10px] h-min">
+                    <img class="" src="./images/assetIcons/organicIcon.svg" alt=" This is an organic fruit icon">
+                </div>
+
+                <!-- The info div -->
+                <div class="w-full sm:col-start-2 sm:col-end-8">
+                    <h4 class="font-extrabold text-[17px] text-[#274C5B] leading-none">Organic Foods Only</h4>
+                    <p class="font-['Open Sans'] text-base">
+                        The product that you ordered will be verified that we have or not if have we will start to move to the next step.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full flex flex-col sm:grid sm:grid-cols-7 gap-5 mt-8 mb-6">
+                <!-- The icon div -->
+                <div class="w-[60px] aspect-square sm:col-start-1 sm:col-end-2 bg-[#fff] rounded-lg px-[10px] py-[10px] h-min">
+                    <img class="" src="./images/assetIcons/mailIcon.svg" alt="This is the mail icon ">
+                </div>
+
+                <!-- The info div -->
+                <div class="col-start-2 col-end-8">
+                    <h4 class="font-extrabold text-[17px] text-[#274C5B] leading-none">Quality Standards</h4>
+                    <p class="font-['Open Sans'] text-base">
+                         Once your product is parked, it will be delivered to your nearby locality, you can directly visit to buy the product.
+                    </p>
+                </div>
+            </div>
+
+            <button class="p-3 bg-[#274C5B] text-[#fff] rounded-md">
+                <span class="">Shop now</span>
+                <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- The categories section -->
+    <div class="categories w-full flex flex-col items-center justify-center py-10 sm:px-10 sm:py-14">
+        <!-- The title of the categories section -->
+        <div class="flex flex-col items-center justify-center">
+            <span class="font-['Yellowtail'] text-2xl text-[#7EB693] leading-2">Categories</span>
+            <h2 class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4">Our Products</h2>
+        </div>
+
+        <!-- The product items container -->
+        <div class="productItemContainer w-full grid grid-cols-1 px-5 sm:px-0 sm:grid-cols-3 lg:grid-cols-4 gap-5 justify-between">
+            <!-- THIS IS THE TEMPLATE FOR CREATING THE PRODUCTS -->
+
+            <!-- The brocolli item -->
+            <!-- <div class="brocolli shadow-lg shadow-[#f9f8f8] rounded-2xl p-5"> -->
+                <!-- the tag -->
+                <!-- <div class="p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px]">
+                    <h6>Vegetables</h6>
+                </div> -->
+
+                <!-- The image container -->
+                <!-- <div class="image">
+                    <img src="./images/products/calabreseBroccoli.jpg" alt="">
+                </div> -->
+
+                <!-- The text info about the product item -->
+                <!-- <div class="text-[#336B5B]">
+                    <h5 class="text-lg font-bold">Calabrese Broccoli</h5>
+                    <hr class="bg-[#B8B8B8] mt-1 mb-1">
+                    <div class="flex flex-row justify-between"> -->
+                        <!-- The price tags -->
+                        <!-- <div class="flex flex-row justify-between items-end gap-2">
+                            <h6 class="text-[13px] leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]">$20.00</h6>
+                            <h5 class="text-[15px] leading-none">$13.00</h5>
+                        </div> -->
+
+                        <!-- The ratings -->
+                        <!-- <div class="text-[#FFA858] text-[11px]">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+             
+        </div>
+
+        <div class="btn mt-8">
+            <button class="loadMoreProducts p-3 bg-[#274C5B] text-[#fff] rounded-md">
+                <span class="">Load More</span>
+                <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- The testimonial section -->
+    <div class="w-full h-fit min-h-[1050px] sm:h-[650px] sm:min-h-[720px] lg:min-h-[760px] flex flex-col sm:flex-row bg-[#F9F8F8]">
+        <!-- The image div -->
+        <div class="w-full h-[150px] sm:w-1/6 sm:h-full bg-[url('./images/testimonial/testimonialBackground.png')] bg-cover bg-bottom bg-no-repeat sm:bg-[left_20%] sm:bg-[length:auto_110%] sm:rotate-180"></div>
+
+
+        <!-- The testimonial div -->
+        <div class="testimonialText w-full h-fit sm:h-full sm:w-4/6 px-5 sm:py-14 sm:px-0">
+            <div class="flex flex-col items-center justify-center">
+                <span class="font-['Yellowtail'] text-2xl text-[#7EB693] leading-2">Testimonial</span>
+                <h2 class="text-3xl text-center font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4">What Do Our Customers Say?</h2>
+            </div>
+
+            <!-- Slider main container -->
+            <div class="swiper w-full h-[380px]">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide px-5 pt-6 sm:px-16 flex flex-col justify-center items-center w-full"> 
+                        <!-- The image of the customer -->
+                        <div class="image w-[60px] h-[60px] bg-[url('./images/profilePics/testimonial1.jpg')] bg-cover bg-[top_60%_center] rounded-full mb-4 text-center mx-auto">
+        
+                        </div>
+        
+                        <!-- The customer ratings -->
+                        <div class="text-[#FFA858] text-base mb-4 text-center">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+        
+                        <!-- The testimonial itself -->
+                        <div class="text-center text-['Open Sans'] mb-4">
+                            The quality of organic produce is extremely high, the service is second to none and the taste of the food takes me back to my childhood when we were growing on our own.
+                        </div>
+        
+                        <!-- The testifier -->
+                        <div class="text-center font-['Roboto'] text-[#274C5B]">
+                            <h5 class="font-bold text-lg">Sara Taylor</h5>
+                            <h6 class="text-sm">Consumer</h6>
+                        </div>
+                        
+                    </div>
+
+                    <!-- second slide -->
+                    <div class="swiper-slide px-5 pt-6 sm:px-16 flex flex-col justify-center items-center w-full"> 
+                        <!-- The image of the customer -->
+                        <div class="image w-[60px] h-[60px] bg-[url('./images/profilePics/testimonial2.jpg')] bg-cover bg-[top_60%_center] rounded-full mb-4 text-center mx-auto">
+        
+                        </div>
+        
+                        <!-- The customer ratings -->
+                        <div class="text-[#FFA858] text-base mb-4 text-center">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+        
+                        <!-- The testimonial itself -->
+                        <div class="text-center text-['Open Sans'] mb-4">
+                            Incredible experience! I can't praise their tech service enough. Their experts swiftly resolved my issues, going above and beyond. The friendly support team made me feel valued. The solution they provided exceeded all expectations.
+                        </div>
+        
+                        <!-- The testifier -->
+                        <div class="text-center font-['Roboto'] text-[#274C5B]">
+                            <h5 class="font-bold text-lg">Mikeal Justina</h5>
+                            <h6 class="text-sm">Consumer</h6>
+                        </div>
+                        
+                    </div>
+                    <!-- third slide -->
+                    <div class="swiper-slide px-5 pt-6 sm:px-16 flex flex-col justify-center items-center w-full"> 
+                        <!-- The image of the customer -->
+                        <div class="image w-[60px] h-[60px] bg-[url('./images/profilePics/testimonial3.jpg')] bg-cover bg-[top_60%_center] rounded-full mb-4 text-center mx-auto">
+        
+                        </div>
+        
+                        <!-- The customer ratings -->
+                        <div class="text-[#FFA858] text-base mb-4 text-center">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+        
+                        <!-- The testimonial itself -->
+                        <div class="text-center text-['Open Sans'] mb-4">
+                            Don't miss out on the opportunity to elevate your tech game – these professionals deliver nothing short of excellence.
+                        </div>
+        
+                        <!-- The testifier -->
+                        <div class="text-center font-['Roboto'] text-[#274C5B]">
+                            <h5 class="font-bold text-lg">Madara Blossom</h5>
+                            <h6 class="text-sm">Consumer</h6>
+                        </div>
+                        
+                    </div>
+                    <!-- forth slide -->
+                    <div class="swiper-slide px-5 pt-6 sm:px-16 flex flex-col justify-center items-center w-full"> 
+                        <!-- The image of the customer -->
+                        <div class="image w-[60px] h-[60px] bg-[url('./images/profilePics/testimonial4.jpg')] bg-cover bg-[top_60%_center] rounded-full mb-4 text-center mx-auto">
+        
+                        </div>
+        
+                        <!-- The customer ratings -->
+                        <div class="text-[#FFA858] text-base mb-4 text-center">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+        
+                        <!-- The testimonial itself -->
+                        <div class="text-center text-['Open Sans'] mb-4">
+                            If you're seeking top-notch tech assistance, your search ends here. Join the growing community of satisfied customers who've witnessed their exceptional magic.
+                        </div>
+        
+                        <!-- The testifier -->
+                        <div class="text-center font-['Roboto'] text-[#274C5B]">
+                            <h5 class="font-bold text-lg">Elise Kamonorov</h5>
+                            <h6 class="text-sm">Consumer</h6>
+                        </div>
+                        
+                    </div>
+                
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            
+            </div>
+
+            <hr class="">
+            <!-- The infomatics div -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-20 gap-y-5 items-center justify-evenly sm:justify-between sm:gap-3 md:gap-5 mt-5 lg:gap-16">
+
+                <div class="w-auto aspect-square rounded-full outline-2 outline-[#7EB693] outline outline-offset-2 bg-[#E0E0E0] pt-2">
+                    <div class="w-full h-full flex flex-col justify-center items-center">
+                        <h2 class="text-center text-[#274C5B] text-3xl font-bold">100%</h2>
+                        <h6 class="text-center text-[#274C5B] text-sm font-semibold leading-[1.05]">Organic</h6>
+                    </div>
+                </div>
+
+                <div class="w-auto aspect-square rounded-full outline-2 outline-[#7EB693] outline outline-offset-2 bg-[#E0E0E0] pt-2">
+                    <div class="w-full h-full flex flex-col justify-center items-center">
+                        <h2 class="text-center text-[#274C5B] text-3xl font-bold">285</h2>
+                        <h6 class="text-center text-[#274C5B] text-sm font-semibold leading-[1.05]">Active <br> products</h6>
+                    </div>
+                </div>
+
+                <div class="w-auto aspect-square rounded-full outline-2 outline-[#7EB693] outline outline-offset-2 bg-[#E0E0E0] pt-2">
+                    <div class="w-full h-full flex flex-col justify-center items-center">
+                        <h2 class="text-center text-[#274C5B] text-3xl font-bold">350+</h2>
+                        <h6 class="text-center text-[#274C5B] text-sm font-semibold leading-[1.05]">Organic <br> Orchads</h6>
+                    </div>
+                </div>
+
+                <div class="w-auto aspect-square rounded-full outline-2 outline-[#7EB693] outline outline-offset-2 bg-[#E0E0E0] pt-2">
+                    <div class="w-full h-full flex flex-col justify-center items-center">
+                        <h2 class="text-center text-[#274C5B] text-3xl font-bold">25+</h2>
+                        <h6 class="text-center text-[#274C5B] text-sm font-semibold leading-[1.05]">Years of <br> Farming</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- The image div -->
+        <div class="w-full h-[200px] sm:w-1/6 sm:h-full bg-[url('./images/testimonial/testimonialBackground.png')]  bg-cover bg-top bg-no-repeat sm:bg-[left_20%] sm:bg-[length:auto_110%] "></div>
+
+    </div>
+
+
+    <!-- The offer section -->
+    <div class="w-full bg-[#335B6B] px-5 py-10 sm:py-14 sm:px-10">
+        <!-- The title of the offer section -->
+        <div class="flex flex-col sm:flex-row justify-start sm:items-end sm:justify-between mb-8">
+            <div class="mb-5 sm:mb-0">
+                <span class="inline-block font-['Yellowtail'] text-2xl text-[#7EB693] leading-2 mb-2">Offer</span>
+                <h2 class="text-3xl font-['Roboto'] font-black text-[#ffffff] leading-[1]">We Offer Organic For You</h2>
+            </div>
+
+            <div class="">
+                <button class="p-3 bg-[#EFD372] text-[#274C5B] rounded-md">
+                    <span>View All Products</span>
+                    <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] bg-[#274C5B] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- The items that we have to offer -->
+        <div class="offerMenu w-full grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-5 justify-between">
+ 
+        </div>
+    </div>
+
+    <!-- The ecofriendly section  flex flex-col sm:flex-row justify-center items-center-->
+    <div class="w-full sm:min-h-[500px] grid grid-cols-1 sm:grid-cols-2">
+        <!-- The ecoFriendly image -->
+        <div class="w-auto sm:col-start-1 sm:col-end-2 h-[400px]  sm:h-full bg-[url('./images/ecoFriendly/ecoFriendly.jpg')] bg-cover bg-center">
+
+        </div>
+
+        <!-- The ecofriendly text -->
+        <div class="ecoText transitions opacity-0 sm:col-start-2 sm:col-end-3 sm:h-min rounded-3xl p-5 sm:p-12 sm:w-[92%] sm:my-16 sm:translate-x-12 z-10 bg-white sm:shadow-xl shadow-black">
+            <div class="mb-5">
+                <span class="inline-block font-['Yellowtail'] text-2xl text-[#7EB693] leading-2 mb-2">Eco Friendly</span>
+                <h2 class="text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25]">Econis is a Friendly Organic Store</h2>
+            </div>
+
+            <!-- The ecoFriendly infomatics -->
+            <div class="mb-4">
+                <h5 class="font-extrabold text-[16.5px] text-[#274C5B] leading-none">Start with Our Company First</h5>
+                <p class="font-['Open Sans'] text-base">In our listing, we have several collections of organic products. This is the place where you need to choose the product you want.</p>
+            </div>
+
+            <div class="mb-4">
+                <h5 class="font-extrabold text-[16.5px] text-[#274C5B] leading-none">Learn how to Grow Yourself</h5>
+                <p class="font-['Open Sans'] text-base">On our Organic Farm, with minimum basic training one will gain life-long knowledge on farming procedures. More hands, more food, more Energy, more Life.</p>
+            </div>
+
+            <div class="mb-4">
+                <h5 class="font-extrabold text-[16.5px] text-[#274C5B] leading-none">Farming Strategies of Today</h5>
+                <p class="font-['Open Sans'] text-base">With our centuries long accquired skills with the best farmers who have refined their Strategies.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- The gallery section -->
+    <div class="gallery w-full grid grid-cols-1 sm:grid-cols-3 px-5 sm:px-0 py-10 sm:py-20 gap-[30px] bg-[#F1F8F4]">
+
+        <!-- The Fruit juice -->
+        <div class="product transitions w-auto bg-[url('./images/gallery/fruitJuice.jpg')] bg-cover bg-center aspect-square flex justify-center items-center">
+            <div class="bg-white px-8 py-2 rounded-lg inline-block text-[17px] text-[#274C5B] font-semibold">Organic Juice</div>
+        </div>
+
+        <!-- Organic Food -->
+        <div class="product transitions w-auto bg-[url('./images/gallery/organic.jpg')] bg-cover bg-center aspect-square flex justify-center items-center">
+            <div class="bg-white px-8 py-2 rounded-lg inline-block text-[17px] text-[#274C5B] font-semibold">Organic Food</div>
+        </div>
+
+        <!-- Nuts Cookies-->
+        <div class="product transitions bg-[url('./images/gallery/nutsCookies.jpg')] bg-cover bg-center aspect-square flex justify-center items-center">
+            <div class="bg-white px-8 py-2 rounded-lg inline-block text-[17px] text-[#274C5B] font-semibold">Nuts Cookies</div>
+        </div>
+    </div>
+
+    <!-- News Section -->
+    <div class="w-full bg-[#FFFFFF] px-5 py-10 sm:py-14 sm:px-10">
+        <!-- The title of the news section -->
+        <div class="flex flex-col md:flex-row justify-start md:items-end md:justify-between mb-8">
+            <div class="mb-5 sm:mb-0">
+                <span class="inline-block font-['Yellowtail'] text-2xl text-[#7EB693] leading-2 mb-2">News</span>
+                <h2 class="text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25]">Discover weekly content about <br class="hidden sm:inline-block"> organic food, & more</h2>
+            </div>
+
+            <div class="mt-5">   
+                <button class="p-3 bg-[#FFFFFF] border-[1.5px] border-[#274C5B] border-solid text-[#274C5B] rounded-lg">
+                    <span>More News</span>
+                    <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] bg-[#274C5B] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- The News items  -->
+        <div class="newsContainer w-full grid grid-cols-1 lg:grid-cols-2 gap-x-10 items-start gap-y-8">
+ 
+        </div>
+    </div>
+
+    <!-- The newsletter section -->
+    <div class="bg-[url('./images/newsLetterSubscribe/background.jpg')] bg-cover bg-center rounded-[18px] flex flex-col md:flex-row justify-between items-center mx-5 my-10 sm:my-14 sm:mx-10 px-5 py-10 md:py-14">
+        <div class="mb-3 md:mb-0">
+            <h2 class="text-3xl font-['Roboto'] font-black text-[#FFFFFF] leading-[1.25] text-center md:text-left">
+                Subscribe to<br class="hidden md:block">
+                our Newsletter
+            </h2>
+        </div>
+
+        <div class="w-full md:w-1/2 flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-1">
+            <input class="h-[40px] w-full block md:w-[350px] px-3 py-3 rounded-md border border-solid focus:border-green-500 focus:ring focus:ring-[#7EB693]" type="text" name="" id="" placeholder="Enter your Email Address">
+            <button class="px-5 py-3 leading-none bg-[#274C5B] text-[#fff] rounded-md" type="submit">Subscribe</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="pt-5 md:pt-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14">
+            <!-- Contact us -->
+            <div class="rtl sm:col-start-1 sm:col-span-1 sm:row-start-1 sm:row-span-1 lg:col-start-1 lg:col-end-3 lg:pr-5 sm:flex flex-col justify-center items-center lg:block">
+                <h5 class="text-lg font-bold mb-6">Contact Us</h5>
+
+                <div class="sm:text-center lg:text-right mb-6">
+                    <h6 class="text-base font-semibold">Email</h6>
+                    <p>needhelp@organick.com</p>
+                </div>
+
+                <div class="sm:text-center lg:text-right mb-6">
+                    <h6 class="text-base font-semibold">Phone</h6>
+                    <p>123 (1254) 1452</p>
+                </div>
+
+                <div class="sm:text-center lg:text-right mb-6">
+                    <h6 class="text-base font-semibold">Address</h6>
+                    <p>88 Road, Brooklyn Street, USA</p>
+                </div>
+            </div>
+
+            <!-- Footer info -->
+            <div class="sm:col-start-1 sm:col-span-full sm:row-start-2 sm:row-span-1 lg:col-start-3 lg:col-span-3 lg:row-start-1 lg:row-span-1 lg:px-5 lg:border-x-[0.5px] lg:border-solid lg:border-[#D4D4D4] flex flex-col justify-start items-center">
+                <div class="sm:w-4/5 lg:w-full flex flex-col justify-start items-center">
+                    <div class="infoTitle mb-4">
+                        <a href=""> <img src="./images/logo/logo1.svg" alt="" class="w-36 h-8"> </a>
+                    </div>
+                    <div class="text-center leading-[1.8]">
+                        We are an organized organization whose aim is to break agricultural and organic barriers and we are focused on shaping lives positively. Training hands, more organic, more energy, better lives.
+                    </div>
+                    <!-- Social media links -->
+                    <div class="w-full flex flex-row justify-center flex-nowrap gap-3 text-[16px] mt-4">
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-instagram"></i></span>
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-facebook-f"></i></span>
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-x-twitter"></i></span>
+                       
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-linkedin-in"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links to Utility Pages -->
+            <!-- flex flex-col justify-center items-center -->
+            <div class="sm:col-start-2 sm:col-span-1 sm:row-start-1 sm:row-end-2 lg:col-start-6 lg:col-end-8 lg:pl-5">
+                <div class="mb-4">
+                    <h5 class="text-lg text-[#274C5B] font-bold sm:text-center lg:text-left">Utility Pages</h5>
+                </div>
+                <ul class="w-full">
+                    <li class="mb-6 sm:text-center lg:text-left">Style Guide</li>
+                    <li class="mb-6 sm:text-center lg:text-left">4O4 Not Found</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Password Protected</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Licences</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Changelog</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Designer and Developer info -->
+        <div class="text-[#274C5B] border-t-[1px] border-[#D4D4D4] border-solid flex flex-col sm:flex-row items-center justify-center py-5 gap-y-4 sm:gap-x-2">
+            <p>Copyright &copy; <b class="font-bold">Organick</b></p><span class="hidden sm:block">|</span>
+            <p>Designed by <b>VictorFlow</b></p><span class="hidden sm:block">|</span>
+            <p>Developed by <b> Ojo Tolulope</b></p>
+        </div>
+    </footer>
+</body>
+</html>
+

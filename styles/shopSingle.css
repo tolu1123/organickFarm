@@ -1,0 +1,11 @@
+/* Styling the hero section */
+.hero {
+    min-height: max(350px, 56%);
+}
+
+
+@media (min-width: 640px) {
+    .hero {
+        min-height: min(400px, 65%);
+    }
+}
