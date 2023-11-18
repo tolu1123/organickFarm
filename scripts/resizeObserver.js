@@ -123,10 +123,10 @@ function watchResizeObserver() {
 
           // Set the width of the template's third child
           product.children[2].style.width = '500px'
-
+ 
           setTimeout(() => {
-            document.querySelector('.product:hover .dataCard').style.display = 'none';
-            document.querySelector('.product:hover button').style.display = 'block';
+            product.children[0].children[2].style.display = 'none';
+            product.children[0].children[3].style.display = 'block';
           }, 100)
         }
       })
