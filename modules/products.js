@@ -82,7 +82,7 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                             </div>
                         </div>
 
-                        <button class="-translate-y-6 -mb-6 sm:translate-y-2.5 transitions opacity-0 sm:group-hover:opacity-100  sm:group-hover:z-[1015] bg-deepGreen p-1 rounded-md text-white text-sm">Go to Cart</button>
+                        <button class="-translate-y-6 -mb-6 sm:translate-y-2 transitions opacity-0 sm:group-hover:opacity-100  sm:group-hover:z-[1015] bg-deepGreen p-1 rounded-md text-white text-sm">Go to Cart</button>
                     </div>
                     <!--The div element that will only get displayed is when the template is hovered on when the width of the viewport is greater than 640px-->
                     <div class="productSecondElem hidden opacity-0 sm:group-hover:flex sm:group-hover:items-end sm:group-hover:opacity-100 overflow-hidden transitions  sm:group-hover:z-[1005]">
