@@ -19,36 +19,44 @@ let newsArr = [{
     publishedMonth: 11,
 }]
 
-function displayNews(newsArr,startNo,number,container) {
+function displayNews(newsArr,startNo,number,container,root) {
     // there are 4 parameters to take in
     // newsArr => The array containing a list of news topic
     // startNo => the number to start splicing from
     // number => the number of items to take
     // container => the container to append the templates created
+    // root => the boolean depended on by productTemplate(product, root)
 
     let items = newsArr.slice(startNo, startNo + number);
     //create the templates for the loaded products   
     items.forEach(news => {
-        let eachNews =  newsTemplate(news);
+        let eachNews =  newsTemplate(news,root);
         // append the created template
         container.appendChild(eachNews);
 
     })
-    console.log(newsArr[0].newsImage);
+}
+
+//The path locating function
+function pathLocator(path, root) {
+    let presentString = './';
+    let moveOutString = '../';
+
+    return root? presentString + path: moveOutString + path;
 }
 
 
 
-function newsTemplate(news) {
+function newsTemplate(news,root) {
     //The div that will house the template
     let newsTemplate = document.createElement('div');
     newsTemplate.setAttribute('class', 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 items-center justify-center -mb-32 sm:mb-0 sm:-mr-16 lg:-mb-32 lg:mr-0');
     // Set the template
 
     newsTemplate.innerHTML = `<!-- The date item -->
-    <div class="w-full min-h-[315px] sm:h-[320px] md:h-[330px] lg:h-[280px] bg-[url('${news.newsImage}')] bg-cover bg-center rounded-3xl relative overflow-hidden">
-    <img class="absolute w-full h-full z-[2] object-cover object-center" src="${news.newsImage}" class="w-36 h-8">
-        <div class="min-w-[50px] min-h-[50px] bg-white rounded-full inline-flex flex-col justify-center items-center text-base text-[#274C5B] m-5 relative z-[3]">
+    <div class="w-full min-h-[315px] sm:h-[320px] md:h-[330px] lg:h-[280px] rounded-3xl relative overflow-hidden">
+    <img class="absolute w-full h-full z-[2] object-cover object-center" src="${pathLocator(news.newsImage,root)}" class="w-36 h-8">
+        <div class="min-w-[64px] min-h-[64px] bg-white rounded-full inline-flex flex-col justify-center items-center text-base text-[#274C5B] m-5 relative z-[3]">
             <h5 class="leading-[1.1] text-center font-bold">${news.publishedDate} 
             <br> ${news.publishedMonth}
             </h5>
@@ -69,10 +77,10 @@ function newsTemplate(news) {
         </div>
 
         <!-- The button -->
-        <button class="px-7 py-4  bg-[#EFD372] text-[#274C5B] rounded-lg">
+        <a href="${pathLocator(news.newsPath,root)}"><button class="group px-7 py-4  bg-[#EFD372] text-[#274C5B] rounded-lg">
             <span class="font-['Roboto'] font-semibold text-[16px]">Read More</span>
-            <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] bg-[#274C5B] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
-        </button>
+            <span class="group-hover:translate-x-4 transition-transform duration-400 ease-linear inline-flex min-w-min min-h-min p-1.5 leading-[200%] bg-[#274C5B] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+        </button></a>
     </div>`;
     //return the template 
     return newsTemplate;

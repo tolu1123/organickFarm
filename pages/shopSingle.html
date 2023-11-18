@@ -7,7 +7,8 @@
     <title>Document</title>
     <link href="./../output.css" rel="stylesheet">
     <link rel="stylesheet" href="./../styles/shopSingle.css">
-    <script  type="module" src="./../scripts/shopSingle.js"></script>
+    <script defer src="./../scripts/resizeObserver.js"></script>
+    <script type="module" defer src="./../scripts/shopSingle.js"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -75,13 +76,13 @@
                 <span class="hamburger text-3xl"><i class="fa-regular fa-bars"></i></span>
 
                 <!-- This is where the drop down menu will be -->
-                <div class="dropDown hidden">
-                    <a href="">Home</a>
-                    <a href="">About</a>
-                    <a href="">Pages</a>
-                    <a href="">Shop</a>
-                    <a href="">Projects</a>
-                    <a href="">News</a>
+                <div class="dropDown absolute transTop transRight transitions w-full sm:w-[400px] bg-white  text-[#274C5B] text-center divide-y divide-[#274C5B] divide-solid sm:divide-y-0 text-lg z-[15] flex flex-col">
+                    <a href="block pt-1.5 pb-1.5 sm:pt-3 sm:pb-3">Home</a>
+                    <a href="block pb-1.5 sm:pb-3">About</a>
+                    <a href="block pb-1.5 sm:pb-3">Pages</a>
+                    <a href="block pb-1.5 sm:pb-3">Shop</a>
+                    <a href="block pb-1.5 sm:pb-3">Projects</a>
+                    <a href="block pb-1.5 sm:pb-3">News</a>
                 </div>
             </div>
         </div>
@@ -98,18 +99,18 @@
     <div class="cartSingle px-5 py-10 sm:py-14 sm:px-10">
         <div class="cartItem grid grid-cols-1 sm:grid-cols-2 sm:gap-x-5 md:gap-x-10 lg:gap-x-12">
             <!-- image of the item -->
-            <div class="w-full flex justify-end">
-                <div class="h-full sm:w-full md:w-7/8 lg:w-4/6 sm:col-start-1 sm:col-span-1 p-1 bg-[url('./../images/products/calabreseBroccoli.jpg')] bg-contain bg-center bg-no-repeat text-[#fff] text-sm rounded-[10px] shadow-lg shadow-black relative overflow-hidden">
-                    
+            <div class="w-full aspect-square flex sm:justify-end">
+                <div class="h-full w-full md:w-7/8 lg:w-4/6 sm:col-start-1 sm:col-span-1 p-1 text-[#fff] text-sm rounded-[10px] shadow-lg shadow-black relative overflow-hidden">
+                    <img class="productImage w-full h-full absolute object-contain object-center aspect-square" src="" alt="The product image">
                     <!-- The tag -->
-                    <h6 class="p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px] m-5">Vegetables</h6>
+                    <h6 class="tag p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px] m-5 relative z-[3]"> </h6>
                 </div>
             </div>
 
             <!-- About the item -->
             <div class="aboutItem sm:w-4/5 sm:col-start-2 sm:col-span-1">
                 <!-- Name of the item -->
-                <h2 class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4">Calabrese Broccoli</h2>
+                <h2 class="productName aboutTitle text-4xl sm:text-3xl font-['Roboto'] pt-6 sm:pt-0 font-black text-[#274C5B] leading-[1.25] mb-2" id="productName"> </h2>
 
                  <!-- The ratings -->
                  <div class="text-[#FFA858] text-[11px]">
@@ -121,36 +122,54 @@
                 </div>
 
                 <!-- The price tags -->
-                <div class="flex flex-row items-start gap-2">
-                    <h6 class="text-[13px] leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]">$<span>${product.fPrice}</span></h6>
-                    <h5 class="text-[15px] leading-none">$<span>${product.rPrice}</span></h5>
+                <div class="flex flex-row items-center gap-2 mt-2">
+                    <h6 class="text-[14px] font-medium leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]">$<span class="fPrice"> </span></h6>
+                    <h5 class="text-deepGreen text-xl font-semibold leading-none">$<span class="rPrice"> </span></h5>
                 </div>
 
                 <!-- A little story about the item -->
-                <p class="text-lg mb-3 font-['Open Sans']">Welcome to the world of natural and organic. Here you can discover the bounty of nature. We have grow on the principles of health, and care. We aim to give our customers a healthy chemical-free meal for perfect nutrition.</p>
+                <p class="aboutProduct text-lg mt-4 mb-3 font-['Open Sans']"> </p>
 
-                <!-- The kuantity of  -->
+                <!-- The quantity input and the incrementor and decrementor button  -->
                 <div class=" ">
-                    <!-- The kuantitylabel and kuantity input -->
+                    <!-- The Quantitylabel and quantity input -->
                     <div class=" ">
-                        <label class=" "></label>
+                        <div class="flex flex-row items-center">
+                            <label class="block mr-3">Quantity:</label>
+                            <div class="flex flex-row gap-x-1">
+                                <button class="bg-[#274C5B] w-[40px] h-[40px] text-white rounded-md py-1 px-2 incrementor">+</button>
+                                <input class="inline-block w-[40px] h-[40px] text-center border border-deepGreen border-solid rounded quantity" type="number" value="1" name="" id="">
+                                <button class="bg-[#274C5B] w-[40px] h-[40px] text-white rounded-md py-1 px-2 decrementor">-</button>
+                            </div>
+                        </div>
                         
                     </div>
                     <!-- The add to cart button -->
-                    <div class=" ">
-                        <button class=" "></button>
+                    <div class="mt-3">
+                        <button class="p-3 bg-[#274C5B] text-[#fff] rounded-md">
+                            <span class="">Add to cart</span>
+                            <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+                        </button>
                     </div>
                 </div>
                 
             </div>
         </div>
-        <div class="infomatics">
+        <div class="infomatics mt-6 sm:mt-12">
             <!-- Product description and additional info button -->
-            <div class=" "></div>
-            <div class=" "></div>
+            <div class="flex flex-row gap-2 items-center justify-center">
+                <div class="p-3 bg-deepGreen text-[#fff] rounded-md sm:w-1/4 w-1/2 text-center cursor-pointer descriptionBtn">Product Description</div>
+                <div class="sm:w-1/4 w-1/2 text-center cursor-pointer addInfoBtn">Additional Info</div>
+            </div>
 
             <!-- The section where the toggles content will be shown -->
-            <div class=" "></div>
+            <div class="mt-4">
+                <!-- The product description container -->
+                <div class="productDescription"> </div>
+
+                <!-- The additional info container -->
+                <div class="additionalInfo hidden"> </div>
+            </div>
         </div>
     </div>
 
@@ -164,46 +183,16 @@
 
         <!-- The product items container -->
         <div class="productItemContainer w-full grid grid-cols-1 px-5 sm:px-0 sm:grid-cols-3 lg:grid-cols-4 gap-5 justify-between">
-            <!-- THIS IS THE TEMPLATE FOR CREATING THE PRODUCTS -->
-
-            <!-- The brocolli item -->
-            <!-- <div class="brocolli shadow-lg shadow-[#f9f8f8] rounded-2xl p-5"> -->
-                <!-- the tag -->
-                <!-- <div class="p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px]">
-                    <h6>Vegetables</h6>
-                </div> -->
-
-                <!-- The image container -->
-                <!-- <div class="image">
-                    <img src="./images/products/calabreseBroccoli.jpg" alt="">
-                </div> -->
-
-                <!-- The text info about the product item -->
-                <!-- <div class="text-[#336B5B]">
-                    <h5 class="text-lg font-bold">Calabrese Broccoli</h5>
-                    <hr class="bg-[#B8B8B8] mt-1 mb-1">
-                    <div class="flex flex-row justify-between"> -->
-                        <!-- The price tags -->
-                        <!-- <div class="flex flex-row justify-between items-end gap-2">
-                            <h6 class="text-[13px] leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]">$20.00</h6>
-                            <h5 class="text-[15px] leading-none">$13.00</h5>
-                        </div> -->
-
-                        <!-- The ratings -->
-                        <!-- <div class="text-[#FFA858] text-[11px]">
-                            <i class="fa-sharp fa-solid fa-star"></i>
-                            <i class="fa-sharp fa-solid fa-star"></i>
-                            <i class="fa-sharp fa-solid fa-star"></i>
-                            <i class="fa-sharp fa-solid fa-star"></i>
-                            <i class="fa-sharp fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
              
         </div>
 
+        <!-- The load more button -->
+        <div class="btn mt-8">
+            <button class="loadMoreProducts p-3 bg-[#274C5B] text-[#fff] rounded-md">
+                <span class="">Load More</span>
+                <span class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] rounded-full text-white text-[10px]"><i class="fa-light fa-arrow-right"></i></span>
+            </button>
+        </div>
     </div>
 
 
@@ -228,29 +217,29 @@
 
     <!-- Footer -->
     <footer class="pt-5 md:pt-14">
-        <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14">
             <!-- Contact us -->
-            <div class="rtl sm:col-start-1 sm:col-span-1 sm:row-start-1 sm:row-span-1 lg:col-start-1 lg:col-end-2 lg:pr-5 flex flex-col justify-center items-center">
-                <h5 class="text-lg font-bold mb-4">Contact Us</h5>
+            <div class="rtl sm:col-start-1 sm:col-span-1 sm:row-start-1 sm:row-span-1 lg:col-start-1 lg:col-end-3 lg:pr-5 sm:flex flex-col justify-center items-center lg:block">
+                <h5 class="text-lg font-bold mb-6">Contact Us</h5>
 
-                <div class="text-center mb-4">
+                <div class="sm:text-center lg:text-right mb-6">
                     <h6 class="text-base font-semibold">Email</h6>
                     <p>needhelp@organick.com</p>
                 </div>
 
-                <div class="text-center mb-4">
+                <div class="sm:text-center lg:text-right mb-6">
                     <h6 class="text-base font-semibold">Phone</h6>
                     <p>123 (1254) 1452</p>
                 </div>
 
-                <div class="text-center mb-4">
+                <div class="sm:text-center lg:text-right mb-6">
                     <h6 class="text-base font-semibold">Address</h6>
                     <p>88 Road, Brooklyn Street, USA</p>
                 </div>
             </div>
 
             <!-- Footer info -->
-            <div class="sm:col-start-1 sm:col-span-full sm:row-start-2 sm:row-span-1 lg:col-start-2 lg:col-span-1 lg:row-start-1 lg:row-span-1 lg:px-5 lg:border-x-[0.5px] lg:border-solid lg:border-[#D4D4D4] flex flex-col justify-start items-center">
+            <div class="sm:col-start-1 sm:col-span-full sm:row-start-2 sm:row-span-1 lg:col-start-3 lg:col-span-3 lg:row-start-1 lg:row-span-1 lg:px-5 lg:border-x-[0.5px] lg:border-solid lg:border-[#D4D4D4] flex flex-col justify-start items-center">
                 <div class="sm:w-4/5 lg:w-full flex flex-col justify-start items-center">
                     <div class="infoTitle mb-4">
                         <a href=""> <img src="./../images/logo/logo1.svg" alt="" class="w-36 h-8"> </a>
@@ -259,26 +248,28 @@
                         We are an organized organization whose aim is to break agricultural and organic barriers and we are focused on shaping lives positively. Training hands, more organic, more energy, better lives.
                     </div>
                     <!-- Social media links -->
-                    <div class="">
-                        <div class=""></div>
-                        <div class=""></div>
-                        <div class=""></div>
-                        <div class=""></div>
+                    <div class="w-full flex flex-row justify-center flex-nowrap gap-3 text-[16px] mt-4">
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-instagram"></i></span>
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-facebook-f"></i></span>
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-x-twitter"></i></span>
+                       
+                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-linkedin-in"></i></span>
                     </div>
                 </div>
             </div>
 
             <!-- Links to Utility Pages -->
-            <div class="sm:col-start-2 sm:col-span-1 sm:row-start-1 sm:row-end-2 lg:col-start-3 lg:col-end-4 lg:pl-5 flex flex-col justify-center items-center">
+            <!-- flex flex-col justify-center items-center -->
+            <div class="sm:col-start-2 sm:col-span-1 sm:row-start-1 sm:row-end-2 lg:col-start-6 lg:col-end-8 lg:pl-5">
                 <div class="mb-4">
-                    <h5 class="text-lg text-[#274C5B] font-bold text-center">Utility Pages</h5>
+                    <h5 class="text-lg text-[#274C5B] font-bold sm:text-center lg:text-left">Utility Pages</h5>
                 </div>
                 <ul class="w-full">
-                    <li class="mb-4 text-center">Style Guide</li>
-                    <li class="mb-4 text-center">4O4 Not Found</li>
-                    <li class="mb-4 text-center">Password Protected</li>
-                    <li class="mb-4 text-center">Licences</li>
-                    <li class="mb-4 text-center">Changelog</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Style Guide</li>
+                    <li class="mb-6 sm:text-center lg:text-left">4O4 Not Found</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Password Protected</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Licences</li>
+                    <li class="mb-6 sm:text-center lg:text-left">Changelog</li>
                 </ul>
             </div>
         </div>

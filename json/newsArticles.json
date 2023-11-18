@@ -1,0 +1,54 @@
+[{
+    "newsAuthor": "Kristina Castle",
+    "newsTitle": "The Benefits of Vitamin D & How to Get it",
+    "newsSummary": "Get on the knowledge side of Vitamin D and you will forever cherish the decision.", 
+    "newsImage": "images/news/vegetables.jpg",
+    "newsPath": "pages/vitaminD.html",
+    "publishedDate": 25,
+    "publishedMonth": "Dec"
+}, {
+    "newsAuthor": "Alex Louis",
+    "newsTitle": "Our Favourite Summertime Tomato",
+    "newsSummary": "Have you ever tasted tomatoes. Our special summertime tomato will get you into the realms of revels.", 
+    "newsImage": "images/news/tomatoes.jpeg",
+    "newsPath": "pages/tomatoes.html",
+    "publishedDate": 25,
+    "publishedMonth": "Dec"
+},
+{
+    "newsAuthor": "Rachi Card",
+    "newsTitle": "Health Benefits of Wild Carrots",
+    "newsSummary": "You want to have the knowledge of what wild carrots gives to you when you eat it. Click the button below.", 
+    "newsImage": "images/news/wildCarrots.jpg",
+    "newsPath": "#",
+    "publishedDate": 26,
+    "publishedMonth": "Nov"
+},
+{
+    "newsAuthor": "Alex Louis",
+    "newsTitle": "Work Process Of Organic Farming",
+    "newsSummary": "A fun rigorous process followed through to ensure organic food is provided. A must read.", 
+    "newsImage": "images/news/workProcess.jpeg",
+    "newsPath": "",
+    "publishedDate": 25,
+    "publishedMonth": "Nov"
+},
+{
+    "newsAuthor": "Christina John",
+    "newsTitle": "Benefits Of Organic Green Tea",
+    "newsSummary": "Are you a lover of tea or the organic counterpart, read more on our Organic tea to know the benefits.", 
+    "newsImage": "images/news/organicGreenTea.jpg",
+    "newsPath": "",
+    "publishedDate": 30,
+    "publishedMonth": "Oct"
+},
+{
+    "newsAuthor": "Christina John",
+    "newsTitle": "Superfood you should eat freshly",
+    "newsSummary": "Do you hate the pollution of our perfect home, learn why we so much love Organic.", 
+    "newsImage": "images/news/inOrganicClutters.jpg",
+    "newsPath": "",
+    "publishedDate": 25,
+    "publishedMonth": "Oct"
+}
+]

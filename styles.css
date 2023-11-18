@@ -1,7 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body, html {
+
+/* @media (min-width: 640px) { */
+     /* All even numbered elements in a grid view of grid-cols-3 when in small screen (The second element on each line when the min-width of the screen is greater or equals to 640px)*/
+    /* .productItemContainer > div:nth-child(3n + 2):hover {
+        margin-left: calc(var(--containerHeight) - 500px);
+    } */
+    /* All third numbered elements in a grid view of grid-cols-3 when in small screen (The second element on each line when the min-width of the screen is greater or equals to 640px) */
+    /* .product:nth-child(3n + 3):hover {
+        right: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product:nth-child(4n + 4):hover {
+        right: 30px;
+    }
+} */
+
+
+
+/* Adding custom utilities */
+@layer utilities {
+    
+    .widthTransition {
+        transition: width 4s linear 3s;
+    }
+    /* Setting width explicitly */
+    .explicitWidthSM {
+        width: 100%;
+    }
+    .explicitWidthLG {
+        width: 100%;
+    }
+}
+
+.removableHTMLStyle {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+body{
     overflow-x: hidden;
     width: 100vw;
     height: 100vh;
@@ -62,7 +103,7 @@ body, html {
 
 
 /* The transitions applied to the extraHero Div */
-/* .extraHeroOne {
+.extraHeroOne {
     opacity: 0;
     transform: translateX(-50%);
 }
@@ -70,11 +111,25 @@ body, html {
 .extraHeroTwo {
     opacity: 0;
     transform: translateX(50%);
-} */
+}
 
 .transitions {
     transition: all 300ms linear 100ms;
 }
+.slowerTransition {
+    transition: all 200ms linear;
+}
+.startTransition {
+    transition: all 300ms linear;
+}
+
+/* A class to apply a clipping effect */
+.clippedText {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+} 
 .extraHeroVisible {
     opacity: 1;
     transform: translateX(0);
@@ -108,6 +163,11 @@ body, html {
     transform: translateX(0);
 }
 
+.gallery.visibleProduct {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 /* The offer menu children transitions */
 .offerMenu > div {
     opacity: 0;
@@ -120,7 +180,7 @@ body, html {
 }
 
 /* The gallery children transitions */
-.gallery > div {
+.gallery {
     opacity: 0;
     transform: translateX(-20%); 
 }
@@ -136,5 +196,39 @@ body, html {
     transform: translateY(10%);
 }
 
+/* Remove scroll from the number element */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* boxshadow */
+.shadow {
+    box-shadow: 1px 1px 4px #d4d4d4;
+}
+
+/* Hide the display */
+@media (max-width: 325px) {
+    .hidePlacardText {
+        display: none;
+    }
+    .negativeMargin {
+        margin-bottom: -110px;
+    }
+    .reduceMT {
+        margin-top: 2rem;
+    }
+}
 
 
+/* The styling  */
+.list-outside ::marker {
+    margin-left: 20px;
+}
