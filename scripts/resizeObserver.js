@@ -61,19 +61,19 @@ const resizeObserver = new ResizeObserver(entries => {
     // get index of the element in the parentElement
     let targetIndex = Array.from(target.parentNode.children).indexOf(target);
     
-    // if we are in the tailwind breakpoint SM that is to say in this particular project, sm is saying a min-width greater than 640px but less than 1024px
-    if(window.innerWidth >= 640 && window.innerWidth < 1024) {
+    // if we are in the tailwind breakpoint MD that is to say in this particular project, sm is saying a min-width greater than 640px but less than 1024px
+    if(window.innerWidth >= 768 && window.innerWidth < 1024) {
       //This is our way of detecting the 2nd and 3rd element when we are in breakpoint SM
       let no2Element = (targetIndex + 1) % 3 === 2;
       let no3Element = (targetIndex + 1) % 3 === 0;
 
-      if(no2Element && target.classList.contains('hover')) {
-        let rightPush = 500 - (productParentWidth - productElemXCoordSm2);
+      if(window.innerWidth >= 640 && window.innerWidth < 1024 && no2Element && target.classList.contains('hover')) {
+        let rightPush = 768 - (productParentWidth - productElemXCoordSm2);
         target.style.transform = `translateX(-${rightPush}px)`;
       }
 
-      if (no3Element && target.classList.contains('hover')) {
-        let rightPush = 500 - templateWidth;
+      if (window.innerWidth >= 768 && window.innerWidth < 1024 && no3Element && target.classList.contains('hover')) {
+        let rightPush = 768 - templateWidth;
         target.style.transform = `translateX(-${rightPush}px)`
       }
     }
@@ -112,6 +112,11 @@ function watchResizeObserver() {
       product.addEventListener('mouseenter', () => {
         if(window.innerWidth > 639) {
           product.classList.add('hover');
+
+
+          console.log("hovered upon")
+
+
           product.style.zIndex = '999';
 
           //Clear the width of the template's first child on THE EVENT "mouseenter"
@@ -131,7 +136,7 @@ function watchResizeObserver() {
         }
       })
       product.addEventListener('mouseleave', () => {
-        // if(window.innerWidth > 639) {
+        if(window.innerWidth > 639) {
           product.classList.remove('hover');
           product.style.transform = '';
           product.style.zIndex = `${999 - index}`;
@@ -142,7 +147,7 @@ function watchResizeObserver() {
           product.children[1].style.width = '0';
           product.children[2].style.width = '0';
 
-          document.querySelectorAll('.product .dataCard').forEach(ele => ele.style.display = '');
+          // document.querySelectorAll('.product .dataCard').forEach(ele => ele.style.display = '');
           document.querySelectorAll('.product button').forEach(ele => ele.style.display = 'none');
 
 
@@ -154,6 +159,7 @@ function watchResizeObserver() {
           setTimeout(() => {
             product.children[2].classList.add('startTransition');
           },300);
+       }
       })
     })
   }

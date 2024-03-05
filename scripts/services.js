@@ -1,5 +1,6 @@
 // Import statements
 import {rtlElement, resizeRTL} from "./../modules/resizeRtl.js"
+import { cartCount } from "../modules/cartCounter.js";
 
 //Setting the hamburger display
 // Setting the modal
@@ -46,6 +47,9 @@ hamburger.addEventListener('click', () => {
         state = !state;
     }
 })
+
+// Update the view on the counter
+cartCount()
 
 // The modal that displays the video
 let playBtn = document.querySelector('.playBtn');

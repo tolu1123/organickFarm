@@ -20,7 +20,6 @@
 } */
 
 
-
 /* Adding custom utilities */
 @layer utilities {
     
@@ -34,6 +33,10 @@
     .explicitWidthLG {
         width: 100%;
     }
+}
+
+:root {
+    --errorRed: #ef4444;
 }
 
 .removableHTMLStyle {
@@ -116,13 +119,22 @@ body{
 .transitions {
     transition: all 300ms linear 100ms;
 }
+.fasterTransition {
+    transition: all 100ms linear;
+}
+.fadingTransition {
+    transition: all 1s linear;
+}
 .slowerTransition {
     transition: all 200ms linear;
 }
 .startTransition {
     transition: all 300ms linear;
 }
-
+/* Adding an opacity class */
+.opacity {
+    opacity: 0;
+}
 /* A class to apply a clipping effect */
 .clippedText {
     display: -webkit-box;
@@ -231,4 +243,8 @@ input[type=number] {
 /* The styling  */
 .list-outside ::marker {
     margin-left: 20px;
+}
+.product:not(.hover) .dataCard {
+    display: block !important;
+    /* background-color: #ef4444; */
 }

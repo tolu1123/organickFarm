@@ -176,7 +176,7 @@
       "qty": 1
     }, 
     {
-      "productName": "Vegan Red Tomato",
+      "productName": "Nigerian Red Tomato",
       "productTag": "Vegetable",
       "productImage": "images/products/veganRedTomato.jpg",
       "fPrice": 20.0,
@@ -187,7 +187,7 @@
       "qty": 1
     },
     {
-      "productName": "Brown Hazel Nuts",
+      "productName": "White Hazel Nuts",
       "productTag": "Nuts",
       "productImage": "images/products/brownHazelNuts.jpg",
       "fPrice": 20.0,

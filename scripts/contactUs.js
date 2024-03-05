@@ -1,7 +1,7 @@
 // Import statements
 import {rtlElement, resizeRTL} from "./../modules/resizeRtl.js"
+import { cartCount } from "../modules/cartCounter.js";
 
-//Setting the hamburger display
 // Setting the modal
 let hamburger = document.querySelector('.hamburger');
 let dropDown = document.querySelector('.dropDown');
@@ -46,6 +46,9 @@ hamburger.addEventListener('click', () => {
         state = !state;
     }
 })
+
+//We will update the counter view
+cartCount()
 
 
 // The intersection observer to apply transitions

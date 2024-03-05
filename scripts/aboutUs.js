@@ -1,6 +1,8 @@
 //   The import statement
 import {loadProducts, productTemplate, pathLocator, updateShopPage} from "./../modules/products.js"
 import {rtlElement, resizeRTL} from "./../modules/resizeRtl.js"
+import { cartCount } from "../modules/cartCounter.js";
+
 
 //Setting the hamburger display
 // Setting the modal
@@ -47,6 +49,9 @@ hamburger.addEventListener('click', () => {
         state = !state;
     }
 })
+
+// Update the view on the cartCounter element 
+cartCount();
 
 
 

@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create-Account/Login</title>
+    <link rel="shortcut icon" href="../images/favicon/favicon.png" type="image/x-icon">
+    <link href="./../output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./../styles.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
+    <script defer src="../scripts/identification.js"></script>
+    <link rel="stylesheet" href="build/css/intlTelInput.css">
+</head>
+<body class="">
+    <div class="flex flex-col justify-center sm:w-1/2 lg:w-5/12 mx-auto p-5">
+
+        <header class="flex flex-col justify-center pt-32 sm:pt-16">
+            <!-- The logo -->
+            <div class="image">
+                <a class="flex justify-center" href="../index.html">
+                    <img src="../images/logo/logo1.svg" alt="">
+                </a>
+            </div>
+            <!-- The heading -->
+            <h2 class="text-xl pt-4 text-[#274C5B] text-center font-medium">Welcome to Organick</h2>
+
+            
+        </header>
+
+        <!-- THE instruction -->
+        <h5 class="text-center text-base pt-3">Type your e-mail or phone number to log in or create an Organick account.</h5>
+
+        <form class="flex flex-col justify-center" action="" method="post" >
+
+            <div class="w-full flex flex-col items-center mt-10 mb-3 relative">
+
+                <!-- The input element that collects the email or phone no -->
+                <input class="peer w-full border border-solid focus:border-none outline-2 focus:outline-lightGreen outline-solid rounded-[4px] px-2 py-3" type="text" name="details" id="details" placeholder="" required autofocus>
+
+                <!-- The label for the input -->
+                <label class="fasterTransition text-base peer-valid:top-0 peer-focus:top-0 peer-valid:-translate-y-[60%] peer-focus:-translate-y-[60%] peer-focus:text-sm peer-valid:text-sm peer-focus:text-lightGreen peer-valid:text-lightGreen absolute top-3 left-2 px-1 bg-white" for="details">Email or Mobile Number*</label>
+
+                <!-- The prefix for phone numbers if input is a phone number-->
+                <div class="absolute">
+                    <span class="flag">
+                        
+                    </span>
+                    <select name="" id="country"></select>
+                    <input type="tel" id="demo" placeholder="" id="telephone">
+
+                    <!-- <input type="text" name="" id="" value="+234"> -->
+                </div>
+            </div>
+
+            <!-- The error clues -->
+            <div class="invalidEmail hidden text-errorRed text-sm">
+                <p class="">The e-mail you provided does not exist. Please can you check it again</p>
+            </div>
+            <div class="hidden text-pink-600 text-sm">
+                The phone number you provided does not exist, please kindly provide another number.
+            </div>
+            <div class="correctSuggParent hidden text-pink-600 text-sm">
+                Do you mean <span class="correctSuggestion"></span>
+            </div>
+            <div class="hidden text-pink-600 text-sm">
+                Please provide a valid email address.
+            </div>
+
+
+            <!-- The button to collect the inputed data -->
+            <button class="mt-8 p-3 bg-lightGreen hover:bg-white hover:text-lightGreen transitions text-[#fff] rounded-md border border-solid border-lightGreen shadow-[1px_2px_2px_#888]">
+                <span class="">Continue</span>
+            </button>
+
+            <!-- Terms and conditions -->
+            <p class="py-3 text-center text-[13px] leading-[140%]"> By continuing, you agree to Organick's 
+                <br>
+                <a class="underline decoration-lightGreen decoration-solid text-lightGreen " href="#">
+                    Conditions of Use and Privacy Notice.
+                </a>
+            </p>
+        </form>
+
+    </div>
+
+    <div class="fadingTransition errorMessage hidden px-3 absolute top-0 w-full h-full flex justify-center items-center">
+
+        <!-- The mimick error message -->
+        <div class="sm:w-3/4 border border-[#a3cfbb] border-solid bg-[#d1e7dd] text-[#0a3622] rounded-[0.375rem] relative p-5" role="alert">
+            <div class="close absolute text-3xl top-2 right-3">
+                <i class="fa-regular fa-xmark"></i>
+            </div>
+
+            <h4 class="text-xl text-[#0a3622] mt-8 mb-[0.5rem] font-medium leading-[1.2]">500 Internal Server Error</h4>
+            <p>
+                Oops! Something went wrong on our end.
+                <br>
+                We're experiencing technical difficulties at the moment. Our team has been notified and is working to resolve the issue as quickly as possible.
+                
+            </p>
+
+            <hr class="my-5 border-[#a3cfbb]">
+            <p>
+                For assistance or more information, please contact our support team at organicksupport@demo.com.
+                <br>
+                Thank you for your patience and understanding.
+            </p>
+        </div>
+
+    </div>
+
+    <footer class="w-full mt-10 fixed bottom-0">
+        <div class="flex justify-center font-medium text-deepGreen">
+           <i> &copy; 2024 Organick</i>
+        </div>
+    </footer>
+    
+    <script src="build/js/intlTelInput.min.js"></script>
+    <script>
+        // Vanilla Javascript
+        var input = document.querySelector("#telephone");
+        window.intlTelInput(input,({
+        // options here
+        allowDropdown:true,
+        autoInsertDialCode:true,
+
+        }));
+    </script>
+
+    <script defer src=""></>
+</body>
+</html>

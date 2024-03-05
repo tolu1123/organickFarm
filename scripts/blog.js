@@ -1,6 +1,8 @@
 // Import statements
 import {newsArr, displayNews} from "./../modules/news.js"
 import {rtlElement, resizeRTL} from "./../modules/resizeRtl.js"
+import { cartCount } from "../modules/cartCounter.js";
+
 
 //Setting the hamburger display
 // Setting the modal
@@ -47,6 +49,9 @@ hamburger.addEventListener('click', () => {
         state = !state;
     }
 })
+
+// Update the counter view
+cartCount();
 
 // Fetch the news items and display it
 let data;

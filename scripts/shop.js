@@ -1,5 +1,6 @@
 //   The import statement
 import {loadProducts, productTemplate, pathLocator, updateShopPage} from "./../modules/products.js"
+import { cartCount } from "../modules/cartCounter.js";
 
 //Setting the hamburger display
 // Setting the modal
@@ -46,6 +47,9 @@ hamburger.addEventListener('click', () => {
         state = !state;
     }
 })
+
+// Update the counter view
+cartCount()
 
 
 // the container in which products will be appended to

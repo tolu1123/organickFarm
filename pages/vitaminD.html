@@ -1,248 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vitamin D- Organick</title>
-    <link rel="shortcut icon" href="../images/favicon/favicon.png" type="image/x-icon">
-    <link href="../output.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
-    <script  type="module" src="../scripts/vitaminD.js"></script>
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
-</head>
-<body class="w-full h-[100vh]">
-    <header class="bg-white flex justify-between py-4 pl-1 pr-5 w-full sticky top-0 z-[1100]">
-        <!-- The logo for the project -->
-        <div class="logo">
-        <img src="./../images/logo/logo1.svg" alt="Logo for Organick Farm" class="w-36 h-8">
+    <link
+      rel="shortcut icon"
+      href="../images/favicon/favicon.png"
+      type="image/x-icon"
+    />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="module" src="../scripts/vitaminD.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="w-full h-[100vh]">
+    <header
+      class="bg-white flex justify-between py-4 pl-1 pr-5 w-full fixed top-0 z-[1100] shadow-lg"
+    >
+      <!-- The logo for the project -->
+      <div class="logo">
+        <img
+          src="./../images/logo/logo1.svg"
+          alt="Logo for Organick Farm"
+          class="w-36 h-8"
+        />
+      </div>
+
+      <!-- The nav links for desktop -->
+      <nav
+        class="hidden lg:flex justify-between items-center gap-6 text-base text-[#274C5B]"
+      >
+        <a class="hover:text-lightGreen" href="./../">Home</a>
+        <a class="hover:text-lightGreen" href="./aboutUs.html">About</a>
+        <span class="group translate-y-0.5"
+          ><a class="hover:text-lightGreen" href="#"
+            >Pages<span class="ml-0.5 font-black text-[10px]"
+              ><i class="fa-regular fa-angle-down"></i></span
+          ></a>
+          <div
+            class="hidden absolute group-hover:block bg-white p-5 rounded-xl shadow-md w-48"
+          >
+            <a class="block hover:text-lightGreen pb-1.5" href="./services.html"
+              >Services</a
+            >
+            <a
+              class="block hover:text-lightGreen pb-1.5"
+              href="./qualityStandard.html"
+              >Quality Standard</a
+            >
+            <a
+              class="block hover:text-lightGreen pb-1.5"
+              href="./portfolioStandard.html"
+              >Portfolio</a
+            >
+            <a class="block hover:text-lightGreen" href="./team.html">Team</a>
+          </div>
+        </span>
+
+        <a class="hover:text-lightGreen" href="./shop.html">Shop</a>
+        <!-- <a class="hover:text-lightGreen" href="">Projects</a> -->
+        <a class="hover:text-lightGreen" href="./blog.html">News</a>
+      </nav>
+      <!-- The shopping cart and the search menu -->
+      <div class="meta flex justify-between gap-10 sm:gap-5 items-center">
+        <!-- The search div container -->
+        <div class="search sm:w-36 h-7 relative overflow-hidden rounded-full">
+          <input
+            type="text"
+            class="hidden sm:block w-full h-full bg-[#EEEEEE] py-1.5 text-base pl-2.5 pr-8 border-none outline-none"
+            name=""
+            id=""
+          />
+          <!-- The search button -->
+          <button
+            class="absolute right-0 top-0 inline-block w-7 h-7 bg-[#7EB693] rounded-full text-white"
+          >
+            <i class="fa-sharp fa-light fa-magnifying-glass text-base"></i>
+          </button>
         </div>
 
-        <!-- The nav links for desktop -->
-        <nav class="hidden lg:flex justify-between items-center gap-6 text-base text-[#274C5B]">
-            <a class="hover:text-lightGreen" href="./../">Home</a>
-            <a class="hover:text-lightGreen" href="./aboutUs.html">About</a>
-            <span class="group translate-y-0.5"><a class="hover:text-lightGreen" href="#">Pages<span class="ml-0.5 font-black text-[10px]"><i class="fa-regular fa-angle-down"></i></span></a>
-                <div class="hidden absolute group-hover:block bg-white p-5 rounded-xl shadow-md w-48">
-                    <a class="block hover:text-lightGreen pb-1.5" href="./services.html">Services</a>
-                    <a class="block hover:text-lightGreen pb-1.5" href="./qualityStandard.html">Quality Standard</a>
-                    <a class="block hover:text-lightGreen pb-1.5" href="./portfolioStandard.html">Portfolio</a>
-                    <a class="block hover:text-lightGreen" href="./team.html">Team</a>
-                </div>
+        <!-- The cart div container that shows the no of items we have in our cart
+          and will also link to the cart page when clicked -->
+        <a href="./cart.html">
+          <div
+            class="cart flex justify-between items-center h-7 rounded-full sm:border-[1px] sm:border-[#274C5B] border-solid relative"
+          >
+            <div
+              class="cartBtn flex items-center justify-center w-7 h-7 rounded-full sm:bg-[#274C5B] sm:text-white text-deepGreen sm:text-[14px] text-2xl sm:text-base"
+            >
+              <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+            </div>
+            <!-- The element that contains the cart count -->
+            <span
+              class="cartCounter sm:hidden text-sm text-white w-fit h-fit py-1 px-1.5 rounded-full bg-lightGreen absolute translate-x-5 -translate-y-1.5"
+            ></span>
+            <div
+              class="cartItems hidden px-2 sm:flex justify-center items-center text-base"
+            >
+              <span>Cart</span>
+              <!-- The dynamic cart no -->
+              <span>&#40; <span class="cartCounter">0</span> &#41;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- The nav links for mobile devices -->
+        <div class="mobileNav lg:hidden">
+          <!-- This is where the hamburger icon will be -->
+          <span class="hamburger text-3xl"
+            ><i class="fa-regular fa-bars"></i
+          ></span>
+
+          <!-- This is where the drop down menu will be -->
+          <div
+            class="dropDown absolute transTop transRight transitions w-full sm:w-[400px] bg-white p-5 text-[#274C5B] text-right divide-y divide-[#274C5B] divide-solid sm:divide-y-0 text-lg z-[15]"
+          >
+            <a class="ml-auto block pt-1.5 pb-1.5 sm:pt-3 sm:pb-3" href="./.."
+              >Home</a
+            >
+            <a
+              class="block pb-1.5 sm:pb-3 !border-b !border-deepGreen !border-solid"
+              href="./aboutUs.html"
+              >About</a
+            >
+            <span class="group">
+              <a class="block pb-1.5 hover:text-lightGreen" href="#"
+                >Pages<span class="ml-0.5 font-black text-[10px]"
+                  ><i class="fa-regular fa-angle-down"></i></span
+              ></a>
+              <div class="hidden group-hover:block transitions pr-7">
+                <a
+                  class="block hover:text-lightGreen pb-1.5"
+                  href="./services.html"
+                  >Services</a
+                >
+                <a
+                  class="block hover:text-lightGreen pb-1.5"
+                  href="./qualityStandard.html"
+                  >Quality Standard</a
+                >
+                <a
+                  class="block hover:text-lightGreen pb-1.5"
+                  href="./portfolioStandard.html"
+                  >Portfolio</a
+                >
+                <a class="block hover:text-lightGreen pb-1.5" href="./team.html"
+                  >Team</a
+                >
+              </div>
             </span>
-            
-            <a class="hover:text-lightGreen" href="./shop.html">Shop</a>
-            <!-- <a class="hover:text-lightGreen" href="">Projects</a> -->
-            <a class="hover:text-lightGreen" href="./blog.html">News</a>
-        </nav>
-        <!-- The shopping cart and the search menu -->
-        <div class="meta flex justify-between gap-5 items-center">
-            <!-- The search div container -->
-            <div class="search sm:w-36 h-7 relative overflow-hidden rounded-full">
-                <input type="text" class="hidden sm:block w-full h-full bg-[#EEEEEE] py-1.5 text-base pl-2.5 pr-8 border-none outline-none" name="" id="">
-                <!-- The search button -->
-                <button class="absolute right-0 top-0 inline-block w-7 h-7 bg-[#7EB693] rounded-full text-white"><i class="fa-sharp fa-light fa-magnifying-glass text-base"></i></button>
-            </div>
-
-            <!-- The cart div container -->
-            <div class="cart flex justify-between items-center h-7 rounded-full border-[1px] border-[#274C5B] border-solid">
-                <div class="cartBtn flex items-center justify-center w-7 h-7 rounded-full bg-[#274C5B] text-white text-[14px]"><i class="fa-light fa-cart-shopping"></i></div>
-                <div class="cartItems hidden px-2 sm:flex justify-center items-center text-base">
-                    <span>Cart</span>
-                    <!-- The dynamic cart no -->
-                    <span>(0)</span>
-                </div>
-            </div>
-
-            <!-- The nav links for mobile devices -->
-            <div class="mobileNav lg:hidden">
-                <!-- This is where the hamburger icon will be -->
-                <span class="hamburger text-3xl"><i class="fa-regular fa-bars"></i></span>
-
-                <!-- This is where the drop down menu will be -->
-                <div class="dropDown absolute transTop transRight transitions w-full sm:w-[400px] bg-white p-5  text-[#274C5B] text-right divide-y divide-[#274C5B] divide-solid sm:divide-y-0 text-lg z-[15]">
-                    <a class="ml-auto block pt-1.5 pb-1.5 sm:pt-3 sm:pb-3" href="./..">Home</a>
-                    <a class="block pb-1.5 sm:pb-3 !border-b !border-deepGreen !border-solid" href="./aboutUs.html">About</a>
-                    <span class="group">
-                        <a class="block pb-1.5 hover:text-lightGreen" href="#">Pages<span class="ml-0.5 font-black text-[10px]"><i class="fa-regular fa-angle-down"></i></span></a>
-                        <div class="hidden group-hover:block transitions pr-7">
-                            <a class="block hover:text-lightGreen pb-1.5" href="./services.html">Services</a>
-                            <a class="block hover:text-lightGreen pb-1.5" href="./qualityStandard.html">Quality Standard</a>
-                            <a class="block hover:text-lightGreen pb-1.5" href="./portfolioStandard.html">Portfolio</a>
-                            <a class="block hover:text-lightGreen pb-1.5" href="./team.html">Team</a>
-                        </div>
-                    </span>
-                    <a class="block pb-1.5 sm:pb-3" href="./shop.html">Shop</a>
-                    <a class="block pb-1.5 sm:pb-3" href="./blog.html">News</a>
-                </div>
-            </div>
+            <a class="block pb-1.5 sm:pb-3" href="./shop.html">Shop</a>
+            <a class="block pb-1.5 sm:pb-3" href="./blog.html">News</a>
+          </div>
         </div>
-
+      </div>
     </header>
- 
+
     <!-- This is the hero section of the shopSingle page of the organickFarm -->
-    <div class="w-full h-[350px]">
-        <img class="h-full object-cover object-center w-full" src="./../images/news/vegetables.jpg" alt="">    
+    <div class="w-full h-[350px] mt-16">
+      <img
+        class="h-full object-cover object-center w-full"
+        src="./../images/news/vegetables.jpg"
+        alt=""
+      />
     </div>
 
     <!-- The Placard -->
-    <div class="bg-white shadow h-fit -translate-y-1/2 w-5/6 lg:w-11/12 mx-auto p-6 sm:p-10 rounded-3xl negativeMargin -mb-[180px] lg:-mb-[135px]">
-        <!-- The meta data -->
-        <div class="flex flex-col sm:flex-row gap-x-5 gap-y-1">
-            <!-- Posted date -->
-            <div class="text-deepGreen"><span class="text-sm font-['Roboto'] font-bold">Posted On:</span> <span class="text-sm font-['Open Sans']">December 25, 2023</span></div>
-            <!-- The author -->
-            <div class="flex gap-1 mb-4">
-                <span class="text-lightGreen"><i class="fa-solid fa-user leading-none"></i></span>
-                <span class="text-[#274C5B] text-base font-normal">Kristina Castle</span>
-            </div>
+    <div
+      class="bg-white shadow h-fit -translate-y-1/2 w-5/6 lg:w-11/12 mx-auto p-6 sm:p-10 rounded-3xl negativeMargin -mb-[180px] lg:-mb-[135px]"
+    >
+      <!-- The meta data -->
+      <div class="flex flex-col sm:flex-row gap-x-5 gap-y-1">
+        <!-- Posted date -->
+        <div class="text-deepGreen">
+          <span class="text-sm font-['Roboto'] font-bold">Posted On:</span>
+          <span class="text-sm font-['Open Sans']">December 25, 2023</span>
         </div>
-        <!-- The article title -->
-        <h1 class="text-[27px] sm:text-4xl leading-[1.25] text-[#274C5B] font-['Roboto'] font-black">
-            The Benefits of Vitamin D & How to Get it
-        </h1>
+        <!-- The author -->
+        <div class="flex gap-1 mb-4">
+          <span class="text-lightGreen"
+            ><i class="fa-solid fa-user leading-none"></i
+          ></span>
+          <span class="text-[#274C5B] text-base font-normal"
+            >Kristina Castle</span
+          >
+        </div>
+      </div>
+      <!-- The article title -->
+      <h1
+        class="text-[27px] sm:text-4xl leading-[1.25] text-[#274C5B] font-['Roboto'] font-black"
+      >
+        The Benefits of Vitamin D & How to Get it
+      </h1>
 
-        <p class="hidePlacardText text-lg mb-3 font-['Open Sans']">Vitamin D, often referred to as the 'Sunshine Vitamin,' plays a crucial role in maintaining overall health and well-being. </p>
+      <p class="hidePlacardText text-lg mb-3 font-['Open Sans']">
+        Vitamin D, often referred to as the 'Sunshine Vitamin,' plays a crucial
+        role in maintaining overall health and well-being.
+      </p>
     </div>
 
     <div class="mx-5 reduceMT my-14 sm:mx-24 sm:my-20 lg:mx-28">
-        <div class="text-base mb-3 font-['Open Sans']">
-            Vitamin D, often referred to as the "Sunshine Vitamin," is a crucial nutrient essential for various physiological functions within the human body. Unlike most other vitamins, Vitamin D functions as a hormone and plays a pivotal role in maintaining overall health and well-being. One of its primary functions is aiding in the regulation of calcium and phosphorus levels, vital for maintaining strong bones and teeth.
-        </div>
+      <div class="text-base mb-3 font-['Open Sans']">
+        Vitamin D, often referred to as the "Sunshine Vitamin," is a crucial
+        nutrient essential for various physiological functions within the human
+        body. Unlike most other vitamins, Vitamin D functions as a hormone and
+        plays a pivotal role in maintaining overall health and well-being. One
+        of its primary functions is aiding in the regulation of calcium and
+        phosphorus levels, vital for maintaining strong bones and teeth.
+      </div>
 
-        <h2 class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] my-4">
-            Prefered Form Of Vitamin D?
-        </h2>
+      <h2
+        class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] my-4"
+      >
+        Prefered Form Of Vitamin D?
+      </h2>
+
+      <div class="text-base mb-3 font-['Open Sans']">
+        The preferred and most bioavailable form of vitamin D for the human body
+        is Vitamin D3, also known as cholecalciferol. This essential nutrient is
+        synthesized in the skin when exposed to sunlight and is also found in
+        certain foods and supplements.
+      </div>
+
+      <div class="text-base">
+        <ul class="list-disc list-outside">
+          <li class="ml-[2em] my-5">
+            Vitamin D3 plays a crucial role in supporting bone health by aiding
+            in the absorption of calcium and phosphorus, contributing to bone
+            mineralization.
+          </li>
+          <li class="ml-[2em] my-5">
+            Additionally, it has been associated with various other bodily
+            functions, including immune system regulation, mood regulation, and
+            overall well-being.
+          </li>
+          <li class="ml-[2em] my-5">
+            Due to its superior potency and effectiveness, Vitamin D3
+            supplementation is commonly recommended for individuals with
+            insufficient sun exposure or those with specific health conditions
+            requiring additional support.
+          </li>
+        </ul>
+      </div>
+
+      <!-- The card -->
+      <div
+        class="text-center text-deepGreen rounded-3xl text-xl font-['Roboto'] font-semibold bg-[#F1EDEA] my-5 p-5 lg:px-24 lg:py-10"
+      >
+        "The first rule of any organic used in a business is that nature applied
+        to an efficient operation will magnify the efficiency. The second is
+        that organic applied to an inefficient operation will magnify the
+        health."
+      </div>
+
+      <!-- The content footer section -->
+      <div class="">
+        <h3
+          class="mt-6 mb-1 text-2xl font-['Roboto'] text-deepGreen font-black"
+        >
+          Make perfect organic product with us.
+        </h3>
 
         <div class="text-base mb-3 font-['Open Sans']">
-           The preferred and most bioavailable form of vitamin D for the human body is Vitamin D3, also known as cholecalciferol. This essential nutrient is synthesized in the skin when exposed to sunlight and is also found in certain foods and supplements.
+          Indulge in top-notch selections, where elegance meets affordability.
+          Elevate your lifestyle with our exclusive range – your ultimate
+          shopping haven awaits you!
         </div>
 
         <div class="text-base">
-            <ul class="list-disc list-outside">
-                <li class="ml-[2em] my-5">Vitamin D3 plays a crucial role in supporting bone health by aiding in the absorption of calcium and phosphorus, contributing to bone mineralization.</li>
-                <li class="ml-[2em] my-5">Additionally, it has been associated with various other bodily functions, including immune system regulation, mood regulation, and overall well-being.</li>
-                <li class="ml-[2em] my-5"> Due to its superior potency and effectiveness, Vitamin D3 supplementation is commonly recommended for individuals with insufficient sun exposure or those with specific health conditions requiring additional support.</li>
-            </ul>
+          <ul class="list-disc list-outside">
+            <li class="ml-[2em] my-5">
+              Our organic products ensure you embrace a healthier lifestyle,
+              free from harmful chemicals and pesticides, promoting overall
+              well-being.
+            </li>
+            <li class="ml-[2em] my-5">
+              By choosing organic, you contribute to a sustainable environment,
+              supporting eco-friendly practices and reducing your carbon
+              footprint.
+            </li>
+            <li class="ml-[2em] my-5">
+              With strict adherence to organic standards, our store offers
+              premium-quality products, ensuring you receive the best nature has
+              to offer.
+            </li>
+          </ul>
         </div>
-
-        <!-- The card -->
-        <div class="text-center text-deepGreen rounded-3xl text-xl font-['Roboto'] font-semibold bg-[#F1EDEA] my-5 p-5 lg:px-24 lg:py-10">
-            "The first rule of any organic used in a business is that nature applied to an efficient operation will magnify the efficiency. The second is that organic applied to an inefficient operation will magnify the health."
-        </div>
-
-        <!-- The content footer section -->
-        <div class="">
-            <h3 class="mt-6 mb-1 text-2xl font-['Roboto'] text-deepGreen font-black">
-                Make perfect organic product with us.
-            </h3>
-
-            <div class="text-base mb-3 font-['Open Sans']">
-                Indulge in top-notch selections, where elegance meets affordability. Elevate your lifestyle with our exclusive range – your ultimate shopping haven awaits you!
-            </div>
-     
-            <div class="text-base">
-                 <ul class="list-disc list-outside">
-                    <li class="ml-[2em] my-5">Our organic products ensure you embrace a healthier lifestyle, free from harmful chemicals and pesticides, promoting overall well-being.</li>
-                    <li class="ml-[2em] my-5"> By choosing organic, you contribute to a sustainable environment, supporting eco-friendly practices and reducing your carbon footprint.</li>
-                    <li class="ml-[2em] my-5"> With strict adherence to organic standards, our store offers premium-quality products, ensuring you receive the best nature has to offer.</li>
-                 </ul>
-             </div>
-        </div>
-
-
-
-
+      </div>
     </div>
-    
-
 
     <!-- The newsletter section -->
-    <div class="bg-[url('./images/newsLetterSubscribe/background.jpg')] bg-cover bg-center rounded-[18px] flex flex-col md:flex-row justify-between items-center mx-5 my-10 sm:my-14 sm:mx-10 px-5 py-10 md:py-14">
-        <div class="mb-3 md:mb-0">
-            <h2 class="text-3xl font-['Roboto'] font-black text-[#FFFFFF] leading-[1.25] text-center md:text-left">
-                Subscribe to<br class="hidden md:block">
-                our Newsletter
-            </h2>
-        </div>
+    <div
+      class="bg-[url('./images/newsLetterSubscribe/background.jpg')] bg-cover bg-center rounded-[18px] flex flex-col md:flex-row justify-between items-center mx-5 my-10 sm:my-14 sm:mx-10 px-5 py-10 md:py-14"
+    >
+      <div class="mb-3 md:mb-0">
+        <h2
+          class="text-3xl font-['Roboto'] font-black text-[#FFFFFF] leading-[1.25] text-center md:text-left"
+        >
+          Subscribe to<br class="hidden md:block" />
+          our Newsletter
+        </h2>
+      </div>
 
-        <div class="w-full md:w-1/2 flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-1">
-            <input class="h-[40px] w-full block md:w-[350px] px-3 py-3 rounded-md border border-solid focus:border-green-500 focus:ring focus:ring-[#7EB693]" type="text" name="" id="" placeholder="Enter your Email Address">
-            <button class="px-5 py-3 leading-none bg-[#274C5B] text-[#fff] rounded-md" type="submit">Subscribe</button>
-        </div>
+      <div
+        class="w-full md:w-1/2 flex flex-col md:flex-row justify-center items-center gap-y-2 md:gap-1"
+      >
+        <input
+          class="h-[40px] w-full block md:w-[350px] px-3 py-3 rounded-md border border-solid focus:border-green-500 focus:ring focus:ring-[#7EB693]"
+          type="text"
+          name=""
+          id=""
+          placeholder="Enter your Email Address"
+        />
+        <button
+          class="px-5 py-3 leading-none bg-[#274C5B] text-[#fff] rounded-md"
+          type="submit"
+        >
+          Subscribe
+        </button>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="pt-5 md:pt-14">
-        <div class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14">
-            <!-- Contact us -->
-            <div class="rtl sm:col-start-1 sm:col-span-1 sm:row-start-1 sm:row-span-1 lg:col-start-1 lg:col-end-3 lg:pr-5 sm:flex flex-col justify-center items-center lg:block">
-                <h5 class="text-lg font-bold mb-6"><a class="" href="./pages/contactUs.html">Contact Us</a></h5>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14"
+      >
+        <!-- Contact us -->
+        <div
+          class="rtl sm:col-start-1 sm:col-span-1 sm:row-start-1 sm:row-span-1 lg:col-start-1 lg:col-end-3 lg:pr-5 sm:flex flex-col justify-center items-center lg:block"
+        >
+          <h5 class="text-lg font-bold mb-6">
+            <a class="" href="./pages/contactUs.html">Contact Us</a>
+          </h5>
 
-                <div class="sm:text-center lg:text-right mb-6">
-                    <h6 class="text-base font-semibold">Email</h6>
-                    <p>needhelp@organick.com</p>
-                </div>
+          <div class="sm:text-center lg:text-right mb-6">
+            <h6 class="text-base font-semibold">Email</h6>
+            <p>needhelp@organick.com</p>
+          </div>
 
-                <div class="sm:text-center lg:text-right mb-6">
-                    <h6 class="text-base font-semibold">Phone</h6>
-                    <p>123 (1254) 1452</p>
-                </div>
+          <div class="sm:text-center lg:text-right mb-6">
+            <h6 class="text-base font-semibold">Phone</h6>
+            <p>123 (1254) 1452</p>
+          </div>
 
-                <div class="sm:text-center lg:text-right mb-6">
-                    <h6 class="text-base font-semibold">Address</h6>
-                    <p>88 Road, Brooklyn Street, USA</p>
-                </div>
-            </div>
-
-            <!-- Footer info -->
-            <div class="sm:col-start-1 sm:col-span-full sm:row-start-2 sm:row-span-1 lg:col-start-3 lg:col-span-3 lg:row-start-1 lg:row-span-1 lg:px-5 lg:border-x-[0.5px] lg:border-solid lg:border-[#D4D4D4] flex flex-col justify-start items-center">
-                <div class="sm:w-4/5 lg:w-full flex flex-col justify-start items-center">
-                    <div class="infoTitle mb-4">
-                        <a href=""> <img src="../images/logo/logo1.svg" alt="" class="w-36 h-8"> </a>
-                    </div>
-                    <div class="text-center leading-[1.8]">
-                        We are an organized organization whose aim is to break agricultural and organic barriers and we are focused on shaping lives positively. Training hands, more organic, more energy, better lives.
-                    </div>
-                    <!-- Social media links -->
-                    <div class="w-full flex flex-row justify-center flex-nowrap gap-3 text-[16px] mt-4">
-                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-instagram"></i></span>
-                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-facebook-f"></i></span>
-                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-x-twitter"></i></span>
-                       
-                        <span class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"><i class="fa-brands fa-linkedin-in"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Links to Utility Pages -->
-            <!-- flex flex-col justify-center items-center -->
-            <div class="sm:col-start-2 sm:col-span-1 sm:row-start-1 sm:row-end-2 lg:col-start-6 lg:col-end-8 lg:pl-5">
-                <div class="mb-4">
-                    <h5 class="text-lg text-[#274C5B] font-bold sm:text-center lg:text-left">Utility Pages</h5>
-                </div>
-                <ul class="w-full">
-                    <li class="mb-6 sm:text-center lg:text-left">Style Guide</li>
-                    <li class="mb-6 sm:text-center lg:text-left">4O4 Not Found</li>
-                    <li class="mb-6 sm:text-center lg:text-left">Password Protected</li>
-                    <li class="mb-6 sm:text-center lg:text-left">Licences</li>
-                    <li class="mb-6 sm:text-center lg:text-left">Changelog</li>
-                </ul>
-            </div>
+          <div class="sm:text-center lg:text-right mb-6">
+            <h6 class="text-base font-semibold">Address</h6>
+            <p>88 Road, Brooklyn Street, USA</p>
+          </div>
         </div>
 
-        <!-- Designer and Developer info -->
-        <div class="text-[#274C5B] border-t-[1px] border-[#D4D4D4] border-solid flex flex-col sm:flex-row items-center justify-center py-5 gap-y-4 sm:gap-x-2">
-            <p>Copyright &copy; <b class="font-bold">Organick</b></p><span class="hidden sm:block">|</span>
-            <p>Designed by <b>VictorFlow</b></p><span class="hidden sm:block">|</span>
-            <p>Developed by <b> Ojo Tolulope</b></p>
+        <!-- Footer info -->
+        <div
+          class="sm:col-start-1 sm:col-span-full sm:row-start-2 sm:row-span-1 lg:col-start-3 lg:col-span-3 lg:row-start-1 lg:row-span-1 lg:px-5 lg:border-x-[0.5px] lg:border-solid lg:border-[#D4D4D4] flex flex-col justify-start items-center"
+        >
+          <div
+            class="sm:w-4/5 lg:w-full flex flex-col justify-start items-center"
+          >
+            <div class="infoTitle mb-4">
+              <a href="">
+                <img src="../images/logo/logo1.svg" alt="" class="w-36 h-8" />
+              </a>
+            </div>
+            <div class="text-center leading-[1.8]">
+              We are an organized organization whose aim is to break
+              agricultural and organic barriers and we are focused on shaping
+              lives positively. Training hands, more organic, more energy,
+              better lives.
+            </div>
+            <!-- Social media links -->
+            <div
+              class="w-full flex flex-row justify-center flex-nowrap gap-3 text-[16px] mt-4"
+            >
+              <span
+                class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"
+                ><i class="fa-brands fa-instagram"></i
+              ></span>
+              <span
+                class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></span>
+              <span
+                class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></span>
+
+              <span
+                class="w-9 h-9 px-[8px] leading-[200%] text-center inline-block border-[1px] border-white rounded-full bg-[#D4D4D4] text-[#274C5B]"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></span>
+            </div>
+          </div>
         </div>
+
+        <!-- Links to Utility Pages -->
+        <!-- flex flex-col justify-center items-center -->
+        <div
+          class="sm:col-start-2 sm:col-span-1 sm:row-start-1 sm:row-end-2 lg:col-start-6 lg:col-end-8 lg:pl-5"
+        >
+          <div class="mb-4">
+            <h5
+              class="text-lg text-[#274C5B] font-bold sm:text-center lg:text-left"
+            >
+              Utility Pages
+            </h5>
+          </div>
+          <ul class="w-full">
+            <li class="mb-6 sm:text-center lg:text-left">Style Guide</li>
+            <li class="mb-6 sm:text-center lg:text-left">4O4 Not Found</li>
+            <li class="mb-6 sm:text-center lg:text-left">Password Protected</li>
+            <li class="mb-6 sm:text-center lg:text-left">Licences</li>
+            <li class="mb-6 sm:text-center lg:text-left">Changelog</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Designer and Developer info -->
+      <div
+        class="text-[#274C5B] border-t-[1px] border-[#D4D4D4] border-solid flex flex-col sm:flex-row items-center justify-center py-5 gap-y-4 sm:gap-x-2"
+      >
+        <p>Copyright &copy; <b class="font-bold">Organick</b></p>
+        <span class="hidden sm:block">|</span>
+        <p>Designed by <b>VictorFlow</b></p>
+        <span class="hidden sm:block">|</span>
+        <p>Developed by <b> Ojo Tolulope</b></p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

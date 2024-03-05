@@ -4,16 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop single- Organick</title>
+    <title>Cart</title>
     <link
       rel="shortcut icon"
       href="../images/favicon/favicon.png"
       type="image/x-icon"
     />
     <link href="./../output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./../styles/shopSingle.css" />
-    <script defer src="./../scripts/resizeObserver.js"></script>
-    <script type="module" defer src="./../scripts/shopSingle.js"></script>
+    <script defer type="module" src="../scripts/cart.js"></script>
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
@@ -81,7 +79,7 @@
           </div>
         </span>
 
-        <a class="hover:text-lightGreen" href="./shop.html">Shop</a>
+        <a class="hover:text-lightGreen" href="#">Shop</a>
         <!-- <a class="hover:text-lightGreen" href="">Projects</a> -->
         <a class="hover:text-lightGreen" href="./blog.html">News</a>
       </nav>
@@ -173,171 +171,101 @@
                 >
               </div>
             </span>
-            <a class="block pb-1.5 sm:pb-3" href="./shop.html">Shop</a>
+            <a class="block pb-1.5 sm:pb-3" href="#">Shop</a>
             <a class="block pb-1.5 sm:pb-3" href="./blog.html">News</a>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- This is the hero section of the shopSingle page of the organickFarm -->
-    <div
-      class="w-full h-[200px] sm:aspect-[426/100] mt-16 bg-cover bg-center flex justify-center items-center"
-    >
-      <img
-        class="h-full object-cover object-center w-full"
-        src="./../images/hero/shopSingleBanner.png"
-        alt=""
-      />
-    </div>
-
-    <!-- This is the place where you will be taken to when you are prompted to add to cart -->
-    <div class="cartSingle px-5 py-10 sm:py-14 sm:px-10">
-      <div
-        class="cartItem grid grid-cols-1 sm:grid-cols-2 sm:gap-x-5 md:gap-x-10 lg:gap-x-12"
+    <div class="p-5 sm:px-10 mt-16">
+      <h2
+        class="aboutTitle text-[2.5rem] font-['Roboto'] font-bold text-[#274C5B] leading-[1.25] mt-2 mb-4"
       >
-        <!-- image of the item -->
-        <div class="w-full aspect-square flex sm:justify-end">
+        Shopping Cart
+      </h2>
+
+      <!-- This defaultCounterCard will only be shown when there is no item in our cart -->
+      <div class="defaultCounterCard font-medium text-[#274C5B] text-[17px]">
+        0 products in cart
+      </div>
+
+      <div
+        class="cartData w-full flex flex-col-reverse md:flex-row md:flex-nowrap gap-x-14"
+      >
+        <div class="md:w-7/12 lg:w-9/12">
           <div
-            class="h-full w-full md:w-7/8 lg:w-4/6 sm:col-start-1 sm:col-span-1 p-1 text-[#fff] text-sm rounded-[10px] shadow-lg shadow-black relative overflow-hidden"
+            class="font-medium text-[#274C5B] text-[17px] border-b border-solid border-deepGreen pb-3"
           >
-            <img
-              class="productImage w-full h-full absolute object-contain object-center aspect-square"
-              src=""
-              alt="The product image"
-            />
-            <!-- The tag -->
-            <h6
-              class="tag p-1 bg-[#274C5B] text-[#fff] w-min text-sm rounded-[4px] m-5 relative z-[3]"
-            ></h6>
-          </div>
-        </div>
-
-        <!-- About the item -->
-        <div class="aboutItem sm:w-4/5 sm:col-start-2 sm:col-span-1">
-          <!-- Name of the item -->
-          <h2
-            class="productName aboutTitle text-4xl sm:text-3xl font-['Roboto'] pt-6 sm:pt-0 font-black text-[#274C5B] leading-[1.25] mb-2"
-            id="productName"
-          ></h2>
-
-          <!-- The ratings -->
-          <div class="text-[#FFA858] text-[11px]">
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-            <i class="fa-sharp fa-solid fa-star"></i>
-          </div>
-
-          <!-- The price tags -->
-          <div class="flex flex-row items-center gap-2 mt-2">
-            <h6
-              class="text-[14px] font-medium leading-none line-through text-[#B8B8B8] decoration-[#B8B8B8]"
-            >
-              $<span class="fPrice"> </span>
-            </h6>
-            <h5 class="text-deepGreen text-xl font-semibold leading-none">
-              $<span class="rPrice"> </span>
+            <h5 class="">
+              <span class="cartCounter"> 0</span> products in cart
             </h5>
           </div>
 
-          <!-- A little story about the item -->
-          <p class="aboutProduct text-lg mt-4 mb-3 font-['Open Sans']"></p>
-
-          <!-- The quantity input and the incrementor and decrementor button  -->
-          <div class=" ">
-            <!-- The Quantitylabel and quantity input -->
-            <div class=" ">
-              <div class="flex flex-row items-center">
-                <label class="block mr-3">Quantity:</label>
-                <div class="flex flex-row gap-x-1">
-                  <button
-                    class="bg-[#274C5B] w-[40px] h-[40px] text-white rounded-md py-1 px-2 decrementor"
-                  >
-                    -
-                  </button>
-                  <input
-                    class="inline-block w-[40px] h-[40px] text-center border border-deepGreen border-solid rounded quantity"
-                    type="number"
-                    value="1"
-                    name=""
-                    id=""
-                  />
-                  <button
-                    class="bg-[#274C5B] w-[40px] h-[40px] text-white rounded-md py-1 px-2 incrementor"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- The add to cart button -->
-            <div class="mt-3">
-              <button class="p-3 bg-[#274C5B] text-[#fff] rounded-md addToCart">
-                <span class="">Add to cart</span>
-                <span
-                  class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] rounded-full text-white text-[10px]"
-                  ><i class="fa-light fa-arrow-right"></i
-                ></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="infomatics mt-6 sm:mt-12">
-        <!-- Product description and additional info button -->
-        <div class="flex flex-row gap-2 items-center justify-center">
+          <!-- The data container that will be filled with the products we have in our cart -->
           <div
-            class="p-3 bg-deepGreen text-[#fff] rounded-md sm:w-1/4 w-1/2 text-center cursor-pointer descriptionBtn"
+            class="cartDisplay text-deepGreen divide-y divide-solid divide-deepGreen"
           >
-            Product Description
-          </div>
-          <div class="sm:w-1/4 w-1/2 text-center cursor-pointer addInfoBtn">
-            Additional Info
+        
+        
           </div>
         </div>
 
-        <!-- The section where the toggles content will be shown -->
-        <div class="mt-4">
-          <!-- The product description container -->
-          <div class="productDescription"></div>
+        <div class="md:w-5/12 lg:w-3/12">
+          <!-- The div that contains the price and the checkout button -->
+          <div
+            class="flex md:flex-col items-center md:items-start gap-2 md:gap-0"
+          >
+            <div class="">
+              <h5 class="text-[17px] text-[#5CA581] font-bold">
+                Total<i class="fa-sharp fa-solid fa-colon text-sm"></i>
+              </h5>
+            </div>
+            <div class="font-bold text-deepGreen">
+              <span class="m-0 p-0 text-4xl">$</span>
+              <span
+                class="totalAmount tracking-tighter -ml-1 p-0 text-4xl"
+              ></span>
+            </div>
+          </div>
 
-          <!-- The additional info container -->
-          <div class="additionalInfo hidden"></div>
+          <!-- The div containing the checkout button -->
+          <div class="hidden md:block mt-4 w-full">
+            <a href="./identification.html">
+              <button
+              class="group w-full p-3 transitions bg-lightGreen hover:bg-white border border-solid border-lightGreen text-[#fff] rounded-md font-semibold"
+            >
+              <span class="group-hover:text-lightGreen"
+                >Proceed to Checkout</span
+              >
+            </button>
+          </a>
+
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- The related products section -->
-    <div
-      class="categories w-full flex flex-col items-center justify-center py-10 sm:px-10 sm:py-14"
-    >
-      <!-- The title of the categories section -->
-      <div class="flex flex-col items-center justify-center">
-        <h2
-          class="aboutTitle text-3xl font-['Roboto'] font-black text-[#274C5B] leading-[1.25] mb-4"
-        >
-          RELATED PRODUCTS
-        </h2>
-      </div>
+      <!-- This is the default cart data that will be displayed when there is no item in our cart -->
+      <div class="defaultCartData text-[#274C5B]">
+        <div class="text-[10rem] flex items-center justify-center my-2 py-4">
+          <i class="fa-light fa-cart-xmark"></i>
+        </div>
+        <div class="flex justify-center flex-col">
+          <div
+            class="text-center w-3/4 sm:w-1/2 m-auto text-[17px] font-normal"
+          >
+            Your Shopping cart is empty. Would you love to shop for some
+            beneficial Organick products
+          </div>
 
-      <!-- The product items container -->
-      <div
-        class="productItemContainer w-full grid grid-cols-1 px-5 sm:px-0 sm:grid-cols-3 lg:grid-cols-4 gap-5 justify-between"
-      ></div>
-
-      <!-- The load more button -->
-      <div class="btn mt-8">
-        <button
-          class="loadMoreProducts p-3 bg-[#274C5B] text-[#fff] rounded-md"
-        >
-          <span class="">Load More</span>
-          <span
-            class="inline-flex min-w-min min-h-min p-1.5 leading-[200%] rounded-full text-white text-[10px]"
-            ><i class="fa-light fa-arrow-right"></i
-          ></span>
-        </button>
+          <a class="flex justify-center" href="./shop.html">
+            <button
+              class="group mt-5 py-3 px-5 text-white bg-[#274C5B] transitions hover:bg-white border border-solid border-deepGreen rounded-md"
+            >
+              <span class="group-hover:text-deepGreen">Start Shopping</span>
+            </button>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -374,7 +302,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="pt-5 md:pt-14">
+    <footer class="pt-5 md:pt-14 mb-14">
       <div
         class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-7 lg:grid-rows-1 text-[#274C5B] gap-y-10 sm:gap-y-5 lg:gap-y-0 px-5 sm:px-10 mb-14"
       >
@@ -467,7 +395,7 @@
 
       <!-- Designer and Developer info -->
       <div
-        class="text-[#274C5B] border-t-[1px] border-[#D4D4D4] border-solid flex flex-col sm:flex-row items-center justify-center py-5 gap-y-4 sm:gap-x-2"
+        class="text-[#274C5B] border-t-[1px] border-[#D4D4D4] border-solid flex flex-col sm:flex-row items-center justify-center pt-5 pb-28 md:py-5 gap-y-4 sm:gap-x-2"
       >
         <p>Copyright &copy; <b class="font-bold">Organick</b></p>
         <span class="hidden sm:block">|</span>
@@ -476,5 +404,15 @@
         <p>Developed by <b> Ojo Tolulope</b></p>
       </div>
     </footer>
+    <!-- The div containing the checkout button for the mobile screen -->
+    <div class="w-full fixed bottom-0 md:hidden bg-white p-5">
+      <a href="./identification.html">
+      <button
+        class="group w-full py-4 transitions bg-lightGreen hover:bg-white border border-solid border-lightGreen text-base text-[#fff] rounded-md font-semibold"
+      >
+        <span class="group-hover:text-lightGreen">Proceed to Checkout</span>
+      </button>
+      </a>
+    </div>
   </body>
 </html>

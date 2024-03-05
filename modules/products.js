@@ -82,7 +82,7 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                             </div>
                         </div>
 
-                        <button class="-translate-y-6 -mb-6 sm:translate-y-2 transitions opacity-0 sm:group-hover:opacity-100  sm:group-hover:z-[1015] bg-deepGreen p-1 rounded-md text-white text-sm">Go to Cart</button>
+                        <button class="-translate-y-6 -mb-6 sm:translate-y-2 transitions opacity-0 sm:group-hover:opacity-100  sm:group-hover:z-[1015] bg-deepGreen p-1 rounded-md text-white text-sm">Go to Shop</button>
                     </div>
                     <!--The div element that will only get displayed is when the template is hovered on when the width of the viewport is greater than 640px-->
                     <div class="productSecondElem hidden opacity-0 sm:group-hover:flex sm:group-hover:items-end sm:group-hover:opacity-100 overflow-hidden transitions  sm:group-hover:z-[1005]">
@@ -122,7 +122,7 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
 
         let data = JSON.stringify(product);
         // store data in localStorage
-        localStorage.setItem('singleCart', data);
+        localStorage.setItem('shoppingBasket', data);
 
         // Redirect function
         function redirect(boolean) {
@@ -130,7 +130,6 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                 //This will redirect to the home page
                 window.location = pathLocator('pages/shopSingle.html', root)
             } else {
-                console.log("i scrolled but it did not do a perfect job.");
                 // This will scroll upwards
                 window.scrollTo({
                     top: 0,
@@ -140,17 +139,17 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
             }
             
         }
-        // if redirectBoolean is true we will redirect and push to singleCart Object
+        // if redirectBoolean is true we will redirect and push to shoppingBasket Object
         if(redirectBoolean) {
             // we will redirect to the shopSingle.html page
             redirect(true);
         } else {
             // we will update the page instantly
-            let cartString = localStorage.getItem('singleCart');
-            let cartObj = JSON.parse(cartString);
+            let retrieveShopBasket = localStorage.getItem('shoppingBasket');
+            let shopObj = JSON.parse(retrieveShopBasket);
 
             //Call the update function to update the shopSingle.html page
-            updateShopPage(cartObj);
+            updateShopPage(shopObj);
 
             // Scroll to the top of the page so the user can see the item in the cart
             redirect(false);
@@ -160,16 +159,16 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
 }
 
 // The updateShopPage function 
-function updateShopPage(cartObj) {
-    tag.textContent = cartObj.productTag;
-    productImage.src = pathLocator(cartObj.productImage, false);
-    productName.textContent = cartObj.productName;
-    fPrice.textContent = cartObj.fPrice;
-    rPrice.textContent = cartObj.rPrice;
-    aboutProduct.textContent = cartObj.aboutProduct;
-    productDescription.textContent = cartObj.description;
-    additionalInfo.textContent = cartObj.additionalInfo;
-    quantityInput.value = cartObj.qty;
+function updateShopPage(shopObj) {
+    tag.textContent = shopObj.productTag;
+    productImage.src = pathLocator(shopObj.productImage, false);
+    productName.textContent = shopObj.productName;
+    fPrice.textContent = shopObj.fPrice;
+    rPrice.textContent = shopObj.rPrice;
+    aboutProduct.textContent = shopObj.aboutProduct;
+    productDescription.textContent = shopObj.description;
+    additionalInfo.textContent = shopObj.additionalInfo;
+    quantityInput.value = shopObj.qty;
 }
 
 

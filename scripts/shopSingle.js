@@ -1,5 +1,14 @@
 //   The import statement
 import {loadProducts, productTemplate, pathLocator} from "./../modules/products.js"
+import {updateCounter,cartCounter} from "./../modules/cartCounter.js"
+
+
+// Updating the cart counter
+const cartElement = document.querySelectorAll('.cartCounter');
+function cartCount(cartElement) {
+    cartElement.forEach(ele => updateCounter(ele));
+}
+cartCount(cartElement);
 
 //Setting the hamburger display
 // Setting the modal
@@ -50,8 +59,8 @@ hamburger.addEventListener('click', () => {
 
 // initialize the page
 // we will update the page instantly
-let cartString = localStorage.getItem('singleCart');
-let cartObj = JSON.parse(cartString);
+let shopObj = localStorage.getItem('shoppingBasket');
+let shoppingBasket = JSON.parse(shopObj);
 
 
 //variables 
@@ -69,36 +78,110 @@ let additionalInfo = document.querySelector('.additionalInfo');
 //  The Quantity input box
 let quantityInput = document.querySelector('.quantity');
 
+// Adding event listener to validate that it is only numbers that will be entered into the field
+quantityInput.addEventListener('keydown', (e) => {
+    if(e.key === 'e' || e.key === 'E'){
+        e.preventDefault();
+    }
+})
+
 // The updateShopPage function 
-function updateShopPage(cartObj) {
-    tag.textContent = cartObj.productTag;
-    productImage.src = pathLocator(cartObj.productImage, false);
-    productName.textContent = cartObj.productName;
-    fPrice.textContent = cartObj.fPrice;
-    rPrice.textContent = cartObj.rPrice;
-    aboutProduct.textContent = cartObj.aboutProduct;
-    productDescription.textContent = cartObj.description;
-    additionalInfo.textContent = cartObj.additionalInfo;
-    quantityInput.value = cartObj.qty;
+function updateShopPage(shoppingBasket) {
+    tag.textContent = shoppingBasket.productTag;
+    productImage.src = pathLocator(shoppingBasket.productImage, false);
+    productName.textContent = shoppingBasket.productName;
+    fPrice.textContent = shoppingBasket.fPrice;
+    rPrice.textContent = shoppingBasket.rPrice;
+    aboutProduct.textContent = shoppingBasket.aboutProduct;
+    productDescription.textContent = shoppingBasket.description;
+    additionalInfo.textContent = shoppingBasket.additionalInfo;
+    quantityInput.value = shoppingBasket.qty;
 }
 
 //Call the update function to update the shopSingle.html page
-updateShopPage(cartObj);
+updateShopPage(shoppingBasket);
 
 // The Decrementor and the incrementor 
 let incrementor = document.querySelector('.incrementor');
 let decrementor = document.querySelector('.decrementor');
 
+if (quantityInput.value == 1) {
+    decrementor.style.opacity = '0.8';
+}
+
 incrementor.addEventListener('click', () => {
     let presentValue = parseInt(quantityInput.value);
     quantityInput.value = presentValue + 1;
+
+    //Remove the opacity of the decrementor button
+    decrementor.style.opacity = '1';
 })
 
 decrementor.addEventListener('click', () => {
-    if(!(quantityInput.value <= 1)) {
+    if((quantityInput.value > 1)) {
         quantityInput.value = parseInt(quantityInput.value) - 1;
     }
+    if (quantityInput.value == 1) {
+        decrementor.style.opacity = '0.8';
+    }
 })
+
+// Creating the add to cart functionality
+const addToCartBtn = document.querySelector('.addToCart');
+
+// Creating the eventListener for addToCartBtn
+
+addToCartBtn.addEventListener('click', () => { 
+    // Get the item to add to cart
+    let item = localStorage.getItem('shoppingBasket');
+    let itemObj = JSON.parse(item);
+    
+
+
+    // Check if cart is empty or if we already have our item in the cart
+    if(localStorage.getItem('cart') == null) {
+        // if the cart is empty, we will create a new cart Array, add our item to the array 
+        // and then store the array in the localStorage
+        // Create an array to store the items in the cart
+        let cartArray = [];
+        // I will check and update the no of items in the shoppingBasket before i save it
+        itemObj.qty = parseInt(quantityInput.value);
+        cartArray.push(itemObj);
+        // Store the array in the localStorage
+        localStorage.setItem('cart', JSON.stringify(cartArray));    
+    } else {
+        // if we have the item is in the array already, we wiil update the 
+        // quantity of the item in our cart, if not we will add the item to the cart
+        const cart = JSON.parse(localStorage.getItem('cart'));
+
+        // Check if the item is in the cart
+        const searchData = JSON.parse(localStorage.getItem('shoppingBasket')).productName;
+        function finder(element) {
+            return element.productName === searchData;
+        }
+
+        if(cart.find(finder)) {
+            // if the item is in the cart, we will update the quantity of item in the cart
+            // Get the index of the item in the cart
+            let itemIndex = cart.findIndex((element, index) => element.productName === searchData)
+            // Update the quantity of the item in the cart
+            cart[itemIndex].qty = parseInt(cart[itemIndex].qty) + parseInt(quantityInput.value);
+            // Store the updated cart in the localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+            // I will check and update the no of items in the shoppingBasket before i save it
+            itemObj.qty = parseInt(quantityInput.value);
+            // if the item is not in the cart, we will add the item to the cart
+            cart.push(itemObj);
+            // Store the updated cart in the localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    } 
+
+    // Update Counter function
+    cartCount(cartElement)
+})
+
 
 
 
@@ -144,7 +227,6 @@ async function populateRelatedSection() {
 
         // let undisplayed products be equals to the content of products
         undisplayedProducts = [...products];
-        console.log(undisplayedProducts);
 
         loadProducts(undisplayedProducts , displayedProducts , 0 , 14, productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage);
  
