@@ -96,7 +96,7 @@ async function initTelPlugin() {
     option = {
         initialCountry: "us",
         utilsScript:
-        "../node_modules/intl-tel-input/build/js/utils.js",
+        "../scripts/utils.js",
         preferredCountries: ['us', 'ng', 'uk'],
         formatAsYouType: true,
         containerClass: 'dropDownContainer',
