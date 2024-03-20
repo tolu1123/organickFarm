@@ -258,12 +258,12 @@ input[type=number] {
 
 .iti__arrow { border: none; }
 
-.iti__globe { background-image: url("node_modules/intl-tel-input/build/img/globe.png"); }
-.iti__flag { background-image: url("node_modules/intl-tel-input/build/img/flags.png"); }
+.iti__globe { background-image: url("./images/intl-Tel-Input/globe.png"); }
+.iti__flag { background-image: url("./images/intl-Tel-Input/flags.png"); }
 
 @media (min-resolution: 2x) {
-  .iti__globe { background-image: url("node_modules/intl-tel-input/build/img/globe@2x.png"); }
-  .iti__flag { background-image: url("node_modules/intl-tel-input/build/img/flags@2x.png"); }
+  .iti__globe { background-image: url("./images/intl-Tel-Input/globe@2x.png"); }
+  .iti__flag { background-image: url("./images/intl-Tel-Input/flags@2x.png"); }
 }
 .border-right-t{
     /* t for thick */

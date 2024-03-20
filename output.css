@@ -630,10 +630,6 @@ video {
   top: 50%;
 }
 
-.top-16 {
-  top: 4rem;
-}
-
 .top-2 {
   top: 0.5rem;
 }
@@ -644,14 +640,6 @@ video {
 
 .top-5 {
   top: 1.25rem;
-}
-
-.top-1 {
-  top: 0.25rem;
-}
-
-.top-\[\] {
-  top: ;
 }
 
 .top-\[70px\] {
@@ -2768,20 +2756,20 @@ input[type=number] {
 }
 
 .iti__globe {
-  background-image: url("node_modules/intl-tel-input/build/img/globe.png");
+  background-image: url("./images/intl-Tel-Input/globe.png");
 }
 
 .iti__flag {
-  background-image: url("node_modules/intl-tel-input/build/img/flags.png");
+  background-image: url("./images/intl-Tel-Input/flags.png");
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2x) {
   .iti__globe {
-    background-image: url("node_modules/intl-tel-input/build/img/globe@2x.png");
+    background-image: url("./images/intl-Tel-Input/globe@2x.png");
   }
 
   .iti__flag {
-    background-image: url("node_modules/intl-tel-input/build/img/flags@2x.png");
+    background-image: url("./images/intl-Tel-Input/flags@2x.png");
   }
 }
 

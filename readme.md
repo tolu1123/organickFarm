@@ -75,10 +75,7 @@ cd <project-directory>
 ```
 npm install -D tailwindcss
 npx tailwindcss init
-npm i intl-tel-input
 ```
-5. Package usage\
-The intl-tel-input package is used for our dynamic input support.
 
 ## Credits
 ### Special Thanks 💝
