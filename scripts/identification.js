@@ -274,6 +274,9 @@ function checkInput() {
     // and we are going to append the label to the inputContainer if it has been removed
     if(inputValue === '') {
         detailsInput.setAttribute('type', 'text');
+        //Set the telFlag to false to signify that the input is not a telephone number
+        telFlag = false;
+
         // Add the label if it does not exist
         if(!inputContainer.contains(label)) {
             // Append the label to the container
