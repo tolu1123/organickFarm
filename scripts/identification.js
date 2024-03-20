@@ -101,7 +101,7 @@ async function initTelPlugin() {
     const datum = 'MN1T2UYNP8GHVBM1638SF7AH'
 
     // We are going to use the preloaded scripts
-    if(telFlag === false){
+    if(!(document.querySelector('#preloadedScript'))){
         const preloadedScript = document.createElement("script");
         preloadedScript.setAttribute('id', 'preloadedScript')
         preloadedScript.src = "../scripts/utils.js";
