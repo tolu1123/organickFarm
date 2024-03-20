@@ -1,58 +1,10 @@
-import { updateCounter, cartCounter} from "../modules/cartCounter.js";
+import { onlineStatus } from '../modules/onlineStatus.js';
+import {hamburger, closeDropDown, handleOutsideClick} from './../modules/hamburger.js' 
+import { updateCounter, cartCounter,cartCount} from "../modules/cartCounter.js";
 import { pathLocator } from "../modules/products.js";
-
-//Setting the hamburger display
-// Setting the modal
-let hamburger = document.querySelector('.hamburger');
-let dropDown = document.querySelector('.dropDown');
-let state = false;
-
-// Adding the event listener
-hamburger.addEventListener('click', () => {
-    if(state) {
-        // if state is true (meaning that the drop down is opened) we will close it
-        hamburger.innerHTML = '<i class="fa-sharp fa-solid fa-bars"></i>';
-        if(window.innerWidth <= 639) {
-          dropDown.classList.add('transTop');
-          dropDown.classList.remove('transTopNormal');
-        }
-
-        if(window.innerWidth >= 640) {
-          dropDown.classList.add('transRight');
-          dropDown.classList.remove('transNormal');
-        }
-
-        // change the state of the drop down
-        state = !state;
-    } else {
-        // If state is false(meaning that the drop down is closed)
-        hamburger.innerHTML = '<i class="fa-sharp fa-solid fa-xmark"></i>';
-
-        // if the dropdown is closed
-        // make it dropdown 
-        if(window.innerWidth <= 639) {
-          dropDown.classList.add('transTopNormal');
-          dropDown.classList.remove('transTop');
-          dropDown.classList.add('right-0');
-        } 
-
-        if(window.innerWidth >= 640) {
-          dropDown.classList.remove('transRight');
-          dropDown.classList.add('transNormal');
-          dropDown.classList.add('right-0');
-        }
-
-        // change the state of the dropDown
-        state = !state;
-    }
-})
-
+ 
 // Updating the cart counter
-const cartElement = document.querySelectorAll('.cartCounter');
-function cartCount(cartElement) {
-cartElement.forEach(ele => updateCounter(ele));
-}
-cartCount(cartElement);
+cartCount();
 
 const cartData = document.querySelector('.cartData');
 const defaultCounterCard = document.querySelector('.defaultCounterCard');
@@ -63,6 +15,7 @@ const cartDisplay = document.querySelector('.cartDisplay');
 
 let root = false;
 function displayCartData(outputElement) {
+    outputElement.innerHTML = '';
     // Get the cart data from localStorage
     let cart = JSON.parse(localStorage.getItem('cart'));
     
@@ -160,7 +113,7 @@ function displayCartData(outputElement) {
             // Update the cart state
             cartState();
             // update the cart counter
-            cartCount(cartElement);
+            cartCount();
             pos();
         }
 
@@ -184,7 +137,7 @@ function displayCartData(outputElement) {
                 subTotal.textContent = calculateSubTotal();
                 localStorage.setItem('cart', JSON.stringify(cart));
                 //update the cart counter
-                cartCount(cartElement);
+                cartCount();
                 pos();
             } else {
                 removeFromCart();
@@ -199,9 +152,9 @@ function displayCartData(outputElement) {
             subTotal.textContent = calculateSubTotal();
             localStorage.setItem('cart', JSON.stringify(cart));
             //update the cart counter
-            cartCount(cartElement);
+            cartCount();
             pos();
-        })
+        });
 
         //The quantity input event listener
         quantityInput.addEventListener('input', () => {
@@ -213,7 +166,7 @@ function displayCartData(outputElement) {
                 subTotal.textContent = calculateSubTotal();
                 localStorage.setItem('cart', JSON.stringify(cart));
                 //update the cart counter
-                cartCount(cartElement);
+                cartCount();
                 pos();
             }
         }) 
@@ -248,6 +201,7 @@ function cartState() {
     }
 }
 cartState();
+window.addEventListener('storage', cartState)
 
 // OUR POS MACHINE
 let posMachineValue

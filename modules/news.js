@@ -1,3 +1,5 @@
+// Fetch the onlineStatus
+import { onlineStatus } from "./onlineStatus.js";
 
 // This is the module that contains the news object
 
@@ -26,15 +28,15 @@ function displayNews(newsArr,startNo,number,container,root) {
     // number => the number of items to take
     // container => the container to append the templates created
     // root => the boolean depended on by productTemplate(product, root)
-
-    let items = newsArr.slice(startNo, startNo + number);
-    //create the templates for the loaded products   
-    items.forEach(news => {
-        let eachNews =  newsTemplate(news,root);
-        // append the created template
-        container.appendChild(eachNews);
-
-    })
+    if(onlineStatus) {
+        let items = newsArr.slice(startNo, startNo + number);
+        //create the templates for the loaded products   
+        items.forEach(news => {
+            let eachNews =  newsTemplate(news,root);
+            // append the created template
+            container.appendChild(eachNews);
+        })
+    }
 }
 
 //The path locating function

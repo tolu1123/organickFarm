@@ -19,5 +19,8 @@ function cartCounter(cartElement) {
     }, 0);
     cartElement.textContent = noOfItems;
 }
+window.addEventListener('storage', ()=> {
+    cartCount()
+})
 
 export {updateCounter, cartCounter, cartCount}

@@ -1,3 +1,7 @@
+// NOTE THIS FILE MUST ALWAYS BE LINKED IN ALL REFRENCES OF ANY HTML PAGE THAT ATTEMPTS TO USE ANY ASSET FROM ******product.js MODULE**** file
+// AND THE LINK MUST BE PLACED BEFORE THE REFRENCE
+
+
 // Getting width and x-coordinate values of some specific template element(Not all of them)
 // NOTE!!!- When i say template elements, i mean they are elements with the class .product 
 let templateWidth;
@@ -55,6 +59,7 @@ window.addEventListener('resize', () => {
 });
 
 // Create a resize observer that checks for the width of an element
+// and applies some translation to move it to the left to avoid broken displays
 const resizeObserver = new ResizeObserver(entries => {
   entries.forEach(entry => {
     const {contentRect, target} = entry;
@@ -62,18 +67,19 @@ const resizeObserver = new ResizeObserver(entries => {
     let targetIndex = Array.from(target.parentNode.children).indexOf(target);
     
     // if we are in the tailwind breakpoint MD that is to say in this particular project, sm is saying a min-width greater than 640px but less than 1024px
-    if(window.innerWidth >= 768 && window.innerWidth < 1024) {
+    if(window.innerWidth >= 640 && window.innerWidth < 1024) {
       //This is our way of detecting the 2nd and 3rd element when we are in breakpoint SM
       let no2Element = (targetIndex + 1) % 3 === 2;
       let no3Element = (targetIndex + 1) % 3 === 0;
 
       if(window.innerWidth >= 640 && window.innerWidth < 1024 && no2Element && target.classList.contains('hover')) {
-        let rightPush = 768 - (productParentWidth - productElemXCoordSm2);
+        // let rightPush = 768 - (productParentWidth - productElemXCoordSm2);
+        let rightPush = (500 - templateWidth) / 2;
         target.style.transform = `translateX(-${rightPush}px)`;
       }
 
-      if (window.innerWidth >= 768 && window.innerWidth < 1024 && no3Element && target.classList.contains('hover')) {
-        let rightPush = 768 - templateWidth;
+      if (window.innerWidth >= 640 && window.innerWidth < 1024 && no3Element && target.classList.contains('hover')) {
+        let rightPush = 500 - templateWidth;
         target.style.transform = `translateX(-${rightPush}px)`
       }
     }
@@ -112,10 +118,6 @@ function watchResizeObserver() {
       product.addEventListener('mouseenter', () => {
         if(window.innerWidth > 639) {
           product.classList.add('hover');
-
-
-          console.log("hovered upon")
-
 
           product.style.zIndex = '999';
 

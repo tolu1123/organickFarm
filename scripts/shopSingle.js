@@ -1,60 +1,12 @@
 //   The import statement
+import { onlineStatus } from '../modules/onlineStatus.js';
+import {hamburger, closeDropDown, handleOutsideClick} from './../modules/hamburger.js' 
 import {loadProducts, productTemplate, pathLocator} from "./../modules/products.js"
-import {updateCounter,cartCounter} from "./../modules/cartCounter.js"
+import {updateCounter,cartCounter,cartCount} from "./../modules/cartCounter.js"
 
 
 // Updating the cart counter
-const cartElement = document.querySelectorAll('.cartCounter');
-function cartCount(cartElement) {
-    cartElement.forEach(ele => updateCounter(ele));
-}
-cartCount(cartElement);
-
-//Setting the hamburger display
-// Setting the modal
-let hamburger = document.querySelector('.hamburger');
-let dropDown = document.querySelector('.dropDown');
-let state = false;
-
-// Adding the event listener
-hamburger.addEventListener('click', () => {
-    if(state) {
-        // if state is true (meaning that the drop down is opened) we will close it
-        hamburger.innerHTML = '<i class="fa-sharp fa-solid fa-bars"></i>';
-        if(window.innerWidth <= 639) {
-          dropDown.classList.add('transTop');
-          dropDown.classList.remove('transTopNormal');
-        }
-
-        if(window.innerWidth >= 640) {
-          dropDown.classList.add('transRight');
-          dropDown.classList.remove('transNormal');
-        }
-
-        // change the state of the drop down
-        state = !state;
-    } else {
-        // If state is false(meaning that the drop down is closed)
-        hamburger.innerHTML = '<i class="fa-sharp fa-solid fa-xmark"></i>';
-
-        // if the dropdown is closed
-        // make it dropdown 
-        if(window.innerWidth <= 639) {
-          dropDown.classList.add('transTopNormal');
-          dropDown.classList.remove('transTop');
-          dropDown.classList.add('right-0');
-        } 
-
-        if(window.innerWidth >= 640) {
-          dropDown.classList.remove('transRight');
-          dropDown.classList.add('transNormal');
-          dropDown.classList.add('right-0');
-        }
-
-        // change the state of the dropDown
-        state = !state;
-    }
-})
+cartCount();
 
 
 // initialize the page
@@ -85,29 +37,16 @@ quantityInput.addEventListener('keydown', (e) => {
     }
 })
 
-// The updateShopPage function 
-function updateShopPage(shoppingBasket) {
-    tag.textContent = shoppingBasket.productTag;
-    productImage.src = pathLocator(shoppingBasket.productImage, false);
-    productName.textContent = shoppingBasket.productName;
-    fPrice.textContent = shoppingBasket.fPrice;
-    rPrice.textContent = shoppingBasket.rPrice;
-    aboutProduct.textContent = shoppingBasket.aboutProduct;
-    productDescription.textContent = shoppingBasket.description;
-    additionalInfo.textContent = shoppingBasket.additionalInfo;
-    quantityInput.value = shoppingBasket.qty;
-}
-
-//Call the update function to update the shopSingle.html page
-updateShopPage(shoppingBasket);
 
 // The Decrementor and the incrementor 
 let incrementor = document.querySelector('.incrementor');
 let decrementor = document.querySelector('.decrementor');
-
-if (quantityInput.value == 1) {
-    decrementor.style.opacity = '0.8';
+function addBtnOpacity() {
+    if (quantityInput.value == 1) {
+        decrementor.style.opacity = '0.8';
+    }
 }
+addBtnOpacity()
 
 incrementor.addEventListener('click', () => {
     let presentValue = parseInt(quantityInput.value);
@@ -121,10 +60,26 @@ decrementor.addEventListener('click', () => {
     if((quantityInput.value > 1)) {
         quantityInput.value = parseInt(quantityInput.value) - 1;
     }
-    if (quantityInput.value == 1) {
-        decrementor.style.opacity = '0.8';
-    }
+    addBtnOpacity();
 })
+
+// The updateShopPage function 
+function updateShopPage(shoppingBasket) {
+    tag.textContent = shoppingBasket.productTag;
+    productImage.src = pathLocator(shoppingBasket.productImage, false);
+    productName.textContent = shoppingBasket.productName;
+    fPrice.textContent = shoppingBasket.fPrice;
+    rPrice.textContent = shoppingBasket.rPrice;
+    aboutProduct.textContent = shoppingBasket.aboutProduct;
+    productDescription.textContent = shoppingBasket.description;
+    additionalInfo.textContent = shoppingBasket.additionalInfo;
+    quantityInput.value = shoppingBasket.qty;
+    addBtnOpacity()
+}
+
+//Call the update function to update the shopSingle.html page
+updateShopPage(shoppingBasket);
+
 
 // Creating the add to cart functionality
 const addToCartBtn = document.querySelector('.addToCart');
@@ -179,7 +134,7 @@ addToCartBtn.addEventListener('click', () => {
     } 
 
     // Update Counter function
-    cartCount(cartElement)
+    cartCount()
 })
 
 
@@ -228,7 +183,7 @@ async function populateRelatedSection() {
         // let undisplayed products be equals to the content of products
         undisplayedProducts = [...products];
 
-        loadProducts(undisplayedProducts , displayedProducts , 0 , 14, productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage);
+        loadProducts(undisplayedProducts , displayedProducts , 0 , 14, productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage,observeCatProducts,watchResizeObserver);
  
         // The code to observe the products in the related section
         observeCatProducts();
@@ -272,7 +227,20 @@ populateRelatedSection()
 //THE load more button functionality
 let loadMoreProductsBtn = document.querySelector('.loadMoreProducts');
 loadMoreProductsBtn.addEventListener('click', () => {
-    loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage);
+
+
+    // The loadMore button handles the display of product items to avoid inconsistencies and large whitespace 
+  // depending on the width of the viewport.
+  if(window.innerWidth >= 640 && window.innerWidth < 1024) {
+    //if the buttton is clicked and the screen is about 640px and 1024 px i want to display all hidden produucts if there is any of those product that is hidden
+    // then depending on the number of PRODUCT ITEMS displayed, it will no how many items to fetch back to fill empty spaces if there are emoty spaces 
+    // and then if there are no empty spaces it will get three products.
+    document.querySelectorAll('.product').forEach(child => child.style='flex');
+    loadProducts(undisplayedProducts, displayedProducts,0 ,(3 - (productItemContainer.children.length % 3)), productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage,observeCatProducts,watchResizeObserver);
+  }else{
+    loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage,observeCatProducts,watchResizeObserver);
+  }
+    // loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, false, true, loadMoreProductsBtn, false, updateShopPage);
 
     //Continue the observer
     observeCatProducts();

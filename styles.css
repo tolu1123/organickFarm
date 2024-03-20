@@ -131,6 +131,9 @@ body{
 .startTransition {
     transition: all 300ms linear;
 }
+.verySlowTransition {
+    transition: all 2s linear 100ms;
+}
 /* Adding an opacity class */
 .opacity {
     opacity: 0;
@@ -247,4 +250,26 @@ input[type=number] {
 .product:not(.hover) .dataCard {
     display: block !important;
     /* background-color: #ef4444; */
+}
+/* The intl-telephone input plugin styles */
+.iti { 
+    width: 100%; 
+}
+
+.iti__arrow { border: none; }
+
+.iti__globe { background-image: url("node_modules/intl-tel-input/build/img/globe.png"); }
+.iti__flag { background-image: url("node_modules/intl-tel-input/build/img/flags.png"); }
+
+@media (min-resolution: 2x) {
+  .iti__globe { background-image: url("node_modules/intl-tel-input/build/img/globe@2x.png"); }
+  .iti__flag { background-image: url("node_modules/intl-tel-input/build/img/flags@2x.png"); }
+}
+.border-right-t{
+    /* t for thick */
+    border-right-width: 1.7px;
+}
+.border-right-n{
+    /* n for narrow */
+    border-right-width: 1px;
 }

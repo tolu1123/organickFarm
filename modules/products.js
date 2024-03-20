@@ -1,36 +1,84 @@
+import { onlineStatus } from "./onlineStatus.js";
 
-
+const tracker = [];
+let containers = [];
+let hiddenElement;
 // The initial data that will be loaded
-function loadProducts(unUsedArray,usedArr,startNo,number,container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage) {
+function loadProducts(unUsedArray,usedArr,startNo,number,container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage,observerFun,watchResizeObserver) {
     // there are 4 parameters to take in
     // unUsedArray => products that have not been displayed 
     // usedArr => products that have been displayed
     // startNo => the number to start splicing from
     // number => the number of items to take
     // container => the container to append the templates created
-    // root => the boolean depended on by productTemplate(product, root)
-    // loadMoreBoolean => the boolean that will signal whether to use the loadMore functionality
+    // root => the boolean tells us if we are in the root of the file or not(to prevent issues when getting our assets most importantly our image)
+    // loadMoreBoolean => the boolean that will signal whether we want to use the loadMore functionality
     // loadMoreProducts => the loadMore button that will be displayed and hidden
     // redirectBoolean => the boolean which will indicate whether to redirect or not  
     // updateShopPage => the function that updates the page with an object that has been stored in the localStorage
-  
-    if(unUsedArray.length !== 0) {
-    // get the data with splice method
-    let items = unUsedArray.splice(startNo, number);
-        //create the templates for the loaded products   
-        items.forEach(product => {
-            let eachProduct =  productTemplate(product, root, redirectBoolean, updateShopPage, container);
-            // append the created template
-            container.appendChild(eachProduct);
-  
-            // push the products into the displayedProducts array
-            usedArr.push(product);
-        })
-    } 
-    if(unUsedArray.length === 0 && loadMoreBoolean)  {
-        loadMoreProducts.style.display = 'none';
+    // observerFun => the function to register the observer for opacity depending on the ratio of the element shown on the viewport
+    // watchObserverFun => the function that watches for any HOVER and LEAVE MOUSE CHANGES and takes action to improve aesthetics 
+
+    // We are going to wrap the function in a conditional statement to check if the user is online or not
+    if(onlineStatus) {
+        // Adding container to the containers array if it has not been added yet(we are going to be using a flag.)
+        if(!tracker.includes(container)) {
+            containers.push({unUsedArray,usedArr,startNo,number,container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage,observerFun,watchResizeObserver});
+            tracker.push(container)
+        }
+
+        if(unUsedArray.length !== 0) {
+            // get the data with splice method
+            let items = unUsedArray.splice(startNo, number);
+            //create the templates for the loaded products   
+            items.forEach(product => {
+                let eachProduct =  productTemplate(product, root, redirectBoolean, updateShopPage, container);
+                // append the created template
+                container.appendChild(eachProduct);
+
+                // push the products into the displayedProducts array
+                usedArr.push(product);
+            })
+        } 
+        if(unUsedArray.length === 0 && loadMoreBoolean)  {
+            loadMoreProducts.remove()
+        }
     }
 }
+
+// Adding a resize observer to the parent of the product element for display consistency issues
+    // CONTAINER is the parent of the product element 
+
+    const removeNoneStyling = (container) => {
+        // This is a dependency of the resize event listener below
+        // it is to display all the prodyucts that has been set to display:none
+        Array.from(container.children).forEach(child => child.style.display = 'flex');
+    }
+
+window.addEventListener('resize', () => {
+    containers.forEach(({unUsedArray,usedArr,startNo,number,container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage,observerFun,watchResizeObserver}) => {
+        if(window.innerWidth >= 640 && window.innerWidth < 1024) {
+            let noOfChildren = container.children.length;
+            let element = noOfChildren % 3;
+
+            for(let i = 0; i < element; i++) {
+                container.children[noOfChildren-(i + 1)].style.display = 'none';    
+            }
+
+        } else if(window.innerWidth >= 1024) {
+            // Display all hidden items
+            removeNoneStyling(container)
+            // if the products we have in the container is not up to multiples of 4, we fetch some more products to fill it and complete it to make it a multiple of 4
+            if(container.children.length % 4 !== 0) {
+                loadProducts(unUsedArray,usedArr,startNo,(4 - (container.children.length % 4)),container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage,observerFun,watchResizeObserver);
+            }
+            // Then we observe the new products we brought in to make sure they are all displayed properly
+            observerFun()
+            watchResizeObserver()
+        }
+    })
+})
+
 
 //The path locating function
 function pathLocator(path, root) {
@@ -116,7 +164,6 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                         <img class="" src=${pathLocator(product.productImage, root)}>
                     </div>`
 
-  
     // The event listener for the template
     template.addEventListener('click', ()=> {
 
@@ -127,7 +174,8 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
         // Redirect function
         function redirect(boolean) {
             if(boolean) {
-                //This will redirect to the home page
+                //This will redirect to the home page and the page wuil automatically rerender all the assets it needs
+                // by the scripts it already has.
                 window.location = pathLocator('pages/shopSingle.html', root)
             } else {
                 // This will scroll upwards
@@ -144,7 +192,8 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
             // we will redirect to the shopSingle.html page
             redirect(true);
         } else {
-            // we will update the page instantly
+            // we will update the page instantly by saving the new data and then 
+            // run the REDIRECT function to scroll upward
             let retrieveShopBasket = localStorage.getItem('shoppingBasket');
             let shopObj = JSON.parse(retrieveShopBasket);
 
@@ -169,6 +218,7 @@ function updateShopPage(shopObj) {
     productDescription.textContent = shopObj.description;
     additionalInfo.textContent = shopObj.additionalInfo;
     quantityInput.value = shopObj.qty;
+
 }
 
 

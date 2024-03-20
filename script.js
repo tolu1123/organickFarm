@@ -1,54 +1,15 @@
-//Setting the hamburger display
-// Setting the modal
-let hamburger = document.querySelector('.hamburger');
-let dropDown = document.querySelector('.dropDown');
-let state = false;
-
-// Adding the event listener
-hamburger.addEventListener('click', () => {
-    if(state) {
-        // if state is true (meaning that the drop down is opened) we will close it
-        hamburger.innerHTML = '<i class="fa-sharp fa-solid fa-bars"></i>';
-        if(window.innerWidth <= 639) {
-          dropDown.classList.add('transTop');
-          dropDown.classList.remove('transTopNormal');
-        }
-
-        if(window.innerWidth >= 640) {
-          dropDown.classList.add('transRight');
-          dropDown.classList.remove('transNormal');
-        }
-
-        // change the state of the drop down
-        state = !state;
-    } else {
-        // If state is false(meaning that the drop down is closed)
-        hamburger.innerHTML = '<i class="fa-sharp fa-solid fa-xmark"></i>';
-
-        // if the dropdown is closed
-        // make it dropdown 
-        if(window.innerWidth <= 639) {
-          dropDown.classList.add('transTopNormal');
-          dropDown.classList.remove('transTop');
-          dropDown.classList.add('right-0');
-        } 
-
-        if(window.innerWidth >= 640) {
-          dropDown.classList.remove('transRight');
-          dropDown.classList.add('transNormal');
-          dropDown.classList.add('right-0');
-        }
-
-        // change the state of the dropDown
-        state = !state;
-    }
-})
-
+// import the onlineStatus function from module onlineStatus.js
+import { onlineStatus } from "./modules/onlineStatus.js";
+//import the necessary function from the module hamburger.js
+import { hamburger, closeDropDown, handleOutsideClick} from "./modules/hamburger.js";
 
 // import the necessary functions from the module products.js
 import {loadProducts, productTemplate, pathLocator, updateShopPage} from "./modules/products.js"
 // import the necessary functions and objects from the module news.js
 import { newsArr, displayNews} from "./modules/news.js";
+import { cartCount } from "./modules/cartCounter.js";
+// update the view on the cartCounter element
+cartCount();
  
 
 let products;
@@ -82,9 +43,13 @@ async function fetchProducts(){
 
     unOfferedProducts = [...products];
 
-    loadProducts(undisplayedProducts , displayedProducts , 0 , 4, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage);
-
-    loadProducts(unOfferedProducts , offeredProducts , 12 , 4, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage);
+    if(window.innerWidth >= 640 && window.innerWidth < 1024) {
+      loadProducts(undisplayedProducts, displayedProducts,0 ,3, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+      loadProducts(unOfferedProducts , offeredProducts , 0 , 3, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+    } else {
+      loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+      loadProducts(unOfferedProducts , offeredProducts , 12 , 4, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+    }
 
     // The code to observe the products in the categories and offer section
     observeCatProducts();
@@ -126,7 +91,18 @@ fetchProducts()
 // The load more functionality in the products section of the homepage
 //THE load more button functionality
 loadMoreProductsBtn.addEventListener('click', () => {
-  loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage);
+
+  // The loadMore button handles the display of product items to avoid inconsistencies and large whitespace 
+  // depending on the width of the viewport.
+  if(window.innerWidth >= 640 && window.innerWidth < 1024) {
+    //if the buttton is clicked and the screen is about 640px and 1024 px i want to display all hidden produucts if there is any of those product that is hidden
+    // then depending on the number of PRODUCT ITEMS displayed, it will no how many items to fetch back to fill empty spaces if there are emoty spaces 
+    // and then if there are no empty spaces it will get three products.
+    document.querySelectorAll('.product').forEach(child => child.style='flex');
+    loadProducts(undisplayedProducts, displayedProducts,0 ,(3 - (productItemContainer.children.length % 3)), productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+  } else {
+    loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+  }
 })
 
 // THE PAGINATION STYLING FOR THE HOME PAGE
@@ -228,6 +204,8 @@ let heroObserver = new IntersectionObserver((entries) => {
     if(entry.target.classList.contains('product')) {
       if(entry.isIntersecting && entry.intersectionRatio > 0.2) {
         entry.target.classList.add('visibleProduct');
+      }else {
+        entry.target.classList.remove('visibleProduct');
       }
     }
 

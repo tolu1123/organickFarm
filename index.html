@@ -19,9 +19,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="preload" href="./images/hero/homeHero.jpg" as="image">
 </head>
 <body class="w-full h-[100vh]">
-    <header class="bg-white flex justify-between py-4 pl-1 pr-5 w-full sticky top-0 z-[1100]">
+    <!-- The error message that will be displayed when connection is lost -->
+    <div class="connectionError verySlowTransition hidden flex flex-row justify-center items-center gap-3 sm:gap-5 absolute top-[70px] right-2 sm:right-5 px-5 py-3 border border-solid rounded-[0.375rem] border-errorRed bg-pink bg-opacity-40">
+        <!-- the div for the error icon -->
+        
+        <!-- The error message -->
+        <div class="connectionMessage text-errorRed text-sm flex items-center gap-1.5">
+            <div class="errorIcon text-lg text-errorRed">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <div class="mess">Oops, your connection has been lost!!</div>
+        </div>
+        <!-- The closeBtn for the error message -->
+        <button class="closeBtn w-auto aspect-square text-base font-medium text-errorRed border border-solid border-errorRed px-1.5 focus:shadow-md">
+            <i class="fa-regular fa-xmark"></i>
+        </button>
+    </div>
+    
+    <header class="bg-white flex justify-between py-4 pl-1 pr-5 w-full sticky top-0 z-[1100] shadow-lg">
         <!-- The logo for the project -->
         <div class="logo">
         <img src="./images/logo/logo1.svg" alt="Logo for Organick Farm" class="w-36 h-8">
@@ -29,7 +47,7 @@
 
         <!-- The nav links for desktop -->
         <nav class="hidden lg:flex justify-between items-center gap-6 text-base text-[#274C5B]">
-            <a class="hover:text-lightGreen" href="#">Home</a>
+            <a class="text-lightGreen font-normal" href="#">Home</a>
             <a class="hover:text-lightGreen" href="./pages/aboutUs.html">About</a>
             <span class="group translate-y-0.5"><a class="hover:text-lightGreen" href="#">Pages<span class="ml-0.5 font-black text-[10px]"><i class="fa-regular fa-angle-down"></i></span></a>
                 <div class="hidden absolute group-hover:block bg-white p-5 rounded-xl shadow-md w-48">
@@ -45,7 +63,7 @@
             <a class="hover:text-lightGreen" href="./pages/blog.html">News</a>
         </nav>
         <!-- The shopping cart and the search menu -->
-        <div class="meta flex justify-between gap-5 items-center">
+        <div class="meta flex justify-between gap-10 sm:gap-5 items-center">
             <!-- The search div container -->
             <div class="search sm:w-36 h-7 relative overflow-hidden rounded-full">
                 <input type="text" class="hidden sm:block w-full h-full bg-[#EEEEEE] py-1.5 text-base pl-2.5 pr-8 border-none outline-none" name="" id="">
@@ -53,15 +71,30 @@
                 <button class="absolute right-0 top-0 inline-block w-7 h-7 bg-[#7EB693] rounded-full text-white"><i class="fa-sharp fa-light fa-magnifying-glass text-base"></i></button>
             </div>
 
-            <!-- The cart div container -->
-            <div class="cart flex justify-between items-center h-7 rounded-full border-[1px] border-[#274C5B] border-solid">
-                <div class="cartBtn flex items-center justify-center w-7 h-7 rounded-full bg-[#274C5B] text-white text-[14px]"><i class="fa-light fa-cart-shopping"></i></div>
-                <div class="cartItems hidden px-2 sm:flex justify-center items-center text-base">
-                    <span>Cart</span>
-                    <!-- The dynamic cart no -->
-                    <span>(0)</span>
-                </div>
+            <!-- The cart div container that shows the no of items we have in our cart
+          and will also link to the cart page when clicked -->
+        <a href="./pages/cart.html">
+            <div
+              class="cart flex justify-between items-center h-7 rounded-full sm:border-[1px] sm:border-[#274C5B] border-solid relative"
+            >
+              <div
+                class="cartBtn flex items-center justify-center w-7 h-7 rounded-full sm:bg-[#274C5B] sm:text-white text-deepGreen sm:text-[14px] text-2xl sm:text-base"
+              >
+                <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+              </div>
+              <!-- The element that contains the cart count -->
+              <span
+                class="cartCounter sm:hidden text-sm text-white w-fit h-fit py-1 px-1.5 rounded-full bg-lightGreen absolute translate-x-5 -translate-y-1.5"
+              ></span>
+              <div
+                class="cartItems hidden px-2 sm:flex justify-center items-center text-base"
+              >
+                <span>Cart</span>
+                <!-- The dynamic cart no -->
+                <span>&#40; <span class="cartCounter">0</span> &#41;</span>
+              </div>
             </div>
+          </a>
 
             <!-- The nav links for mobile devices -->
             <div class="mobileNav lg:hidden">
@@ -70,8 +103,8 @@
 
                 <!-- This is where the drop down menu will be -->
                 <div class="dropDown absolute transTop transRight transitions w-full sm:w-[400px] bg-white p-5  text-[#274C5B] text-right divide-y divide-[#274C5B] divide-solid sm:divide-y-0 text-lg z-[15]">
-                    <a class="ml-auto block pt-1.5 pb-1.5 sm:pt-3 sm:pb-3" href="">Home</a>
-                    <a class="block pb-1.5 sm:pb-3 !border-b !border-deepGreen !border-solid" href="">About</a>
+                    <a class="ml-auto block text-lightGreen pt-1.5 pb-1.5 sm:pt-3 sm:pb-3" href="#">Home</a>
+                    <a class="block hover:text-lightGreen pb-1.5 sm:pb-3 !border-b !border-deepGreen !border-solid" href="./pages/aboutUs.html">About</a>
                     <span class="group">
                         <a class="block pb-1.5 hover:text-lightGreen" href="#">Pages<span class="ml-0.5 font-black text-[10px]"><i class="fa-regular fa-angle-down"></i></span></a>
                         <div class="hidden group-hover:block transitions pr-7">
@@ -81,8 +114,8 @@
                             <a class="block hover:text-lightGreen pb-1.5" href="./pages/team.html">Team</a>
                         </div>
                     </span>
-                    <a class="block pb-1.5 sm:pb-3" href="./pages/shop.html">Shop</a>
-                    <a class="block pb-1.5 sm:pb-3" href="./pages/blog.html">News</a>
+                    <a class="block hover:text-lightGreen pb-1.5 sm:pb-3" href="./pages/shop.html">Shop</a>
+                    <a class="block hover:text-lightGreen pb-1.5 sm:pb-3" href="./pages/blog.html">News</a>
                 </div>
             </div>
         </div>
@@ -90,7 +123,7 @@
     </header>
 
     <!-- This is the hero section of the home page of the organickFarm -->
-    <div class="hero w-full bg-[url('./images/hero/homeHero.jpg')] bg-cover bg-[right_57%_bottom] sm:bg-center flex justify-start items-center  p-5 sm:px-10">
+    <div class="hero w-full bg-[url('./images/hero/homeHero.jpg')] bg-cover bg-[right_57%_bottom] sm:bg-center flex justify-start items-center p-5 sm:px-10">
 
         <div class="heroTitle flex justify-start items-start flex-col">
             

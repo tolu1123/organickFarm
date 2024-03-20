@@ -9,7 +9,9 @@ module.exports = {
       'deepGreen2': '#336B5B',
       'lightGreen': '#7EB693',
       'red': '#ff0000',
-      'errorRed': '#ef4444'
+      'errorRed': '#ef4444',
+      'pink': '#dc3545',
+      'blue': '#2563eb',
     },
   },
   plugins: [],

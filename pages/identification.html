@@ -15,10 +15,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yellowtail&display=swap" rel="stylesheet">
-    <script defer src="../scripts/identification.js"></script>
-    <link rel="stylesheet" href="build/css/intlTelInput.css">
+    <script defer type="module" src="../scripts/identification.js"></script>
+    <link rel="stylesheet" href="../node_modules/intl-tel-input/build/css/intlTelInput.css">
+    <script id="script" src="../node_modules/intl-tel-input/build/js/intlTelInput.min.js"></script>
+    <script src="../node_modules/intl-tel-input/build/js/intlTelInput.js"></script>
 </head>
-<body class="">
+<body class="relative">
     <div class="flex flex-col justify-center sm:w-1/2 lg:w-5/12 mx-auto p-5">
 
         <header class="flex flex-col justify-center pt-32 sm:pt-16">
@@ -39,7 +41,7 @@
 
         <form class="flex flex-col justify-center" action="" method="post" >
 
-            <div class="w-full flex flex-col items-center mt-10 mb-3 relative">
+            <div class="inputContainer w-full flex flex-col items-center mt-10 mb-3 relative">
 
                 <!-- The input element that collects the email or phone no -->
                 <input class="peer w-full border border-solid focus:border-none outline-2 focus:outline-lightGreen outline-solid rounded-[4px] px-2 py-3" type="text" name="details" id="details" placeholder="" required autofocus>
@@ -47,26 +49,16 @@
                 <!-- The label for the input -->
                 <label class="fasterTransition text-base peer-valid:top-0 peer-focus:top-0 peer-valid:-translate-y-[60%] peer-focus:-translate-y-[60%] peer-focus:text-sm peer-valid:text-sm peer-focus:text-lightGreen peer-valid:text-lightGreen absolute top-3 left-2 px-1 bg-white" for="details">Email or Mobile Number*</label>
 
-                <!-- The prefix for phone numbers if input is a phone number-->
-                <div class="absolute">
-                    <span class="flag">
-                        
-                    </span>
-                    <select name="" id="country"></select>
-                    <input type="tel" id="demo" placeholder="" id="telephone">
-
-                    <!-- <input type="text" name="" id="" value="+234"> -->
-                </div>
             </div>
 
             <!-- The error clues -->
-            <div class="invalidEmail hidden text-errorRed text-sm">
-                <p class="">The e-mail you provided does not exist. Please can you check it again</p>
+            <div class="invalidEmail hidden text-errorRed text-xs">
+                <p class="">The e-mail you provided is not valid. Please can you check it again</p>
             </div>
-            <div class="hidden text-pink-600 text-sm">
-                The phone number you provided does not exist, please kindly provide another number.
+            <div class="invalidPhoneError hidden text-errorRed text-xs">
+                The phone number you provided is not valid, please kindly provide another number.
             </div>
-            <div class="correctSuggParent hidden text-pink-600 text-sm">
+            <div class="correctSuggParent hidden text-pink-600 text-xs">
                 Do you mean <span class="correctSuggestion"></span>
             </div>
             <div class="hidden text-pink-600 text-sm">
@@ -90,11 +82,28 @@
 
     </div>
 
+    <!-- The error message that will be displayed when connection is lost -->
+    <div class="connectionError verySlowTransition hidden flex flex-row justify-center items-center gap-3 sm:gap-5 absolute top-5 right-2 sm:right-5 px-5 py-3 border border-solid rounded-[0.375rem] border-errorRed bg-pink bg-opacity-20">
+        <!-- the div for the error icon -->
+        
+        <!-- The error message -->
+        <div class="connectionMessage text-errorRed text-sm flex items-center gap-1.5">
+            <div class="errorIcon text-lg text-errorRed">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <div class="mess">Oops, your connection has been lost!!</div>
+        </div>
+        <!-- The closeBtn for the error message -->
+        <button class="closeBtn w-auto aspect-square text-base font-medium text-errorRed border border-solid border-errorRed px-1.5 focus:shadow-md">
+            <i class="fa-regular fa-xmark"></i>
+        </button>
+    </div>
+
     <div class="fadingTransition errorMessage hidden px-3 absolute top-0 w-full h-full flex justify-center items-center">
 
-        <!-- The mimick error message -->
+        <!-- The mimick error message for our fictional server failure-->
         <div class="sm:w-3/4 border border-[#a3cfbb] border-solid bg-[#d1e7dd] text-[#0a3622] rounded-[0.375rem] relative p-5" role="alert">
-            <div class="close absolute text-3xl top-2 right-3">
+            <div class="closeBtn absolute text-3xl top-2 right-3">
                 <i class="fa-regular fa-xmark"></i>
             </div>
 
@@ -121,19 +130,58 @@
            <i> &copy; 2024 Organick</i>
         </div>
     </footer>
+    <!-- <script>
+        // const hiddenInput = document.getElementById('hiddenInput');
+        window.addEventListener('load', () => {
+            console.log('loaded');
+        })
+        const token = '20e1289ef3b902';
+        const datum = 'MN1T2UYNP8GHVBM1638SF7AH'
+        let flag = true;
     
-    <script src="build/js/intlTelInput.min.js"></script>
-    <script>
-        // Vanilla Javascript
-        var input = document.querySelector("#telephone");
-        window.intlTelInput(input,({
-        // options here
-        allowDropdown:true,
-        autoInsertDialCode:true,
+        function getIp(callback) {
+            fetch(`https://ipinfo.io/json?token=${token}`, { headers: { 'Accept': 'application/json' }})
+            .then((resp) => resp.json())
+            .catch(() => {
+                return {
+                country: 'us',
+                };
+            })
+            .then((resp) => callback(resp.country));
+        }
+    
+        const option = {
+            initialCountry: "auto",
+            geoIpLookup: getIp,
+            utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        }
+        const phoneInputField = document.querySelector("#details");
+        let phoneInput = window.intlTelInput(phoneInputField, option);
+        const info = document.querySelector(".alert-info");
+        const error = document.querySelector(".alert-error");
+    
+        let process = (event) => {
+            event.preventDefault();
+            if (flag) {
+    
+                const phoneNumber = phoneInput.getNumber();
+    
+                info.style.display = "none";
+                error.style.display = "none";
+    
+                if (phoneInput.isValidNumber()) {
+                info.style.display = "";
+                info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+                } else {
+                error.style.display = "";
+                error.innerHTML = `Invalid phone number.`;
+                }
+                console.log(phoneInputField.value)
+            }
+        }
+      </script> -->
 
-        }));
-    </script>
-
-    <script defer src=""></>
+    <!-- <script defer src=""></> -->
 </body>
 </html>

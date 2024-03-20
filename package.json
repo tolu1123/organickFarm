@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.4.1"
   },
   "name": "organickfarm",
   "version": "1.0.0",
@@ -30,6 +30,7 @@
     "hasown": "^2.0.0",
     "inflight": "^1.0.6",
     "inherits": "^2.0.4",
+    "intl-tel-input": "^20.0.4",
     "ip-geolocation-api-javascript-sdk": "^1.0.9",
     "is-binary-path": "^2.1.0",
     "is-core-module": "^2.13.1",
