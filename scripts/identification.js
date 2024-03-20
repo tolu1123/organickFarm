@@ -40,6 +40,13 @@ const correctSuggestion = document.querySelector('.correctSuggestion')
 const correctSuggParent = document.querySelector('.correctSuggParent');
 const phoneError = document.querySelector(".invalidPhoneError");
 
+// Preload the intl-Tel-Input utils.js file
+const preloadLink = document.createElement("link");
+preloadLink.href = "../scripts/utils.js";
+preloadLink.rel = "preload";
+preloadLink.as = "script";
+document.head.appendChild(preloadLink);
+
 
 // Throttle function
 let throttleFlag;
@@ -92,6 +99,14 @@ function displayFalseError(errorMessage) {
 async function initTelPlugin() {
     
     const datum = 'MN1T2UYNP8GHVBM1638SF7AH'
+
+    // We are going to use the preloaded scripts
+    if(telFlag === false){
+        const preloadedScript = document.createElement("script");
+        preloadedScript.setAttribute('id', 'preloadedScript')
+        preloadedScript.src = "../scripts/utils.js";
+        document.body.appendChild(preloadedScript);
+    }
 
     option = {
         initialCountry: "us",
