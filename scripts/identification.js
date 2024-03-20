@@ -181,20 +181,26 @@ function removeErrorDropDown() {
     }
 }
 detailsInput.addEventListener('focus', () => {
+    if(telFlag) {
     focusedDropDown()
+    }
 })
-detailsInput.addEventListener('blur', () => {  
+detailsInput.addEventListener('blur', () => {
+    if(telFlag) {
     // once the input is blured, we will add styling for the dropdown's margin
     // to express an unfocused input
     bluredDropDown()
+    }
 })
 detailsInput.addEventListener("countrychange", function() {
+    if(telFlag) {
     // We remove the error styling for the dropdown margins
     removeErrorDropDown()
     focusedDropDown()
     // We are going to remove all sort of error and messages
     // And present a fresh display
     refreshDisplay()
+    }
 });
 // Creating a function that checks the first two character of the inputs
 // so as to detect whether the user is trying to input a number or an email
@@ -241,6 +247,7 @@ function checkInput() {
             inputContainer.appendChild(labelHolder);
             // We are going to remove the margin applied to the dropdown
             dropDown.classList.remove('border-right-t', 'border-solid', 'z-10', 'border-lightGreen');
+            dropDown.classList.contains('border-errorRed') ? dropDown.classList.remove('border-errorRed') : null;
             // We are going to remove the formatting before destroying the instance of the plugin
             option.formatAsYouType = false;
             //The intl-tel-input instance will be destroyed
@@ -271,6 +278,11 @@ function checkInput() {
         if(!inputContainer.contains(label)) {
             // Append the label to the container
             inputContainer.appendChild(labelHolder);
+            // We are going to remove the margin applied to the dropdown
+            dropDown.classList.remove('border-right-t', 'border-solid', 'z-10', 'border-lightGreen');
+            dropDown.classList.contains('border-errorRed') ? dropDown.classList.remove('border-errorRed') : null;
+            // We are going to remove the formatting before destroying the instance of the plugin
+            option.formatAsYouType = false;
             //The intl-tel-input instance will be destroyed
             phoneInput.destroy();
             phoneInput = '';
