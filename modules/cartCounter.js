@@ -17,7 +17,7 @@ function cartCounter(cartElement) {
     if(cart?.length > 0) {
         cartElement.classList.contains('hidden')? cartElement.classList.remove('hidden'): null;
     } else {
-        cartElement.classList.add('hidden');
+        cartElement.classList.contains('sm')? null :cartElement.classList.add('hidden');
     }
     let noOfItems = cart === null || cart.length < 0 ? 0 : cart.reduce((acc, currentElement) => {
         return parseInt(acc + currentElement.qty);
