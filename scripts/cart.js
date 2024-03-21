@@ -177,15 +177,17 @@ function displayCartData(outputElement) {
 
 //IF OUR STORAGE DOES NOT CONTAIN ANY ITEM, WE WILL UPDATE THE VIEW OF OUR PAGE
 function cartState() {
-    if (localStorage.getItem('cart') === null || localStorage.getItem('cart') === '[]') {
+    if (localStorage.getItem('cart') === null || JSON.parse(localStorage.getItem('cart')).length === 0) {
         // Hide the cart
         cartData.classList.add('hidden')
 
         // Display the default counter card
         defaultCounterCard.classList.remove('hidden');
 
-        // Show the empty cart
-        defaultCartData.style.display = 'block';
+        // Display the defaultCartData if it has been hidden
+        // but you should know by default that the defaultCartData is not hidden on the page
+        defaultCartData.classList.contains('hidden')? defaultCartData.classList.remove('hidden'): null;
+
     } else {
         // Show the cart
         cartData.classList.remove('hidden');
@@ -201,13 +203,16 @@ function cartState() {
     }
 }
 cartState();
-window.addEventListener('storage', cartState)
+window.addEventListener('storage', () => {
+    cartState();
+    pos();
+})
 
 // OUR POS MACHINE
 let posMachineValue
 
 function pos() {
-    posMachineValue = JSON.parse(localStorage.getItem('cart')) !== null || JSON.parse(localStorage.getItem('cart')).length > 0 ? JSON.parse(localStorage.getItem('cart')).reduce((accumulator, currentElement) => {
+    posMachineValue = (localStorage.getItem('cart') !== null || JSON.parse(localStorage.getItem('cart'))?.length > 0) ? JSON.parse(localStorage.getItem('cart')).reduce((accumulator, currentElement) => {
         return accumulator + (currentElement.qty * currentElement.rPrice);
     }, 0): 0;
     // set or update the pos value

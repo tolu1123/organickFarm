@@ -14,6 +14,11 @@ function updateCounter(cartElement) {
 // Function to update the cart counter
 function cartCounter(cartElement) {
     let cart = JSON.parse(localStorage.getItem('cart'));
+    if(cart?.length > 0) {
+        cartElement.classList.contains('hidden')? cartElement.classList.remove('hidden'): null;
+    } else {
+        cartElement.classList.add('hidden');
+    }
     let noOfItems = cart === null || cart.length < 0 ? 0 : cart.reduce((acc, currentElement) => {
         return parseInt(acc + currentElement.qty);
     }, 0);
