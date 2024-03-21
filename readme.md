@@ -2,8 +2,6 @@
     <img src='./images/logo/logo1.svg' alt="Organick logo" title="The logo for Organick">
 </p>
 
-<h1 align='center'>ORGANICK FARM<h1/>
-
 ## Project Description
 
 Organick is a 🦄 fictional website dedicated to providing a convenient platform for users to purchase and receive fresh, organic food products directly to their doorstep. With a focus on sustainability, health, and convenience, Organick aims to revolutionize the way people access and consume organic food products.
@@ -94,7 +92,7 @@ If you have any questions, feedback, or suggestions,or you want to know what i w
 
 ##
 ### P.S. 📜
-Thank you for taking the time to explore our project! We hope you find it useful and enjoyable. If you liked what you saw, don't forget to star the repository ⭐️ to show your support! Also, feel free to share it with your friends and colleagues who might benefit from it.
+Thank you for taking the time to explore this project! I hope you find it useful and enjoyable. If you liked what you saw, don't forget to star the repository ⭐️ to show your support! Also, feel free to share it with your friends and colleagues who might benefit from it.
 
 Happy coding! 😊🚀
 

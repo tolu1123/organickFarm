@@ -16,7 +16,7 @@ let option;
 let dropDown;
 let telFlag = false;
 // the ipAddress
-let ipAddress
+let ipAddress;
 function getIp(callback) {
     if(onlineStatus){
         const token = '20e1289ef3b902';
@@ -39,6 +39,7 @@ const invalidEmail = document.querySelector('.invalidEmail');
 const correctSuggestion = document.querySelector('.correctSuggestion')
 const correctSuggParent = document.querySelector('.correctSuggParent');
 const phoneError = document.querySelector(".invalidPhoneError");
+const phoneInputField = document.querySelector("#details");
 
 // Preload the intl-Tel-Input utils.js file
 const preloadLink = document.createElement("link");
@@ -46,6 +47,19 @@ preloadLink.href = "../scripts/utils.js";
 preloadLink.rel = "preload";
 preloadLink.as = "script";
 document.head.appendChild(preloadLink);
+
+// We set the options for the tel-Input-Plugin by default
+option = {
+    initialCountry: "us",
+    utilsScript:
+    "../scripts/utils.js",
+    preferredCountries: ['us', 'ng', 'uk'],
+    formatAsYouType: true,
+    containerClass: 'dropDownContainer',
+}
+// we initialize the phoneInput plugin by default then destroy
+phoneInput = window.intlTelInput(phoneInputField, option);
+phoneInput.destroy();
 
 
 // Throttle function
@@ -117,7 +131,7 @@ async function initTelPlugin() {
         containerClass: 'dropDownContainer',
     }
 
-    const phoneInputField = document.querySelector("#details");
+    
     // we initialize the phoneInput plugin
     phoneInput = window.intlTelInput(phoneInputField, option);
     // We are setting the value of the input to the present value after the plugin has been initialized
