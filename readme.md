@@ -84,6 +84,8 @@ I appreciate [Victorflow](https://www.linkedin.com/company/victorflow/) for allo
 
 I appreciate my parents for their loving support, care and guidance during the burnouts and _heavy eyes_.
 
+Finally all glory and praise goes to Jehovah for the gifts of men, humanity, support, love he gave me throughout the building of this project.
+
 ## Contact 📬📧
 
 If you have any questions, feedback, or suggestions,or you want to know what i will be doing next😜. I will love to hear from you! Feel free to reach out to me through: 

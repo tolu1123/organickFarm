@@ -50,7 +50,7 @@ document.head.appendChild(preloadLink);
 
 // We set the options for the tel-Input-Plugin by default
 option = {
-    initialCountry: "us",
+    initialCountry: (localStorage.getItem('country') || "us"),
     utilsScript:
     "../scripts/utils.js",
     preferredCountries: ['us', 'ng', 'uk'],
@@ -61,6 +61,7 @@ option = {
 phoneInput = window.intlTelInput(phoneInputField, option);
 phoneInput.destroy();
 
+detailsInput.focus();
 
 // Throttle function
 let throttleFlag;
@@ -123,7 +124,7 @@ async function initTelPlugin() {
     }
 
     option = {
-        initialCountry: "us",
+        initialCountry: (localStorage.getItem('country') || "us"),
         utilsScript:
         "../scripts/utils.js",
         preferredCountries: ['us', 'ng', 'uk'],
