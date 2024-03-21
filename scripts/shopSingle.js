@@ -145,27 +145,44 @@ addToCartBtn.addEventListener('click', () => {
 let descriptionBtn = document.querySelector('.descriptionBtn');
 let addInfoBtn = document.querySelector('.addInfoBtn');
 
+let activeStyle = ['bg-deepGreen', 'text-[#fff]']
+let unactiveStyle = ['bg-shadeGreen', 'text-deepGreen']
+let toggleFlag = true;
+
 
 descriptionBtn.addEventListener('click', ()=> {
-    // Display the productDescription element
-    productDescription.style.display = 'block';
-    //  Indicate the descriptionBtn by styling
-    descriptionBtn.classList.add('p-3', 'bg-deepGreen', 'text-[#fff]', 'rounded-md')
-    // Hide the additionalInfo element
-    additionalInfo.style.display = 'none';
-    // Unstyle the addInfoBtn
-    addInfoBtn.classList.remove('p-3', 'bg-deepGreen', 'text-[#fff]', 'rounded-md');
+    if(toggleFlag === false) {
+        // Display the productDescription element
+        productDescription.style.display = 'block';
+        //  Indicate the descriptionBtn by styling
+        descriptionBtn.classList.contains(...unactiveStyle)? descriptionBtn.classList.remove(...unactiveStyle): null;
+        descriptionBtn.classList.add(...activeStyle);
+        // Hide the additionalInfo element
+        additionalInfo.style.display = 'none';
+        // Unstyle the addInfoBtn
+        addInfoBtn.classList.contains(...activeStyle)? addInfoBtn.classList.remove(...activeStyle): null;
+        addInfoBtn.classList.add(...unactiveStyle);
+
+        toggleFlag = true;
+    }
 })
 
 addInfoBtn.addEventListener('click', ()=> {
-    // Display the additionalInfo element
-    additionalInfo.style.display = 'block';
-    // Indicate the addInfoBtn by styling
-    addInfoBtn.classList.add('p-3', 'bg-deepGreen', 'text-[#fff]', 'rounded-md')
-    // Hide the productDescription element
-    productDescription.style.display = 'none';
-    // Unstyle the descriptionBtn
-    descriptionBtn.classList.remove('p-3', 'bg-deepGreen', 'text-[#fff]', 'rounded-md');
+    if(toggleFlag) {
+        // Display the additionalInfo element
+        additionalInfo.style.display = 'block';
+        // Indicate the addInfoBtn by styling
+        addInfoBtn.classList.remove(...unactiveStyle);
+        addInfoBtn.classList.add(...activeStyle);
+        // Hide the productDescription element
+        productDescription.style.display = 'none';
+        // Unstyle the descriptionBtn
+        descriptionBtn.classList.remove(...activeStyle);
+        descriptionBtn.classList.add(...unactiveStyle);
+
+        toggleFlag = false;
+    }
+
 })
 
 //POPULATING THE RELATED SECTION 
