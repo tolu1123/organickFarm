@@ -496,4 +496,11 @@
       </div>
     </footer>
   </body>
+  <script>
+    // if our shoppingBasket is empty we will redirect straight back to 
+    // the shop page
+    if(localStorage.getItem('shoppingBasket') === null) {
+      window.location = './shop.html';
+    }
+  </script>
 </html>
