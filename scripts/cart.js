@@ -10,6 +10,7 @@ const cartData = document.querySelector('.cartData');
 const defaultCounterCard = document.querySelector('.defaultCounterCard');
 const defaultCartData = document.querySelector('.defaultCartData');
 const cartDisplay = document.querySelector('.cartDisplay');
+const checkOutBtns = document.querySelectorAll('.checkOutBtn'); 
 
 
 
@@ -188,6 +189,10 @@ function cartState() {
         // but you should know by default that the defaultCartData is not hidden on the page
         defaultCartData.classList.contains('hidden')? defaultCartData.classList.remove('hidden'): null;
 
+        // Hide the checkout btns if they are not hidden
+        checkOutBtns.forEach(btn => {
+            btn.classList.contains('hidden')? null :btn.classList.add('hidden');
+        })
     } else {
         // Show the cart
         cartData.classList.remove('hidden');
@@ -200,6 +205,11 @@ function cartState() {
 
         //display the cart data
         displayCartData(cartDisplay);
+
+        // Remove the hidden class from the checkout btns
+        checkOutBtns.forEach(btn => {
+            btn.classList.contains('md:block') ? null :btn.classList.remove('hidden');
+        })
     }
 }
 cartState();
