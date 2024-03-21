@@ -313,8 +313,9 @@ function checkInput() {
 }
 detailsInput.addEventListener('input', checkInput);
 
-let abstractKey = 'dca45c65b6434f1fa23a7dd8fdda4af6';
-let secondKey = '764379c565894cee8207ed6f1a64117e'
+let abstractKey = '764379c565894cee8207ed6f1a64117e';
+let secondKey = 'd82125cfd4e840c1b94673c37ae55067'
+
 // Function to check what has been entered is valid and actually exists 
 function checkEmailValidity() {
 
@@ -335,7 +336,7 @@ function checkEmailValidity() {
                 // i will switch keys
                 // and then try again!
                 abstractKey = secondKey;
-                checkEmail()
+                return checkEmail()
             } else if(response.status !== 200) {
                 throw new Error('The response status is not 200');
             }
@@ -361,7 +362,7 @@ function checkEmailValidity() {
             console.log('Error:', error);
         }
     }
-    checkEmail();
+    return checkEmail();
 }
 
 // The error dynamic styling for invalidInput
