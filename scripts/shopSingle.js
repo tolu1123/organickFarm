@@ -110,20 +110,20 @@ addToCartBtn.addEventListener('click', () => {
     // Display the cartConfirmation modal
     cartConfirmation.classList.remove('hidden');
     cartConfirmationText.textContent = parseInt(quantityInput.value) > 1? `${quantityInput.value} products`: `${quantityInput.value} product`;
-    cartContainer.classList.add('cartShadow-sm');
+    cartContainer.classList.add('sm:cartShadow-sm');
 
     let count = 0;
     async function animateCart() {
         setTimeout(() => {
-            cartContainer.classList.add('cartShadow-md');
+            cartContainer.classList.add('sm:cartShadow-md');
 
             setTimeout(() => {
-                cartContainer.classList.remove('cartShadow-md');
-                cartContainer.classList.remove('cartShadow-sm');
+                cartContainer.classList.remove('sm:cartShadow-md');
+                cartContainer.classList.remove('sm:cartShadow-sm');
             }, 300);
             
         }, count * 50);
-        cartContainer.classList.add('cartShadow-sm');
+        cartContainer.classList.add('sm:cartShadow-sm');
         count++;
         if (count < 2) {
             setTimeout(animateCart, 500); // Adjust delay between iterations as needed
@@ -131,7 +131,7 @@ addToCartBtn.addEventListener('click', () => {
     }
     animateCart();
 
-    cartContainer.classList.remove('cartShadow-sm');
+    cartContainer.classList.remove('sm:cartShadow-sm');
 
     // Close the cartConfirmation modal after 3.5 seconds
     setTimeout(() => {
