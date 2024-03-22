@@ -1411,6 +1411,10 @@ video {
   row-gap: 2rem;
 }
 
+.gap-y-3 {
+  row-gap: 0.75rem;
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1513,6 +1517,10 @@ video {
 
 .border-t-\[1px\] {
   border-top-width: 1px;
+}
+
+.border-e {
+  border-inline-end-width: 1px;
 }
 
 .\!border-solid {

@@ -1,7 +1,8 @@
 // We are going to check our online status before we make requests
 export let onlineStatus;
 
-let errorMessage = document.querySelector('.connectionError');
+const errorMessage = document.querySelector('.connectionError');
+const succMessage = document.querySelector('.connectionSucc')
 
 if (window.navigator.onLine){
     onlineStatus = true;
@@ -28,11 +29,21 @@ window.addEventListener("online", (e) => {
     onlineStatus = true;
     // We will remove the error message
     errorMessage?.classList.add('hidden');
+    if(succMessage?.classList.contains('hidden')) {
+        succMessage?.classList.remove('hidden');
+        succMessage?.classList.add('z-[1500]')
+    }
+    applyTransError(succMessage);
 });
 
 let errorMessageClose = document.querySelector('.connectionError .closeBtn');
 errorMessageClose?.addEventListener('click', () => {
     errorMessage?.classList.add('hidden');
+})
+
+let succMessageClose = document.querySelector('.connectionSucc .closeBtn');
+succMessageClose?.addEventListener('click', () => {
+    succMessage?.classList.add('hidden');
 })
 
 function applyTransError(errorMessage) {

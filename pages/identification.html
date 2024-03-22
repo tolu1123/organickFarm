@@ -99,6 +99,23 @@
         </button>
     </div>
 
+    <!-- The connectionSuccess message that will be displayed when connection is lost -->
+    <div class="connectionSucc verySlowTransition hidden flex flex-row justify-center items-center gap-3 sm:gap-5 absolute top-5 right-2 sm:right-5 px-5 py-3 border border-solid rounded-[0.375rem] border-deepGreen bg-deepGreen bg-opacity-20">
+        <!-- the div for the error icon -->
+        
+        <!-- The connection message -->
+        <div class="connectionMessage text-deepGreen text-sm flex items-center gap-1.5">
+            <div class="errorIcon text-lg text-deepGreen">
+                <i class="fa-solid fa-thumbs-up"></i>
+            </div>
+            <div class="mess">Your connection has been restored!!</div>
+        </div>
+        <!-- The closeBtn for the error message -->
+        <button class="closeBtn w-auto aspect-square text-base font-medium text-deepGreen border border-solid border-deepGreen px-1.5 focus:shadow-md">
+            <i class="fa-regular fa-xmark"></i>
+        </button>
+    </div>
+
     <div class="fadingTransition errorMessage hidden px-3 absolute top-0 w-full h-full flex justify-center items-center">
 
         <!-- The mimick error message for our fictional server failure-->
