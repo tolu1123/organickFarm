@@ -78,7 +78,7 @@ function displayCartData(outputElement) {
                     <!-- The decrementor button, input element to dispaly the no of items and incrementor button-->
                     <div class="flex flex-row gap-x-1">
                     <button
-                        class="bg-[#274C5B] w-[35px] h-[35px] text-white rounded-md py-1 px-2 decrementor"
+                        class="bg-[#274C5B] active:bg-opacity-80 w-[35px] h-[35px] text-white rounded-md py-1 px-2 decrementor"
                     >
                         -
                     </button>
@@ -90,7 +90,7 @@ function displayCartData(outputElement) {
                         id=""
                     />
                     <button
-                        class="bg-[#274C5B] w-[35px] h-[35px] text-white rounded-md py-1 px-2 incrementor"
+                        class="bg-[#274C5B] active:bg-opacity-80 w-[35px] h-[35px] text-white rounded-md py-1 px-2 incrementor"
                     >
                         +
                     </button>

@@ -5,7 +5,7 @@ let containers = [];
 let hiddenElement;
 // The initial data that will be loaded
 function loadProducts(unUsedArray,usedArr,startNo,number,container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage,observerFun,watchResizeObserver) {
-    // there are 4 parameters to take in
+    // there are 12 parameters to take in
     // unUsedArray => products that have not been displayed 
     // usedArr => products that have been displayed
     // startNo => the number to start splicing from
@@ -130,7 +130,9 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                             </div>
                         </div>
 
-                        <button class="-translate-y-6 -mb-6 sm:translate-y-2 transitions opacity-0 sm:group-hover:opacity-100  sm:group-hover:z-[1015] bg-deepGreen p-1 rounded-md text-white text-sm">Go to Shop</button>
+                        <!-- The button to view the product -->
+                        <!--We are going to be using the redirect boolean to determine what the button instruction is going to be since aside from the shopSingle.html page, all other pages have the redirectBoolean set to true -->
+                        <button class="hover:bg-white hover:text-deepGreen active:bg-deepGreen active:bg-opacity-80 viewBtn -translate-y-6 -mb-6 sm:translate-y-2 transitions opacity-0 sm:group-hover:opacity-100  sm:group-hover:z-[1015] bg-deepGreen p-1 rounded-md text-white text-sm">${redirectBoolean? 'View in Catalog': 'View'}</button>
                     </div>
                     <!--The div element that will only get displayed is when the template is hovered on when the width of the viewport is greater than 640px-->
                     <div class="productSecondElem hidden opacity-0 sm:group-hover:flex sm:group-hover:items-end sm:group-hover:opacity-100 overflow-hidden transitions  sm:group-hover:z-[1005]">
@@ -208,18 +210,19 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
 }
 
 // The updateShopPage function 
-function updateShopPage(shopObj) {
-    tag.textContent = shopObj.productTag;
-    productImage.src = pathLocator(shopObj.productImage, false);
-    productName.textContent = shopObj.productName;
-    fPrice.textContent = shopObj.fPrice;
-    rPrice.textContent = shopObj.rPrice;
-    aboutProduct.textContent = shopObj.aboutProduct;
-    productDescription.textContent = shopObj.description;
-    additionalInfo.textContent = shopObj.additionalInfo;
-    quantityInput.value = shopObj.qty;
+// function updateShopPage(shopObj) {
+//     tag.textContent = shopObj.productTag;
+//     productImage.src = pathLocator(shopObj.productImage, false);
+//     productName.textContent = shopObj.productName;
+//     fPrice.textContent = shopObj.fPrice;
+//     rPrice.textContent = shopObj.rPrice;
+//     aboutProduct.textContent = shopObj.aboutProduct;
+//     productDescription.textContent = shopObj.description;
+//     additionalInfo.textContent = shopObj.additionalInfo;
+//     quantityInput.value = shopObj.qty;
 
-}
+// }
+let updateShopPage = '';
 
 
 

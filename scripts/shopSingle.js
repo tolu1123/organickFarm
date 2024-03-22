@@ -83,6 +83,10 @@ updateShopPage(shoppingBasket);
 
 // Creating the add to cart functionality
 const addToCartBtn = document.querySelector('.addToCart');
+const cartConfirmation = document.querySelector('.cartConfirmation');
+const cartConfirmationText = document.querySelector('.numOfItem');
+const cartContainer = document.querySelector('.cartContainer');
+
 
 // Creating the eventListener for addToCartBtn
 
@@ -91,7 +95,42 @@ addToCartBtn.addEventListener('click', () => {
     let item = localStorage.getItem('shoppingBasket');
     let itemObj = JSON.parse(item);
     
+    // Display the cartConfirmation modal
+    cartConfirmation.classList.remove('hidden');
+    cartConfirmationText.textContent = parseInt(quantityInput.value) > 1? `${quantityInput.value} products`: `${quantityInput.value} product`;
+    cartContainer.classList.add('cartShadow-sm');
 
+    let count = 0;
+    function animateCart() {
+        setTimeout(() => {
+            console.log(document.timeline);
+            console.log();
+            cartContainer.classList.add('cartShadow-md');
+
+            setTimeout(() => {
+                cartContainer.classList.remove('cartShadow-md');
+                cartContainer.classList.remove('cartShadow-sm');
+            }, 300);
+            
+        }, count * 50);
+        cartContainer.classList.add('cartShadow-sm');
+        count++;
+        if (count < 2) {
+            setTimeout(animateCart, 500); // Adjust delay between iterations as needed
+        }
+    }
+    animateCart();
+
+
+
+
+    cartContainer.classList.remove('cartShadow-sm');
+
+    // Close the cartConfirmation modal after 7 seconds
+    setTimeout(() => {
+        cartConfirmation.classList.add('hidden');
+        cartConfirmationText.textContent = '';
+    }, 7000)
 
     // Check if cart is empty or if we already have our item in the cart
     if(localStorage.getItem('cart') == null) {

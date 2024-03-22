@@ -27,7 +27,7 @@ async function populateProductSection() {
 
         undisplayedProducts = [...products];
 
-        loadProducts(undisplayedProducts, displayedProducts, 0, 20, productItemContainer, false, true, loadMoreBtn,true, updateShopPage);
+        loadProducts(undisplayedProducts, displayedProducts, 0, 20, productItemContainer, false, true, loadMoreBtn,true, updateShopPage,observeCatProducts,watchResizeObserver);
 
         // The code to observe the products in the related section
         observeCatProducts();
