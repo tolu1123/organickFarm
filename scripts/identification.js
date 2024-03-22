@@ -63,22 +63,6 @@ phoneInput.destroy();
 
 detailsInput.focus();
 
-// Throttle function
-let throttleFlag;
-function throttle(callback, delay) {
-    // If the throttleFlag is true, then the function will not run
-    // inotherwords we are tryying to prevent the function from running
-    // if it has been set to the run in a record time
-    if(throttleFlag) return;
-    // Set the throttleFlag to true
-    throttleFlag = true;
-    // create the setTimeout function to call the callback function and then set the throttleFlag to false
-    setTimeout(() => {
-        callback();
-        throttleFlag = false;
-    }, delay);
-}
-
 
 // Display our error message
 let errorMessage = document.querySelector('.errorMessage');
@@ -97,7 +81,7 @@ function applyTransError(errorMessage) {
         // Remove the opacity class from the error message
         errorMessage.classList.remove('opacity');
         errorMessage.classList.remove('z-10')
-    }, 2000);
+    }, 8000);
 }
 function displayFalseError(errorMessage) {
     if(errorMessage.classList.contains('hidden')) {
@@ -107,7 +91,12 @@ function displayFalseError(errorMessage) {
     applyTransError(errorMessage);
 }
 
-
+// function to close the false error display 
+let errorCloseBtn = document.querySelector('.errorMessage .closeBtn')
+errorCloseBtn.addEventListener('click', () => {
+    errorMessage.classList.add('hidden');
+    errorMessage.classList.remove('z-10')
+})
 
 
 // Function to initialize the tel-input plugin
@@ -145,7 +134,7 @@ async function initTelPlugin() {
     })
     const phoneError = document.querySelector(".invalidPhoneError");
 
-    let process = () => {
+    function process() {
         phoneError.classList.add('hidden')
 
         if (phoneInput.isValidNumber(true)) {
@@ -156,12 +145,6 @@ async function initTelPlugin() {
         }
 
     }
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        if(telFlag) {
-            process()
-        }
-    })
 
 }
 function focusedDropDown() {
@@ -212,6 +195,7 @@ detailsInput.addEventListener("countrychange", function() {
     // We remove the error styling for the dropdown margins
     removeErrorDropDown()
     focusedDropDown()
+
     // We are going to remove all sort of error and messages
     // And present a fresh display
     refreshDisplay()
@@ -222,8 +206,10 @@ detailsInput.addEventListener("countrychange", function() {
 // and then change the type of the input accordingly
 function checkInput() {
     let inputValue = detailsInput.value;
+
     // We are going to refresh our display
     refreshDisplay();
+
     // Our regex for matching our phone number before validation
     let regex = /[^-()\s\x\d]/g;
 
@@ -240,10 +226,13 @@ function checkInput() {
         if(inputContainer.contains(label)) {
             // reset the input to type of telephone
             detailsInput.setAttribute('type', 'tel');
+
             // hold the presentValue of the input before we initialize our plugin
             presentVal = inputValue;
+
             // Set the value of the input to the present value
             detailsInput.value = '';
+
             // remove the label to prevent display issues
             labelHolder = inputContainer.removeChild(label);
 
@@ -260,29 +249,24 @@ function checkInput() {
         if(!inputContainer.contains(label)) {
             // Append the label to the container
             inputContainer.appendChild(labelHolder);
+
             // We are going to remove the margin applied to the dropdown
             dropDown.classList.remove('border-right-t', 'border-solid', 'z-10', 'border-lightGreen');
             dropDown.classList.contains('border-errorRed') ? dropDown.classList.remove('border-errorRed') : null;
+
             // We are going to remove the formatting before destroying the instance of the plugin
             option.formatAsYouType = false;
+
             //The intl-tel-input instance will be destroyed
             phoneInput.destroy();
             phoneInput = '';
+
             // Remove the placeholder on the details-input
             detailsInput.setAttribute('placeholder', '');
+
             // We are focus on the input to allow the user to continue typing
             detailsInput.focus();
         }
-
-        // We are going to throttle the checkEmailValidity function to prevent it from running too many times
-        // But only after we are sure that the length of the input is longer than 6
-        if(inputValue.length > 6) throttle(checkEmailValidity, 1200);
-        form.addEventListener('submit', (e)=> {
-            e.preventDefault()
-            if(telFlag === false) {
-                checkEmailValidity()
-            }
-        })
     }
 
     // We are going to reset the input to text if the input is empty
@@ -294,18 +278,24 @@ function checkInput() {
 
         // Add the label if it does not exist
         if(!inputContainer.contains(label)) {
+
             // Append the label to the container
             inputContainer.appendChild(labelHolder);
+
             // We are going to remove the margin applied to the dropdown
             dropDown.classList.remove('border-right-t', 'border-solid', 'z-10', 'border-lightGreen');
             dropDown.classList.contains('border-errorRed') ? dropDown.classList.remove('border-errorRed') : null;
+
             // We are going to remove the formatting before destroying the instance of the plugin
             option.formatAsYouType = false;
+
             //The intl-tel-input instance will be destroyed
             phoneInput.destroy();
             phoneInput = '';
+
             // Remove the placeholder on the details-input
             detailsInput.setAttribute('placeholder', '');
+
             // We are focus on the input to allow the user to continue typing
             detailsInput.focus();
         }
@@ -331,6 +321,7 @@ function checkEmailValidity() {
     async function checkEmail() {
         try {
             let response = await fetch(url, options);
+
             // check the status of the response
             if(response.status === 422) {
                 // if i have consumed my credits
@@ -338,24 +329,33 @@ function checkEmailValidity() {
                 // and then try again!
                 abstractKey = secondKey;
                 return checkEmail()
+
             } else if(response.status !== 200) {
+
                 throw new Error('The response status is not 200');
+
             }
             let result = await response.json();
+
             if(result.is_valid_format.value === true && result.is_smtp_valid.value === true) {
                 refreshDisplay();
+
                 // the email is correct, hence we can proceed
                 displayFalseError(errorMessage);
 
             }else if(result.autocorrect !== '') {
+
                 // The email may not exist but has a similar value 
                 correctSuggestion.textContent = `${result.autocorrect}`;
                 correctSuggParent.classlist.remove('hidden');
+
             } else if (result.is_smtp_valid.value === false) {
                 // if the smtp check fails-Meaning the email does not exist
                 invalidEmail.classList.remove('hidden');
+
                 // The function to dynamic style the input on an error
                 invalidInput()
+
                 // Add the text errorRed class to the label
                 label.classList.add('peer-focus:text-errorRed', 'peer-valid:text-errorRed');
             }
@@ -370,6 +370,7 @@ function checkEmailValidity() {
 function invalidInput() {
     // Add the border-errorRed class to the input
     detailsInput.classList.add('border-errorRed');
+
     // Add the focus stylings and remove the lightGreen focus styling
     detailsInput.classList.add('focus:outline-errorRed');
     detailsInput.classList.remove('focus:outline-lightGreen');
@@ -380,15 +381,29 @@ function refreshDisplay() {
     correctSuggestion.textContent = '';
     correctSuggParent.classList.add('hidden');
     invalidEmail.classList.add('hidden');
+
     // Remove the text errorRed class from the label
     label.classList.remove('peer-focus:text-errorRed', 'peer-valid:text-errorRed');
+
     // Remove the border-errorRed class from the input
     detailsInput.classList.remove('border-errorRed');
+
     // Remove the focus stylings and add the lightGreen focus styling
     detailsInput.classList.remove('focus:outline-errorRed');
     detailsInput.classList.add('focus:outline-lightGreen');
+
     // The phoneError will be hidden
     phoneError.classList.add('hidden');
+
     //Remove the error that will be shown on the dropdown
     removeErrorDropDown()
 }
+
+form.addEventListener('submit', (e)=> {
+    e.preventDefault()
+    if(telFlag) {
+        process()
+    }else {
+        checkEmailValidity()
+    }
+})
