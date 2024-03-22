@@ -31,11 +31,23 @@ let additionalInfo = document.querySelector('.additionalInfo');
 let quantityInput = document.querySelector('.quantity');
 
 // Adding event listener to validate that it is only numbers that will be entered into the field
-quantityInput.addEventListener('keydown', (e) => {
+quantityInput.addEventListener('input', (e) => {
     if(e.key === 'e' || e.key === 'E'){
         e.preventDefault();
     }
+    // if the key is a backspace
+    if(e.key === 'Backspace') {
+        e.preventDefault
+    }
+    if(quantityInput.value === '') {
+        quantityInput.value = 1;
+   }
 })
+//Prevent copying from the input 
+quantityInput.addEventListener('copy', (e) => {
+    e.preventDefault
+})
+
 
 
 // The Decrementor and the incrementor 

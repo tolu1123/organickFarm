@@ -157,6 +157,26 @@ function displayCartData(outputElement) {
             pos();
         });
 
+         
+        // Adding event listener to validate that it is only numbers that will be entered into the field
+        quantityInput.addEventListener('input', (e) => {
+            if(e.key === 'e' || e.key === 'E'){
+                e.preventDefault();
+            }
+            // if the key is a backspace
+            if(e.key === 'Backspace') {
+                e.preventDefault
+            }
+            if(quantityInput.value === '') {
+                quantityInput.value = 1;
+            }
+        })
+        
+        //Prevent copying from the input 
+        quantityInput.addEventListener('copy', (e) => {
+            e.preventDefault
+        })
+
         //The quantity input event listener
         quantityInput.addEventListener('input', () => {
             if (quantityInput.value < 1) {
@@ -170,7 +190,7 @@ function displayCartData(outputElement) {
                 cartCount();
                 pos();
             }
-        }) 
+        })
         // Append the created template into the outputElement
         outputElement.appendChild(template);
     })
