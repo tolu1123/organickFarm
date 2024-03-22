@@ -101,10 +101,8 @@ addToCartBtn.addEventListener('click', () => {
     cartContainer.classList.add('cartShadow-sm');
 
     let count = 0;
-    function animateCart() {
+    async function animateCart() {
         setTimeout(() => {
-            console.log(document.timeline);
-            console.log();
             cartContainer.classList.add('cartShadow-md');
 
             setTimeout(() => {
@@ -121,16 +119,13 @@ addToCartBtn.addEventListener('click', () => {
     }
     animateCart();
 
-
-
-
     cartContainer.classList.remove('cartShadow-sm');
 
-    // Close the cartConfirmation modal after 7 seconds
+    // Close the cartConfirmation modal after 3.5 seconds
     setTimeout(() => {
         cartConfirmation.classList.add('hidden');
         cartConfirmationText.textContent = '';
-    }, 7000)
+    }, 3500)
 
     // Check if cart is empty or if we already have our item in the cart
     if(localStorage.getItem('cart') == null) {
