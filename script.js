@@ -210,7 +210,7 @@ let heroObserver = new IntersectionObserver((entries) => {
     }
 
     if(entry.target.classList.contains('gallery')) {
-      if(entry.isIntersecting && entry.intersectionRatio > 0.2) {
+      if(entry.isIntersecting && entry.intersectionRatio > 0.1) {
         entry.target.classList.add('visibleProduct');
       }
     }

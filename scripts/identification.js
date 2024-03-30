@@ -132,19 +132,6 @@ async function initTelPlugin() {
         localStorage.getItem('country') ? phoneInput.setCountry(localStorage.getItem('country')):null;
         focusedDropDown()
     })
-    const phoneError = document.querySelector(".invalidPhoneError");
-
-    function process() {
-        phoneError.classList.add('hidden')
-
-        if (phoneInput.isValidNumber(true)) {
-        displayFalseError(errorMessage)
-        } else {
-            phoneError.classList.remove('hidden');
-            errorDropDown()
-        }
-
-    }
 
 }
 function focusedDropDown() {
@@ -399,11 +386,25 @@ function refreshDisplay() {
     removeErrorDropDown()
 }
 
+function process() {
+    phoneError.classList.add('hidden')
+
+    if (phoneInput.isValidNumber(true)) {
+    displayFalseError(errorMessage)
+    } else {
+        phoneError.classList.remove('hidden');
+        errorDropDown()
+    }
+
+}
+
 form.addEventListener('submit', (e)=> {
     e.preventDefault()
     if(telFlag) {
         process()
     }else {
+        console.log('email')
         checkEmailValidity()
     }
 })
+
