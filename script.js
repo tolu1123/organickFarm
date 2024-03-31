@@ -8,7 +8,7 @@ import {loadProducts, productTemplate, pathLocator, updateShopPage} from "./modu
 // import the necessary functions and objects from the module news.js
 import { newsArr, displayNews} from "./modules/news.js";
 import { cartCount } from "./modules/cartCounter.js";
-// update the view on the cartCounter element
+// update the view on the cartCounter element on loading
 cartCount();
  
 
@@ -17,15 +17,14 @@ let undisplayedProducts
 let displayedProducts = [];
 
 let unOfferedProducts;
-// THE CODE TO CREATE THE PRODUCTS IN THE OFFER MENU
-let offerMenu = document.querySelector('.offerMenu');
-
 // NOTE 
 //unOfferedProducts is in the async function fetchProducts()
 // let unOfferedProducts = [...products];
 let offeredProducts = []
 
 
+// THE CODE TO CREATE THE PRODUCTS IN THE OFFER MENU
+let offerMenu = document.querySelector('.offerMenu');
 
 let productItemContainer = document.querySelector('.productItemContainer');
 let loadMoreProductsBtn = document.querySelector('.loadMoreProducts');
@@ -43,12 +42,17 @@ async function fetchProducts(){
 
     unOfferedProducts = [...products];
 
-    if(window.innerWidth >= 640 && window.innerWidth < 1024) {
+    //We are going to create a random number to mimick dynamic feed for the {offerMenu}
+    const randomNumber = Math.ceil(Math.random() * 13) 
+
+    // A conditional for the user's screen width to prevent broken images
+    if(window.innerWidth >= 640) {
       loadProducts(undisplayedProducts, displayedProducts,0 ,3, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
-      loadProducts(unOfferedProducts , offeredProducts , 0 , 3, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+      loadProducts(unOfferedProducts , offeredProducts , randomNumber, 3, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
     } else {
+
       loadProducts(undisplayedProducts, displayedProducts,0 ,4, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
-      loadProducts(unOfferedProducts , offeredProducts , 12 , 4, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
+      loadProducts(unOfferedProducts , offeredProducts , randomNumber , 4, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
     }
 
     // The code to observe the products in the categories and offer section
@@ -181,7 +185,7 @@ window.addEventListener('resize', () => {
 let options = {
   root: null,
   rootMargin: "0px",
-  threshold: [0 , 0.02,0.05, 0.1, 0.25, 0.5, 0.75, 1.0],
+  threshold: [0 , 0.02,0.05, 0.1, 0.15, 0.25, 0.5, 0.75, 1.0],
 };
 
 let heroObserver = new IntersectionObserver((entries) => {
@@ -210,7 +214,7 @@ let heroObserver = new IntersectionObserver((entries) => {
     }
 
     if(entry.target.classList.contains('gallery')) {
-      if(entry.isIntersecting && entry.intersectionRatio > 0.1) {
+      if(entry.isIntersecting && entry.intersectionRatio > 0.15) {
         entry.target.classList.add('visibleProduct');
       }
     }

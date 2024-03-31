@@ -2614,6 +2614,14 @@ body{
   transition: all 100ms linear;
 }
 
+.veryFastTransition {
+  transition: all 1ms linear;
+}
+
+.delayedTransition {
+  transition: all 450ms linear 00ms;
+}
+
 .fadingTransition {
   transition: all 1s linear;
 }
@@ -2630,13 +2638,24 @@ body{
   transition: all 2s linear 100ms;
 }
 
+.debugTransition {
+  transition: all 2s linear;
+}
+
 /* Adding an opacity class */
 
 .opacity {
   opacity: 0;
 }
 
-/* A class to apply a clipping effect */
+/* Stylings to apply a clipping effect */
+
+.clip-to-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 .clippedText {
   display: -webkit-box;
@@ -3525,6 +3544,10 @@ input[type=number] {
 
   .group:hover .sm\:group-hover\:flex {
     display: flex;
+  }
+
+  .group:hover .sm\:group-hover\:hidden {
+    display: none;
   }
 
   .group:hover .sm\:group-hover\:w-\[170px\] {

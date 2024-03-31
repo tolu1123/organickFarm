@@ -80,10 +80,12 @@ let observer = new IntersectionObserver(entries => {
         // if the found entry target element contains product in its class 
         // then 
         if(entry.target.classList.contains('product')) {
-            // we will check if it intersects before adding the class visibleProduct
-            if(entry.isIntersecting && entry.intersectionRatio > 0.2) {
-                entry.target.classList.add('visibleProduct');
-            }
+          // we will check if it intersects before adding the class visibleProduct
+          if(entry.isIntersecting && entry.intersectionRatio > 0.2) {
+              entry.target.classList.add('visibleProduct');
+          }else {
+            entry.target.classList.remove('visibleProduct');
+          }
         }
     });
 },options)

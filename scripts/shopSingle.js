@@ -112,6 +112,8 @@ addToCartBtn.addEventListener('click', () => {
     cartConfirmationText.textContent = parseInt(quantityInput.value) > 1? `${quantityInput.value} products`: `${quantityInput.value} product`;
     cartContainer.classList.add('sm:cartShadow-sm');
 
+    // An attempt to style the {cart*} element when the width of the screen is  >= {sm breakpoint || 640px}
+    // when there is an addition of an item to our shopping basket
     let count = 0;
     async function animateCart() {
         setTimeout(() => {
@@ -342,6 +344,8 @@ let observer = new IntersectionObserver(entries=> {
             // we will check if it intersects before adding the class visibleProduct
             if(entry.isIntersecting && entry.intersectionRatio > 0.2) {
                 entry.target.classList.add('visibleProduct');
+            }else {
+                entry.target.classList.remove('visibleProduct');
             }
         }
     }

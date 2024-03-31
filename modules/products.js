@@ -47,13 +47,13 @@ function loadProducts(unUsedArray,usedArr,startNo,number,container, root, loadMo
 }
 
 // Adding a resize observer to the parent of the product element for display consistency issues
-    // CONTAINER is the parent of the product element 
+// CONTAINER is the parent of the product element 
 
-    const removeNoneStyling = (container) => {
-        // This is a dependency of the resize event listener below
-        // it is to display all the prodyucts that has been set to display:none
-        Array.from(container.children).forEach(child => child.style.display = 'flex');
-    }
+const removeNoneStyling = (container) => {
+    // This is a dependency of the resize event listener below
+    // it is to display all the products that has been set to display:none
+    Array.from(container.children).forEach(child => child.style.display = 'flex');
+}
 
 window.addEventListener('resize', () => {
     containers.forEach(({unUsedArray,usedArr,startNo,number,container, root, loadMoreBoolean, loadMoreProducts, redirectBoolean, updateShopPage,observerFun,watchResizeObserver}) => {
@@ -109,8 +109,8 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                         </div>
 
                         <!-- The text info about the product item -->
-                        <div class="text-deepGreen2 dataCard opacity-100 translate-y-0 transitions sm:group-hover:-translate-y-2 sm:group-hover:opacity-0">
-                            <h5 class="font-bold text-base">${product.productName}</h5>
+                        <div class="text-deepGreen2 dataCard opacity-100 translate-y-0 sm:group-hover:hidden veryFastTransition sm:group-hover:-translate-y-2 sm:group-hover:opacity-0">
+                            <h5 class="font-bold text-base clip-to-1">${product.productName}</h5>
                             <hr class="bg-[#B8B8B8] mt-1 mb-1">
                             <div class="flex flex-row justify-between">
                                 <!-- The price tags -->
@@ -120,7 +120,7 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                                 </div>
 
                                 <!-- The ratings -->
-                                <div class="text-[#FFA858] text-[11px]">
+                                <div class="text-[#FFA858] text-[11px] clip-to-1">
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
@@ -155,7 +155,7 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                 </div>
                             </div>
-                            <div class="rounded-lg p-5 bg-[#EBEBEB]">
+                            <div class="rounded-lg p-5 delayedTransition bg-[#EBEBEB]">
                                 <div class="clippedText">${product.aboutProduct}</div>
                                 </div>
                             </div>
@@ -208,20 +208,7 @@ function productTemplate(product, root, redirectBoolean, updateShopPage, contain
     })
     return template;
 }
-
-// The updateShopPage function 
-// function updateShopPage(shopObj) {
-//     tag.textContent = shopObj.productTag;
-//     productImage.src = pathLocator(shopObj.productImage, false);
-//     productName.textContent = shopObj.productName;
-//     fPrice.textContent = shopObj.fPrice;
-//     rPrice.textContent = shopObj.rPrice;
-//     aboutProduct.textContent = shopObj.aboutProduct;
-//     productDescription.textContent = shopObj.description;
-//     additionalInfo.textContent = shopObj.additionalInfo;
-//     quantityInput.value = shopObj.qty;
-
-// }
+//  An optional support for pages that will not be supplying an updateShopPage function to the loadProducts page.
 let updateShopPage = '';
 
 
