@@ -46,7 +46,7 @@ async function fetchProducts(){
     const randomNumber = Math.ceil(Math.random() * 13) 
 
     // A conditional for the user's screen width to prevent broken images
-    if(window.innerWidth >= 640) {
+    if(window.innerWidth >= 640 && window.innerWidth < 1024) {
       loadProducts(undisplayedProducts, displayedProducts,0 ,3, productItemContainer, true, true, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
       loadProducts(unOfferedProducts , offeredProducts , randomNumber, 3, offerMenu, true, false, loadMoreProductsBtn, true, updateShopPage,observeCatProducts,watchResizeObserver);
     } else {
