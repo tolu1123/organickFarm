@@ -37,6 +37,7 @@ Organick allows users to customize their orders based on their preferences and d
 2. Creating modals and beautiful button effects to notify that the add to cart button has been clicked on the shopSingle page is clicked.
 3. Incorporating the search functionality into the website.
 4. A well orchestrated backend with a high view on security.
+5. Once there is a backend, incorporate a map page to track orders and live updates.
 
 
 
