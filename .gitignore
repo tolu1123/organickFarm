@@ -1,0 +1,5 @@
+# gitignore file
+
+widthManipulator
+**/node_modules/
+**/googlefe7c71e7af5cd702.html

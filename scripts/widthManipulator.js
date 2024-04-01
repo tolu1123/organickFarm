@@ -23,6 +23,7 @@ function setWidthExplicitly() {
         let top = productElement.getBoundingClientRect().top;
 
         productElement.style.left = right;
+
         productElement.style.top = top;
     })
 }
@@ -39,6 +40,7 @@ function setCoordExplicitly() {
     // Loop through all the productElement
     allProductElement.forEach(productElement => {
         let right = productElement.getBoundingClientRect().right;
+
         let top = productElement.getBoundingClientRect().top;
 
         productElement.style.left = right;
