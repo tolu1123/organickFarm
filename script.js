@@ -185,8 +185,14 @@ window.addEventListener('resize', () => {
 let options = {
   root: null,
   rootMargin: "0px",
-  threshold: [0 , 0.02,0.05, 0.1, 0.15, 0.25, 0.5, 0.75, 0.9,1.0],
+  threshold: [0 , 0.02,0.05, 0.1, 0.15, 0.2, 0.25, 0.5, 0.75, 0.9,1.0],
 };
+
+// Flags for our countup counters observer
+let countNo1 = 0;
+let countNo2 = 0;
+let countNo3 = 0;
+let countNo4 = 0;
 
 let heroObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -223,26 +229,30 @@ let heroObserver = new IntersectionObserver((entries) => {
 
     // The intersection observer to monitor the count elements when it is fully visible
     if(entry.target.classList.contains('count1')) {
-      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.6 && countNo1 === 0) {
         counter(0, 100, count1, 50, '%');
+        countNo1++;
       }
     }
 
     if(entry.target.classList.contains('count2')) {
-      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.6 && countNo2 === 0) {
         counter(0, 285, count2, 9, null);
+        countNo2++
       }
     }
 
     if(entry.target.classList.contains('count3')) {
-      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.25 && countNo3 === 0) {
         counter(0, 350, count3, 8, '+');
+        countNo3++;
       }
     }
 
     if(entry.target.classList.contains('count4')) {
-      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.25 && countNo4 === 0) {
         counter(0, 25, count4, 80, '+');
+        countNo4++;
       }
     }
 
@@ -309,8 +319,6 @@ function observeCatProducts() {
   })
 }
 
-// Our flag to prevent the intersection observer from calling the counter(..args) function multiple times
-let runNo = 0;
 // The counter(..args) function handles the countup functionality of the testimonial section
 function counter(start, end, parentElement, timeRate, symbol) {
   // ACCEPTS 5 PARAMETERS
@@ -332,7 +340,8 @@ function counter(start, end, parentElement, timeRate, symbol) {
       // Adjust time rate based on progress
       timeRate += (1 - progress) * 0.2;
 
-      recursiveRunner();
+      recursiveRunner()
+
     }, timeRate);
 
     if (start > end) {
@@ -344,10 +353,7 @@ function counter(start, end, parentElement, timeRate, symbol) {
     }
   }
 
-  // Since the counter operates on 4 elements, we will limit the calling of the function using a ternary
-  runNo <= 3 ? recursiveRunner(): null;
-  // We increment the counter.
-  runNo++
+  recursiveRunner()
 }
 
 //THE load more button functionality
