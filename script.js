@@ -185,7 +185,7 @@ window.addEventListener('resize', () => {
 let options = {
   root: null,
   rootMargin: "0px",
-  threshold: [0 , 0.02,0.05, 0.1, 0.15, 0.25, 0.5, 0.75, 1.0],
+  threshold: [0 , 0.02,0.05, 0.1, 0.15, 0.25, 0.5, 0.75, 0.9,1.0],
 };
 
 let heroObserver = new IntersectionObserver((entries) => {
@@ -213,9 +213,36 @@ let heroObserver = new IntersectionObserver((entries) => {
       }
     }
 
+    // The intersection to monitor the gallery element at a specific intersection ratio of 0.15
     if(entry.target.classList.contains('gallery')) {
       if(entry.isIntersecting && entry.intersectionRatio > 0.15) {
         entry.target.classList.add('visibleProduct');
+      }
+    }
+
+
+    // The intersection observer to monitor the count elements when it is fully visible
+    if(entry.target.classList.contains('count1')) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+        counter(0, 100, count1, 50, '%');
+      }
+    }
+
+    if(entry.target.classList.contains('count2')) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+        counter(0, 285, count2, 9, null);
+      }
+    }
+
+    if(entry.target.classList.contains('count3')) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+        counter(0, 350, count3, 8, '+');
+      }
+    }
+
+    if(entry.target.classList.contains('count4')) {
+      if(entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+        counter(0, 25, count4, 80, '+');
       }
     }
 
@@ -247,12 +274,26 @@ let extraHeroTwo = document.querySelector('.extraHeroTwo');
 let fruitImage = document.querySelector('.fruitImage');
 let infoAboutUs = document.querySelector('.infoAboutUs');
 
+
+// This are the variables that will hold the references to all instance of the count up
+const count1 = document.querySelector('.count1')
+const count2 = document.querySelector('.count2')
+const count3 = document.querySelector('.count3')
+const count4 = document.querySelector('.count4')
+
+// We will then observe it.
+heroObserver.observe(count1);
+heroObserver.observe(count2);
+heroObserver.observe(count3);
+heroObserver.observe(count4);
+
 let ecoText = document.querySelector('.ecoText');
 
 let gallery = document.querySelectorAll('.gallery');
 gallery.forEach(eachGalleryItem => {
   heroObserver.observe(eachGalleryItem);
 })
+
 
 // Observe the element
 heroObserver.observe(extraHeroOne);
@@ -268,6 +309,46 @@ function observeCatProducts() {
   })
 }
 
+// Our flag to prevent the intersection observer from calling the counter(..args) function multiple times
+let runNo = 0;
+// The counter(..args) function handles the countup functionality of the testimonial section
+function counter(start, end, parentElement, timeRate, symbol) {
+  // ACCEPTS 5 PARAMETERS
+  // start => this should be the start up count
+  // end => This is the end of the count by which the count up will be ended
+  // parentElement => this is the DOM elememnt where the count up will be displayed
+  // timeRate => This is the timeRate variable that changes the rate of the count up function
+  // symbol => This is the provided variable (if not null) that will be added after the countup is done.
+
+  function recursiveRunner() {
+
+    let timer = setTimeout(() => {
+      parentElement.textContent = start;
+      start++;
+
+      // Calculate the progress ratio
+      const progress = start / end;
+
+      // Adjust time rate based on progress
+      timeRate += (1 - progress) * 0.2;
+
+      recursiveRunner();
+    }, timeRate);
+
+    if (start > end) {
+      // Concatenate the symbol to the final count once we are done with the count
+      symbol !== null ? parentElement.textContent = `${parentElement.textContent + symbol}`: null;
+
+      // We will clear the timeout once we are also done
+      clearTimeout(timer);
+    }
+  }
+
+  // Since the counter operates on 4 elements, we will limit the calling of the function using a ternary
+  runNo <= 3 ? recursiveRunner(): null;
+  // We increment the counter.
+  runNo++
+}
 
 //THE load more button functionality
 loadMoreProductsBtn.addEventListener('click', () => {
